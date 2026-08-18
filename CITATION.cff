@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: >-
+  If you use this catalog or its monitoring software, cite the version you used.
+  Cite individual datasets and derived products using their own displayed
+  publisher- and version-specific citations.
+title: Delaware Public Data Catalog
+type: software
+authors:
+  - name: Delaware Public Data Catalog contributors
+version: 0.1.0
+date-released: 2026-08-17
+abstract: >-
+  An independent public catalog, monitoring framework, and reproducibility
+  foundation for open data relevant to Delaware communities.
+keywords:
+  - Delaware
+  - open data
+  - data catalog
+  - public health
+  - data provenance
+  - community data

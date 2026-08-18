@@ -1,0 +1,71 @@
+name: Monthly deep endpoint audit
+
+on:
+  schedule:
+    # Run once per month, away from the top of the hour.
+    - cron: "41 9 1 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: public-endpoint-deep-audit
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    name: Collect deeper bounded fingerprints
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - name: Check out reviewed targets
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Run offline safety tests
+        run: python -m unittest discover -s tests -p "test_monitor.py" -v
+
+      - name: Generate public current and archive targets
+        run: >-
+          python -m monitoring.generate_targets
+          --catalog catalog/reviewed-intake.json
+          --output build/targets-deep.json
+
+      - name: Collect deep observations
+        env:
+          PROJECT_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          python -m monitoring.monitor \
+            --input build/targets-deep.json \
+            --output build/status-deep.json \
+            --deep \
+            --timeout 30 \
+            --max-bytes 5242880 \
+            --max-redirects 5 \
+            --retries 1 \
+            --user-agent "Delaware-Public-Data-Monitor/0.1 (+https://github.com/$PROJECT_REPOSITORY)"
+
+      - name: Add result summary
+        shell: bash
+        run: >-
+          python -m monitoring.summary build/status-deep.json
+          --title "Monthly deep endpoint audit"
+          >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain deep-audit artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: deep-status-${{ github.run_id }}
+          path: build/status-deep.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 9

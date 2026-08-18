@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_type": "reviewed-intake-quality-report",
+  "source_workbook": {
+    "filename": "Updated July 22 26_Delaware SHIP Community Data Resource Guide.xlsx",
+    "sha256": "2f9f0d2bb5f1bf523864a86a64f4e57e8a45a17684e0f59bf4afddfd242418ac",
+    "worksheets": {
+      "public": "Public Facing Data",
+      "request_only": "No public-facing reports"
+    },
+    "context": "Welcome to the Delaware SHIP Community Data Resource Guide! The State Health Improvement Plan (SHIP) team, comprised of University of Delaware and Delaware Division of Public Health, and KIDS COUNT in Delaware developed this resource to support community-based organizations (CBOs) in identifying relevant state data sets that can help enhance health and wellness within their communities. This resource provides background information, outlines key data categories and measures, and includes publication dates, data source timelines, links to the most current data, and access to archived reports. We welcome suggestions for additional resources. For questions, feedback, or recommendations, please contact Info@DelawareSHIP.org or visit our website at DelawareSHIP.org (Last Updated July 2026)",
+    "request_only_note": "*Data is available upon request"
+  },
+  "summary": {
+    "source_count": 37,
+    "public_source_count": 30,
+    "request_only_source_count": 7,
+    "topic_count": 126,
+    "distribution_count": 49,
+    "current_distribution_count": 37,
+    "archive_distribution_count": 11,
+    "request_info_distribution_count": 1,
+    "unique_url_count": 49,
+    "warning_count": 27,
+    "shared_url_count": 0,
+    "missing_background_count": 7,
+    "missing_category_source_count": 15,
+    "public_source_missing_current_url_count": 0,
+    "raw_cell_provenance_count": 537
+  },
+  "checks": [
+    {
+      "check": "expected-public-source-count",
+      "passed": true,
+      "expected": 30,
+      "actual": 30
+    },
+    {
+      "check": "expected-request-only-source-count",
+      "passed": true,
+      "expected": 7,
+      "actual": 7
+    },
+    {
+      "check": "unique-source-ids",
+      "passed": true,
+      "expected": 37,
+      "actual": 37
+    },
+    {
+      "check": "unique-topic-ids",
+      "passed": true,
+      "expected": 126,
+      "actual": 126
+    },
+    {
+      "check": "unique-distribution-ids",
+      "passed": true,
+      "expected": 49,
+      "actual": 49
+    },
+    {
+      "check": "review-status-set",
+      "passed": true,
+      "expected": "imported-unverified",
+      "actual": [
+        "imported-unverified"
+      ]
+    },
+    {
+      "check": "source-cell-provenance",
+      "passed": true,
+      "expected": "at least one raw cell per source",
+      "actual": 37
+    }
+  ],
+  "passed": true,
+  "duplicate_ids": {
+    "sources": [],
+    "topics": [],
+    "distributions": []
+  },
+  "shared_urls": [],
+  "warnings": [
+    {
+      "issue": "display-hyperlink-mismatch",
+      "source_id": "src-america-s-health-rankings-united-health-foundation-0522616a70",
+      "source_name": "America's Health Rankings (United Health Foundation)",
+      "detail": "Visible URL is https://www.americashealthrankings.org/explore/states/DE; hyperlink target is https://www.americashealthrankings.org/explore/measures",
+      "cells": [
+        "G24"
+      ]
+    },
+    {
+      "issue": "display-hyperlink-mismatch",
+      "source_id": "src-map-the-meal-gap-2025-feeding-america-d9b6eb75e3",
+      "source_name": "Map the Meal Gap 2025 (Feeding America)",
+      "detail": "Visible URL is https://www.feedingamerica.org/sites/default/files/2023-05/Map%20the%20Meal%20Gap%202023.pdf; hyperlink target is https://www.feedingamerica.org/sites/default/files/2024-05/MMG%202024%20Executive%20Summary%20%281%29.pdf",
+      "cells": [
+        "H53"
+      ]
+    },
+    {
+      "issue": "display-hyperlink-mismatch",
+      "source_id": "src-map-the-meal-gap-2025-feeding-america-d9b6eb75e3",
+      "source_name": "Map the Meal Gap 2025 (Feeding America)",
+      "detail": "Visible URL is https://www.feedingamerica.org/sites/default/files/2022-09/Map%20the%20Meal%20Gap%202022%20Report_0.pdf; hyperlink target is https://www.feedingamerica.org/sites/default/files/2024-05/MMG%202024%20Executive%20Summary%20%281%29.pdf",
+      "cells": [
+        "H53"
+      ]
+    },
+    {
+      "issue": "display-hyperlink-mismatch",
+      "source_id": "src-education-data-reports-39-delaware-department-of-educati-b68119045e",
+      "source_name": "Education Data Reports (39) (Delaware Department of Education)",
+      "detail": "Visible URL is https://education.delaware.gov/community/data/reports/#enrollment; hyperlink target is https://education.delaware.gov/community/data/reports/",
+      "cells": [
+        "G86"
+      ]
+    },
+    {
+      "issue": "display-hyperlink-mismatch",
+      "source_id": "src-delaware-statistics-on-children-youth-and-families-in-de-962c40a7cb",
+      "source_name": "DELAWARE Statistics on children, youth and families in Delaware (Annie E. Casey Foundation and KIDS COUNT)",
+      "detail": "Visible URL is https://datacenter.aecf.org/data?location=DE#DE/2/0/char/0; hyperlink target is https://datacenter.aecf.org/data?location=DE",
+      "cells": [
+        "G113"
+      ]
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-youth-risk-behavior-survey-ud-center-for-drug-health-stu-b94e3f9ca4",
+      "source_name": "Youth Risk Behavior Survey (UD Center for Drug & Health Studies)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-delaware-school-survey-ud-center-for-drug-health-studies-b37871ea5a",
+      "source_name": "Delaware School Survey (UD Center for Drug & Health Studies)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-youth-tobacco-survey-ud-center-for-drug-health-studies-3f7832a991",
+      "source_name": "Youth Tobacco Survey (UD Center for Drug & Health Studies)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-national-survey-of-children-s-health-the-child-and-adole-5b37b84fa8",
+      "source_name": "National Survey of Children's Health (The Child and Adolescent Health Measurement Initiative)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-vaccination-coverage-among-young-children-cdc-0f8fa055b7",
+      "source_name": "Vaccination Coverage Among Young Children (CDC)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-trends-in-college-pricing-college-board-f3ab6890dc",
+      "source_name": "Trends in College Pricing (College Board)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-statistics-for-tax-returns-with-the-earned-income-tax-cr-9a4a276f34",
+      "source_name": "Statistics for Tax Returns with the Earned Income Tax Credit (IRS)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-coc-homeless-populations-and-subpopulations-hud-cd0ab860b5",
+      "source_name": "CoC Homeless Populations and Subpopulations (HUD)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-delaware-health-and-social-services-f1757b7fcd",
+      "source_name": "Delaware Health and Social Services",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-delaware-health-and-social-services-f1757b7fcd",
+      "source_name": "Delaware Health and Social Services",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-food-bank-of-delaware-01acbcea9c",
+      "source_name": "Food Bank of Delaware",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-food-bank-of-delaware-01acbcea9c",
+      "source_name": "Food Bank of Delaware",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-medicaid-project-dmma-ccrs-d2bb0bfe65",
+      "source_name": "Medicaid Project (DMMA/CCRS)",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-medicaid-project-dmma-ccrs-d2bb0bfe65",
+      "source_name": "Medicaid Project (DMMA/CCRS)",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-de-211-960365651a",
+      "source_name": "DE 211",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-de-211-960365651a",
+      "source_name": "DE 211",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-delaware-libraries-1ce43f1600",
+      "source_name": "Delaware Libraries",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-delaware-libraries-1ce43f1600",
+      "source_name": "Delaware Libraries",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-delaware-department-of-services-for-children-youth-their-656b1c039b",
+      "source_name": "Delaware Department of Services for Children Youth & Their Families",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-delaware-department-of-services-for-children-youth-their-656b1c039b",
+      "source_name": "Delaware Department of Services for Children Youth & Their Families",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    },
+    {
+      "issue": "missing-background",
+      "source_id": "src-delaware-state-police-4c064733fa",
+      "source_name": "Delaware State Police",
+      "detail": "Background cell is blank.",
+      "cells": []
+    },
+    {
+      "issue": "missing-category",
+      "source_id": "src-delaware-state-police-4c064733fa",
+      "source_name": "Delaware State Police",
+      "detail": "No data category was supplied in the workbook.",
+      "cells": []
+    }
+  ]
+}

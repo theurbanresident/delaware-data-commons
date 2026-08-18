@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "endpoints": [
+    {
+      "dataset_id": "public-health-source",
+      "distribution_id": "current-report-pdf",
+      "url": "https://data.example/current.pdf"
+    },
+    {
+      "dataset_id": "public-health-source",
+      "distribution_id": "current-report-pdf",
+      "url": "https://data.example/current-v2.pdf"
+    }
+  ]
+}

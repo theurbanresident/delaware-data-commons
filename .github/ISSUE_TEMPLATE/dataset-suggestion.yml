@@ -1,0 +1,51 @@
+name: Suggest a public data source
+description: Suggest a Delaware-relevant source for curator review.
+title: "[Source suggestion] "
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Source or dataset name
+    validations:
+      required: true
+
+  - type: input
+    id: publisher
+    attributes:
+      label: Publisher
+      description: Name the organization responsible for the data.
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Official public URL
+      description: Link to the publisher landing page or documentation, not a copied file.
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: textarea
+    id: use
+    attributes:
+      label: Community use
+      description: What Delaware question could this source help answer, and for whom?
+    validations:
+      required: true
+
+  - type: textarea
+    id: coverage
+    attributes:
+      label: Known coverage and limitations
+      description: Note geography, years, update cadence, access restrictions, licensing, definitions, or cautions if known.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public information check
+      options:
+        - label: I have not included private data, credentials, or sensitive personal information.
+          required: true

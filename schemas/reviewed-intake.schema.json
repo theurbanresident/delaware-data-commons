@@ -1,0 +1,1212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:delaware-public-data-catalog:schema:reviewed-intake:1.0.0",
+  "title": "Delaware SHIP reviewed-intake import artifact",
+  "description": "Validation contract for the loss-aware JSON artifact imported from the Delaware SHIP Community Data Resource Guide workbook. This schema describes the import and provenance layer; it is intentionally separate from the normalized public catalog schema.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "importer_version",
+    "catalog_type",
+    "review_status",
+    "source_workbook",
+    "summary",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "description": "Version of this reviewed-intake artifact contract."
+    },
+    "importer_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:[-+][0-9A-Za-z.-]+)?$",
+      "description": "Semantic version of the importer that created the artifact."
+    },
+    "catalog_type": {
+      "const": "reviewed-intake",
+      "description": "Discriminator that prevents this import artifact from being confused with the canonical catalog."
+    },
+    "review_status": {
+      "const": "imported-unverified",
+      "description": "The workbook values have been imported but not yet verified against publishers."
+    },
+    "source_workbook": {
+      "$ref": "#/$defs/source_workbook"
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "description": "Source records grouped from one or more workbook rows. Stable-ID uniqueness is checked by importer validation in addition to this structural schema."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100000
+    },
+    "cell_reference": {
+      "type": "string",
+      "pattern": "^[A-Z]+[1-9][0-9]*$",
+      "description": "A one-cell A1-style workbook reference."
+    },
+    "nullable_cell_reference": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/cell_reference"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cell_range": {
+      "type": "string",
+      "pattern": "^[A-Z]+[1-9][0-9]*:[A-Z]+[1-9][0-9]*$",
+      "description": "An A1-style merged-cell range."
+    },
+    "worksheet_name": {
+      "enum": [
+        "Public Facing Data",
+        "No public-facing reports"
+      ],
+      "description": "A worksheet supported by this importer version."
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^src-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$",
+      "maxLength": 200
+    },
+    "topic_id": {
+      "type": "string",
+      "pattern": "^topic-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$",
+      "maxLength": 200
+    },
+    "distribution_id": {
+      "type": "string",
+      "pattern": "^dist-(?:current|archive|request-info)-[0-9a-f]{10}$",
+      "maxLength": 80
+    },
+    "https_uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "maxLength": 4096
+    },
+    "source_workbook": {
+      "type": "object",
+      "required": [
+        "filename",
+        "sha256",
+        "worksheets",
+        "context",
+        "request_only_note"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "pattern": "\\.xlsx$",
+          "description": "Basename of the imported Excel workbook."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "Lowercase SHA-256 digest of the exact source workbook bytes."
+        },
+        "worksheets": {
+          "type": "object",
+          "required": [
+            "public",
+            "request_only"
+          ],
+          "properties": {
+            "public": {
+              "const": "Public Facing Data"
+            },
+            "request_only": {
+              "const": "No public-facing reports"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Logical intake classes mapped to their workbook worksheet names."
+        },
+        "context": {
+          "$ref": "#/$defs/non_empty_string",
+          "description": "Workbook introduction retained verbatim as source context, not as executable instructions."
+        },
+        "request_only_note": {
+          "$ref": "#/$defs/non_empty_string",
+          "description": "Workbook legend explaining the request-only access class."
+        }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "source_count",
+        "public_source_count",
+        "request_only_source_count",
+        "topic_count",
+        "distribution_count"
+      ],
+      "properties": {
+        "source_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "public_source_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "request_only_source_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "topic_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distribution_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "$comment": "Cross-record validation must confirm that these denormalized counts equal the arrays and filtered source totals."
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "background",
+        "access_type",
+        "review_status",
+        "notes",
+        "topics",
+        "publication_dates",
+        "data_source_dates",
+        "distributions",
+        "contacts",
+        "license",
+        "monitoring",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/source_id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "background": {
+          "description": "Workbook background text; null when the request-only worksheet did not supply it.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/non_empty_string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "access_type": {
+          "enum": [
+            "public",
+            "request_only"
+          ],
+          "description": "Whether a public distribution was listed or access requires a request to the named provider."
+        },
+        "review_status": {
+          "const": "imported-unverified"
+        },
+        "notes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/non_empty_string"
+          }
+        },
+        "topics": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/topic"
+          }
+        },
+        "publication_dates": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/date_record"
+          },
+          "description": "Non-null topic publication dates repeated at source level for discovery."
+        },
+        "data_source_dates": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/date_record"
+          },
+          "description": "Non-null topic data-vintage labels repeated at source level for discovery."
+        },
+        "distributions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/distribution"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/contact"
+          }
+        },
+        "license": {
+          "type": "null",
+          "description": "Always null in this importer version because the workbook did not establish reuse rights. License review belongs in the canonical catalog."
+        },
+        "monitoring": {
+          "$ref": "#/$defs/unmonitored_state"
+        },
+        "provenance": {
+          "$ref": "#/$defs/source_provenance"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "access_type": {
+                "const": "public"
+              }
+            },
+            "required": [
+              "access_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "background": {
+                "$ref": "#/$defs/non_empty_string"
+              },
+              "contacts": {
+                "maxItems": 0
+              },
+              "distributions": {
+                "minItems": 1,
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "const": "current"
+                    }
+                  },
+                  "required": [
+                    "role"
+                  ]
+                },
+                "minContains": 1
+              },
+              "provenance": {
+                "properties": {
+                  "sheet": {
+                    "const": "Public Facing Data"
+                  },
+                  "fields": {
+                    "required": [
+                      "name",
+                      "background",
+                      "category",
+                      "measures",
+                      "publication_date",
+                      "data_source_date",
+                      "current_links",
+                      "archived_links",
+                      "notes"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "access_type": {
+                "const": "request_only"
+              }
+            },
+            "required": [
+              "access_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "background": {
+                "type": "null"
+              },
+              "publication_dates": {
+                "maxItems": 0
+              },
+              "data_source_dates": {
+                "maxItems": 0
+              },
+              "distributions": {
+                "items": {
+                  "properties": {
+                    "role": {
+                      "const": "request_info"
+                    }
+                  }
+                }
+              },
+              "contacts": {
+                "minItems": 1
+              },
+              "provenance": {
+                "properties": {
+                  "sheet": {
+                    "const": "No public-facing reports"
+                  },
+                  "fields": {
+                    "required": [
+                      "name",
+                      "background",
+                      "category",
+                      "measures",
+                      "contact"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "topic": {
+      "type": "object",
+      "required": [
+        "id",
+        "category",
+        "measures",
+        "measures_raw",
+        "publication_date",
+        "data_source_date",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/topic_id"
+        },
+        "category": {
+          "description": "Normalized category label, or null where the request-only sheet supplied no category.",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "measures": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "description": "Importer-parsed measure labels."
+        },
+        "measures_raw": {
+          "$ref": "#/$defs/non_empty_string",
+          "description": "The normalized display text before the importer split it into measures."
+        },
+        "publication_date": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date_record"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_source_date": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date_record"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/topic_provenance"
+        }
+      },
+      "additionalProperties": false
+    },
+    "date_record": {
+      "type": "object",
+      "required": [
+        "raw_value",
+        "display_value",
+        "normalized",
+        "precision",
+        "cell"
+      ],
+      "properties": {
+        "raw_value": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "#/$defs/non_empty_string"
+            }
+          ],
+          "description": "JSON-safe representation of the workbook cell value before semantic normalization."
+        },
+        "display_value": {
+          "$ref": "#/$defs/non_empty_string",
+          "description": "Text as displayed by the workbook formatter."
+        },
+        "normalized": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/non_empty_string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Machine-oriented value when the importer can normalize without guessing; otherwise null."
+        },
+        "precision": {
+          "enum": [
+            "year",
+            "month",
+            "range",
+            "label",
+            "unknown"
+          ]
+        },
+        "cell": {
+          "$ref": "#/$defs/cell_reference"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "precision": {
+                "const": "year"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "type": "integer",
+                "minimum": 1000,
+                "maximum": 9999
+              },
+              "normalized": {
+                "type": "string",
+                "pattern": "^[0-9]{4}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "precision": {
+                "const": "month"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-([0-2][0-9]|3[01])T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
+              },
+              "normalized": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "precision": {
+                "enum": [
+                  "range",
+                  "label"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "$ref": "#/$defs/non_empty_string"
+              },
+              "normalized": {
+                "$ref": "#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "precision": {
+                "const": "unknown"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "$ref": "#/$defs/non_empty_string"
+              },
+              "normalized": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "topic_provenance": {
+      "type": "object",
+      "required": [
+        "sheet",
+        "row",
+        "cells"
+      ],
+      "properties": {
+        "sheet": {
+          "$ref": "#/$defs/worksheet_name"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cells": {
+          "type": "object",
+          "required": [
+            "category",
+            "measures"
+          ],
+          "properties": {
+            "category": {
+              "$ref": "#/$defs/nullable_cell_reference"
+            },
+            "measures": {
+              "$ref": "#/$defs/cell_reference"
+            },
+            "publication_date": {
+              "$ref": "#/$defs/nullable_cell_reference"
+            },
+            "data_source_date": {
+              "$ref": "#/$defs/nullable_cell_reference"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "distribution": {
+      "type": "object",
+      "required": [
+        "id",
+        "url",
+        "role",
+        "format",
+        "topic_id",
+        "display_text",
+        "hyperlink_target",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/distribution_id"
+        },
+        "url": {
+          "$ref": "#/$defs/https_uri",
+          "description": "Resolved public or request-information URL extracted from the workbook."
+        },
+        "role": {
+          "enum": [
+            "current",
+            "archive",
+            "request_info"
+          ]
+        },
+        "format": {
+          "enum": [
+            "web",
+            "pdf"
+          ],
+          "description": "Coarse importer classification; it is not a verified HTTP content type."
+        },
+        "topic_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/topic_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "display_text": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "hyperlink_target": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "^(?:https://|mailto:)"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Excel hyperlink target when present; null when the URL was parsed only from visible cell text."
+        },
+        "provenance": {
+          "$ref": "#/$defs/link_provenance"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "current"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^dist-current-[0-9a-f]{10}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "archive"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^dist-archive-[0-9a-f]{10}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "request_info"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^dist-request-info-[0-9a-f]{10}$"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "contact": {
+      "type": "object",
+      "required": [
+        "raw",
+        "emails",
+        "phones",
+        "urls",
+        "hyperlink_target",
+        "provenance"
+      ],
+      "properties": {
+        "raw": {
+          "$ref": "#/$defs/non_empty_string",
+          "description": "Full displayed contact cell retained to avoid losing qualifications or instructions."
+        },
+        "emails": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 320
+          }
+        },
+        "phones": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "urls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/https_uri"
+          }
+        },
+        "hyperlink_target": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "^(?:https://|mailto:)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/link_provenance"
+        }
+      },
+      "additionalProperties": false
+    },
+    "link_provenance": {
+      "type": "object",
+      "required": [
+        "sheet",
+        "row",
+        "cell"
+      ],
+      "properties": {
+        "sheet": {
+          "$ref": "#/$defs/worksheet_name"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cell": {
+          "$ref": "#/$defs/cell_reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "unmonitored_state": {
+      "type": "object",
+      "required": [
+        "availability_status",
+        "last_checked_at"
+      ],
+      "properties": {
+        "availability_status": {
+          "const": "not_checked"
+        },
+        "last_checked_at": {
+          "type": "null"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Sentinel state written by the importer. Runtime observations are stored in separately validated status artifacts."
+    },
+    "source_provenance": {
+      "type": "object",
+      "required": [
+        "source_workbook",
+        "sheet",
+        "row_start",
+        "row_end",
+        "fields",
+        "raw_cells"
+      ],
+      "properties": {
+        "source_workbook": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "pattern": "\\.xlsx$"
+        },
+        "sheet": {
+          "$ref": "#/$defs/worksheet_name"
+        },
+        "row_start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "row_end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fields": {
+          "$ref": "#/$defs/source_field_map"
+        },
+        "raw_cells": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/raw_cell"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "$comment": "Importer semantic checks must additionally verify row_start <= row_end, cell rows fall inside the group, and source_workbook matches the root filename."
+    },
+    "source_field_map": {
+      "type": "object",
+      "required": [
+        "name",
+        "background",
+        "category",
+        "measures"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "background": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "category": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "measures": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "publication_date": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "data_source_date": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "current_links": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "archived_links": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "notes": {
+          "$ref": "#/$defs/cell_reference_array"
+        },
+        "contact": {
+          "$ref": "#/$defs/cell_reference_array"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Workbook cells contributing to each normalized source field; empty arrays preserve the fact that a supported field was absent."
+    },
+    "cell_reference_array": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/cell_reference"
+      }
+    },
+    "raw_cell": {
+      "type": "object",
+      "required": [
+        "cell",
+        "row",
+        "column",
+        "field",
+        "raw_value",
+        "display_value",
+        "data_type",
+        "number_format",
+        "hyperlink_target",
+        "merged_range"
+      ],
+      "properties": {
+        "cell": {
+          "$ref": "#/$defs/cell_reference"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "string",
+          "pattern": "^[A-Z]+$"
+        },
+        "field": {
+          "enum": [
+            "name",
+            "background",
+            "category",
+            "measures",
+            "publication_date",
+            "data_source_date",
+            "current_links",
+            "archived_links",
+            "notes",
+            "contact"
+          ]
+        },
+        "raw_value": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/non_empty_string"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "display_value": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "data_type": {
+          "enum": [
+            "s",
+            "n",
+            "d"
+          ],
+          "description": "openpyxl-style source cell type: string, numeric, or date."
+        },
+        "number_format": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "hyperlink_target": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "merged_range": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/cell_range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "data_type": {
+                "const": "n"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data_type": {
+                "enum": [
+                  "s",
+                  "d"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_value": {
+                "$ref": "#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "field": {
+                  "const": "name"
+                },
+                "column": {
+                  "const": "A"
+                },
+                "cell": {
+                  "pattern": "^A[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "background"
+                },
+                "column": {
+                  "const": "B"
+                },
+                "cell": {
+                  "pattern": "^B[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "category"
+                },
+                "column": {
+                  "const": "C"
+                },
+                "cell": {
+                  "pattern": "^C[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "measures"
+                },
+                "column": {
+                  "const": "D"
+                },
+                "cell": {
+                  "pattern": "^D[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "enum": [
+                    "publication_date",
+                    "contact"
+                  ]
+                },
+                "column": {
+                  "const": "E"
+                },
+                "cell": {
+                  "pattern": "^E[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "data_source_date"
+                },
+                "column": {
+                  "const": "F"
+                },
+                "cell": {
+                  "pattern": "^F[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "current_links"
+                },
+                "column": {
+                  "const": "G"
+                },
+                "cell": {
+                  "pattern": "^G[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "archived_links"
+                },
+                "column": {
+                  "const": "H"
+                },
+                "cell": {
+                  "pattern": "^H[1-9][0-9]*$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "field": {
+                  "const": "notes"
+                },
+                "column": {
+                  "const": "I"
+                },
+                "cell": {
+                  "pattern": "^I[1-9][0-9]*$"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "additionalProperties": false,
+      "description": "Loss-aware representation of a non-empty source cell, including formatting, hyperlink, and merge metadata."
+    }
+  }
+}

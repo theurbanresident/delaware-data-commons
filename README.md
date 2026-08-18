@@ -1,0 +1,132 @@
+# Delaware Public Data Catalog
+
+The Delaware Public Data Catalog is an independent, public index of open data
+relevant to Delaware communities. It is being designed to make scattered
+datasets easier to find, understand, cite, monitor, and eventually combine into
+well-documented, analysis-ready data products.
+
+The project is not an official State of Delaware service and does not replace
+the original data publishers. A successful automated check means only that a
+distribution was reachable and met a small technical contract at a particular
+time. It is not an endorsement of the data's accuracy, timeliness, or fitness
+for a particular purpose.
+
+## Project status
+
+This repository is in Phase 0/1. It currently establishes the public-site,
+governance, schema, and monitoring foundations. The source inventory is still
+being reviewed; imported spreadsheet rows must be treated as unverified intake
+until a curator confirms their publisher, coverage, definitions, access method,
+and licensing.
+
+The repository must remain active for weekly monitoring. Do not enable GitHub's
+read-only **Archive repository** setting while the project is maintained.
+
+## What this project will provide
+
+- A human-readable catalog with stable dataset and distribution identifiers.
+- Plain-language descriptions, coverage, update cadence, limitations, rights,
+  citations, and field-level dictionaries.
+- Weekly bounded checks of public landing pages, files, and APIs, with access,
+  freshness, and integrity reported as separate dimensions.
+- A public history of observed moves, outages, recoveries, and breaking changes.
+- Reproducible, versioned derived products with provenance and quality tests.
+- Machine-readable exports based on DCAT, CSVW, JSON Schema, and PROV concepts.
+
+## Repository map
+
+| Path | Purpose |
+| --- | --- |
+| `app/` | Public web application. |
+| `schemas/` | Versioned JSON Schemas for catalog and monitoring output. |
+| `monitoring/` | Standard-library Python monitor and its operational policy. |
+| `tests/` | Application and monitor tests, including offline fixtures. |
+| `.github/workflows/` | Least-privilege validation, monitoring, audit, and Pages templates. |
+| `GOVERNANCE.md` | Roles, decisions, releases, stewardship, and succession. |
+| `DATA_LICENSING.md` | Rules for metadata, source files, and derived products. |
+| `CORRECTIONS.md` | Transparent correction and dispute process. |
+
+Catalog records and generated status history will be added as separately
+reviewed work. Large or repeatedly changing source files do not belong in Git.
+
+## Local development
+
+The public site requires Node.js `>=22.13.0`:
+
+```bash
+npm ci
+npm run dev
+```
+
+Useful checks:
+
+```bash
+npm run lint
+npm test
+python -m unittest discover -s tests -p "test_*.py"
+python -m monitoring.generate_targets --catalog catalog/reviewed-intake.json --output build/targets.json
+python -m monitoring.monitor --input build/targets.json --output build/status.json
+```
+
+The monitor uses only the Python standard library. `monitoring/targets.json` is
+an empty offline example; production targets are generated from reviewed public
+catalog distributions. Request-only sources remain cataloged but are excluded
+from outage probes. Endpoint failures are observations and do not cause a scan
+to exit unsuccessfully. Configuration, parser, or output failures do.
+
+The Pages workflow is disabled until an administrator sets the repository
+variable `ENABLE_GITHUB_PAGES` to `true`. Enable it only after the site build
+produces a static `dist/client/index.html`; a server-only Vinext asset directory
+is not a deployable Pages site. The workflow checks this invariant before it can
+receive deployment permissions. Project-site builds default to the repository
+name as their base path and the standard `github.io` URL. Repository variables
+`PAGES_BASE_PATH` and `NEXT_PUBLIC_SITE_URL` can supply non-empty overrides.
+
+## Monitoring safety model
+
+Remote URLs and response metadata are untrusted input. The monitor:
+
+- allows HTTPS on the default port by default;
+- rejects embedded credentials, fragments, private, loopback, link-local,
+  multicast, reserved, and otherwise non-global IP addresses;
+- revalidates each redirect and caps redirects, retries, response bytes, and
+  request time;
+- uses bounded `GET` requests because many data portals mishandle `HEAD`;
+- requests identity encoding and never executes or extracts downloaded content;
+- stores no response bodies and removes URL query strings from observations;
+- distinguishes blocked and rate-limited access from confirmed removal.
+
+DNS can change between validation and connection, so the production workflow
+uses a GitHub-hosted runner with no project secrets or private-network access.
+See `SECURITY.md` and `monitoring/README.md` for the complete threat model.
+
+## Standards and interoperability
+
+The local schemas are intentionally small and versioned. Generated exports can
+map them to:
+
+- [W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) for datasets,
+  distributions, services, series, versions, and checksums;
+- [DCAT-US](https://resources.data.gov/resources/dcat-us3/) for U.S. catalog
+  interoperability;
+- [W3C CSVW](https://www.w3.org/TR/tabular-metadata/) for tabular dictionaries
+  and constraints;
+- [W3C PROV-O](https://www.w3.org/TR/prov-o/) for derived-product lineage; and
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) for the public interface.
+
+## Participate
+
+Read `CONTRIBUTING.md` before proposing a dataset, correction, code change, or
+derived product. Use `CORRECTIONS.md` for factual disputes and `SECURITY.md` for
+vulnerabilities. Never include personal, confidential, credential, or otherwise
+sensitive information in a public issue.
+
+## Rights and citation
+
+Public availability does not automatically grant permission to redistribute a
+dataset. Rights are assessed per distribution; unknown rights remain unknown.
+See `DATA_LICENSING.md` before copying or transforming source material.
+
+Citation guidance for the catalog software is in `CITATION.cff`. Each published
+dataset and product should also expose its own publisher-preferred, version-aware
+citation.

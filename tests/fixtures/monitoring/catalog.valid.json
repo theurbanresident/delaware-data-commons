@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "id": "public-health-source",
+      "access_type": "public",
+      "distributions": [
+        {
+          "id": "current-report-pdf",
+          "role": "current",
+          "format": "pdf",
+          "url": "https://data.example/current.pdf?download=1"
+        },
+        {
+          "id": "archived-landing-page",
+          "role": "archive",
+          "format": "web",
+          "url": "https://archive.example/reports/"
+        },
+        {
+          "id": "request-instructions",
+          "role": "request_info",
+          "format": "web",
+          "url": "https://data.example/request-data"
+        }
+      ]
+    },
+    {
+      "id": "restricted-health-source",
+      "access_type": "request_only",
+      "distributions": [
+        {
+          "id": "restricted-current-data",
+          "role": "current",
+          "format": "web",
+          "url": "https://restricted.example/data"
+        },
+        {
+          "id": "restricted-request-info",
+          "role": "request_info",
+          "format": "web",
+          "url": "https://restricted.example/request"
+        }
+      ]
+    }
+  ]
+}

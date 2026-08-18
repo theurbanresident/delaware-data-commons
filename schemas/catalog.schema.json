@@ -1,0 +1,591 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:delaware-public-data-catalog:schema:catalog:1.0.0",
+  "title": "Delaware Public Data Catalog",
+  "description": "Canonical exchange shape for reviewed catalog records.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "title",
+    "description",
+    "organizations",
+    "datasets"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "catalog_id": {
+      "$ref": "#/$defs/stable_id"
+    },
+    "title": {
+      "$ref": "#/$defs/non_empty_string"
+    },
+    "description": {
+      "$ref": "#/$defs/non_empty_string"
+    },
+    "published_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "default": "en-US"
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/organization"
+      }
+    },
+    "datasets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/dataset"
+      }
+    }
+  },
+  "patternProperties": {
+    "^x-[a-z0-9-]+$": true
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "stable_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 4096
+    },
+    "contact": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 320
+        },
+        "url": {
+          "$ref": "#/$defs/uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "organization": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "name": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "url": {
+          "$ref": "#/$defs/uri"
+        },
+        "contact": {
+          "$ref": "#/$defs/contact"
+        }
+      },
+      "patternProperties": {
+        "^x-[a-z0-9-]+$": true
+      },
+      "additionalProperties": false
+    },
+    "license": {
+      "type": "object",
+      "required": [
+        "status",
+        "archive_allowed"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "known",
+            "unknown",
+            "conflicting",
+            "not-applicable"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "uri": {
+          "$ref": "#/$defs/uri"
+        },
+        "rights_holder": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "attribution": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "applies_to": {
+          "enum": [
+            "metadata",
+            "distribution",
+            "api-results",
+            "all",
+            "unknown"
+          ]
+        },
+        "archive_allowed": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown"
+          ]
+        },
+        "reviewed_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "known"
+              }
+            }
+          },
+          "then": {
+            "anyOf": [
+              {
+                "required": [
+                  "name"
+                ]
+              },
+              {
+                "required": [
+                  "uri"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "spatial_coverage": {
+      "type": "object",
+      "required": [
+        "geographic_level"
+      ],
+      "properties": {
+        "geographic_level": {
+          "enum": [
+            "state",
+            "county",
+            "municipality",
+            "zip-code",
+            "census-tract",
+            "census-block-group",
+            "school-district",
+            "service-area",
+            "address",
+            "point",
+            "other",
+            "unknown"
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "identifiers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "boundary_vintage": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "additionalProperties": false
+    },
+    "temporal_coverage": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/date"
+        },
+        "end": {
+          "$ref": "#/$defs/date"
+        },
+        "resolution": {
+          "type": "string",
+          "description": "ISO 8601 duration when known, for example P1D or P1Y.",
+          "pattern": "^P(?!$).+$"
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "citation": {
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "url": {
+          "$ref": "#/$defs/uri"
+        },
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "accessed_at": {
+          "$ref": "#/$defs/date"
+        }
+      },
+      "additionalProperties": false
+    },
+    "monitoring": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "profile"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "profile": {
+          "enum": [
+            "html",
+            "file",
+            "csv",
+            "json",
+            "xml",
+            "pdf",
+            "api",
+            "arcgis",
+            "socrata",
+            "ckan",
+            "manual"
+          ]
+        },
+        "expected_content_types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+$"
+          }
+        },
+        "expected_status_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          }
+        },
+        "expected_update_frequency": {
+          "type": "string",
+          "description": "ISO 8601 duration, not the monitor scan frequency.",
+          "pattern": "^P(?!$).+$"
+        },
+        "update_grace_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3660
+        }
+      },
+      "additionalProperties": false
+    },
+    "distribution": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "access_url",
+        "license",
+        "monitoring"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "title": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "access_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "download_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "service_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "documentation_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "media_type": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+$"
+        },
+        "format": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "byte_size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "issued": {
+          "$ref": "#/$defs/date"
+        },
+        "publisher_modified": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "dictionary_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "monitoring": {
+          "$ref": "#/$defs/monitoring"
+        }
+      },
+      "patternProperties": {
+        "^x-[a-z0-9-]+$": true
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "required": [
+        "type",
+        "target_id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "is-version-of",
+            "has-version",
+            "replaces",
+            "is-replaced-by",
+            "is-part-of",
+            "has-part",
+            "is-derived-from",
+            "is-supplement-to"
+          ]
+        },
+        "target_id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "note": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "candidate",
+            "reviewed",
+            "published",
+            "needs-review"
+          ]
+        },
+        "reviewed_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "reviewer": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "source_reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "notes": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "dataset": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "publisher_id",
+        "lifecycle",
+        "license",
+        "review",
+        "distributions"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "title": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "publisher_id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "distributor_id": {
+          "$ref": "#/$defs/stable_id"
+        },
+        "contact": {
+          "$ref": "#/$defs/contact"
+        },
+        "landing_page": {
+          "$ref": "#/$defs/uri"
+        },
+        "keywords": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "themes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stable_id"
+          }
+        },
+        "lifecycle": {
+          "enum": [
+            "active",
+            "deprecated",
+            "retired",
+            "superseded",
+            "unknown"
+          ]
+        },
+        "lifecycle_note": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "unit_of_observation": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "population": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "spatial": {
+          "$ref": "#/$defs/spatial_coverage"
+        },
+        "temporal": {
+          "$ref": "#/$defs/temporal_coverage"
+        },
+        "publisher_issued": {
+          "$ref": "#/$defs/date"
+        },
+        "publisher_modified": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "methods_url": {
+          "$ref": "#/$defs/uri"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/non_empty_string"
+          }
+        },
+        "suppression_notes": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "citation": {
+          "$ref": "#/$defs/citation"
+        },
+        "relationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationship"
+          }
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        },
+        "distributions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/distribution"
+          }
+        }
+      },
+      "patternProperties": {
+        "^x-[a-z0-9-]+$": true
+      },
+      "additionalProperties": false
+    }
+  }
+}
