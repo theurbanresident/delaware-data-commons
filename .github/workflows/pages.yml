@@ -47,16 +47,19 @@ jobs:
           PAGES_ASSET_PREFIX: ${{ vars.PAGES_BASE_PATH || format('/{0}', github.event.repository.name) }}
           NEXT_PUBLIC_BASE_PATH: ${{ vars.PAGES_BASE_PATH || format('/{0}', github.event.repository.name) }}
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+          NEXT_PUBLIC_GITHUB_REPOSITORY_URL: ${{ format('{0}/{1}', github.server_url, github.repository) }}
 
       - name: Verify static entry point
         shell: bash
         env:
           EXPECTED_BASE_PATH: ${{ vars.PAGES_BASE_PATH || format('/{0}', github.event.repository.name) }}
           EXPECTED_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+          EXPECTED_REPOSITORY_URL: ${{ format('{0}/{1}', github.server_url, github.repository) }}
         run: |
           test -f dist/client/index.html
           grep -Fq "$EXPECTED_BASE_PATH/_next/" dist/client/index.html
           grep -Fq "$EXPECTED_SITE_URL" dist/client/index.html
+          grep -Fq "$EXPECTED_REPOSITORY_URL/issues/new" dist/client/contribute.html
 
       - name: Package Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0

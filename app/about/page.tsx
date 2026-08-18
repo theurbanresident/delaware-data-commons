@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Notice, PageIntro } from "../components/Content";
+import { sitePath } from "../lib/site-path";
 
 export const metadata: Metadata = {
   title: "About",
@@ -59,17 +60,9 @@ export default function AboutPage() {
 
         <section id="corrections">
           <h2>Corrections and source updates</h2>
-          <p>
-            Publisher corrections are welcome and will be attributed. Catalog
-            records are amended with a visible change note rather than silently
-            rewritten. The project&apos;s durable, no-login community feedback
-            channel will be named after the Phase 0 governance owner is confirmed.
-          </p>
-          <p>
-            Until then, corrections can be submitted with the repository&apos;s
-            structured issue template; no dataset values are accepted through
-            the public website during this preview.
-          </p>
+          <p className="community-only">If you know that a link moved, a description is wrong, or a measure needs a better explanation, you can use a short guided form. You do not need to write code.</p>
+          <p className="technical-only">Publisher and community corrections become structured GitHub issues. Accepted edits are reviewed in a pull request and released as a new version; stable identifiers and prior history are retained.</p>
+          <p><a className="button-link" href={sitePath("/contribute")}>Choose a feedback form</a></p>
         </section>
       </article>
     </main>

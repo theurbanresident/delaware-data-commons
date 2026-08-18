@@ -1,57 +1,78 @@
-name: Report a catalog correction
-description: Report an inaccurate record, status observation, accessibility barrier, or source change.
-title: "[Correction] "
+name: Correct catalog information
+description: Tell us when a catalog fact, explanation, citation, or status is wrong.
+title: "[Data correction] "
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve the catalog. Do not include personal, confidential, credential, or legally sensitive information in this public form. Security vulnerabilities belong in a private security advisory.
+        Thank you for helping us improve the catalog. You do not need to know how to code, and it is okay if you do not know the catalog ID.
+
+        **This report and its attachments will be public.** Do not include private records, personal details about other people, passwords, access tokens, confidential information, or files you do not have permission to share. Use the private process in SECURITY.md for a security problem.
 
   - type: input
-    id: identifier
+    id: page
     attributes:
-      label: Catalog identifier
-      description: Provide the dataset or distribution ID when one is shown.
-      placeholder: delaware-source-id
+      label: Which catalog page or data source is this about?
+      description: Paste a public link, catalog ID, or the name shown on the site.
+      placeholder: Page link, ID, or source name
     validations:
-      required: false
+      required: true
+
+  - type: dropdown
+    id: problem_type
+    attributes:
+      label: What kind of information needs correction?
+      options:
+        - Title or publisher
+        - Place, population, or years covered
+        - Update schedule or latest-data statement
+        - Method, quality, or limitation
+        - License, citation, or contact information
+        - Availability status shown by the site
+        - Accessibility or plain-language problem
+        - Something else
+    validations:
+      required: true
 
   - type: textarea
     id: current
     attributes:
-      label: What appears to be incorrect or inaccessible?
-      description: Quote or summarize the catalog statement, link, status, or barrier.
+      label: What does the site say now?
+      description: Quote the short statement or describe where it appears. Plain language is welcome.
+      placeholder: The page says...
     validations:
       required: true
 
   - type: textarea
     id: proposed
     attributes:
-      label: What should change?
-      description: Give the correction or improvement in plain language.
+      label: What should it say instead?
+      description: Give the corrected information, or explain what should be checked if you are not sure.
+      placeholder: I believe it should say...
     validations:
       required: true
 
   - type: textarea
     id: evidence
     attributes:
-      label: Supporting public evidence
-      description: Link to the publisher, documentation, replacement source, or another authoritative reference.
+      label: How do you know?
+      description: Link to an official page or public document, or describe what you observed and the date. No technical proof is required.
+      placeholder: Public link, publisher statement, observation date, or other public evidence
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: impact
     attributes:
       label: Why does this matter?
-      description: Tell us who may be affected or how the issue changes interpretation or access.
+      description: Optional. Tell us how the issue could affect a community, grant, study, or decision.
     validations:
       required: false
 
   - type: checkboxes
-    id: public
+    id: public_check
     attributes:
       label: Public information check
       options:
-        - label: I have not included private data, credentials, or sensitive personal information.
+        - label: I have not included private, confidential, security-sensitive, or restricted information.
           required: true

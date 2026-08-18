@@ -7,6 +7,7 @@ import {
   getFormatLabels,
   getGeographyHint,
   getLatestDate,
+  getPlainSummary,
   getPrimaryDistribution,
   getResourceType,
   getSourceSearchText,
@@ -19,6 +20,7 @@ import {
   truncate,
 } from "../lib/catalog";
 import { sitePath } from "../lib/site-path";
+import { preserveViewInParams } from "../lib/view-mode";
 
 type Filters = { q: string; topic: string; access: string; type: string; sort: string };
 const emptyFilters: Filters = { q: "", topic: "", access: "", type: "", sort: "title" };
@@ -41,6 +43,7 @@ function writeFilters(filters: Filters) {
   Object.entries(filters).forEach(([key, value]) => {
     if (value && !(key === "sort" && value === "title")) params.set(key, value);
   });
+  preserveViewInParams(params, window.location.search);
   const suffix = params.size ? `?${params.toString()}` : "";
   window.history.pushState({}, "", `${window.location.pathname}${suffix}`);
 }
@@ -141,20 +144,26 @@ export function CatalogExplorer() {
                 <article className="dataset-card" key={source.id}>
                   <div className="badge-row">
                     <span className={`badge ${source.access_type === "request_only" ? "badge-request" : "badge-public"}`}>{getAccessLabel(source)}</span>
-                    <span className="badge badge-review">Review pending</span>
+                    <span className="badge badge-review"><span className="community-only">Not reviewed yet</span><span className="technical-only">Review pending</span></span>
                   </div>
                   <h3><a href={sitePath(`/datasets/${source.id}`)}>{title}</a></h3>
                   <p className="publisher">{publisher}</p>
-                  <p className="dataset-summary">{source.background ? truncate(source.background) : "A plain-language background description was not supplied in the intake workbook."}</p>
+                  <p className="dataset-summary community-only">{getPlainSummary(source)}</p>
+                  <p className="dataset-summary technical-only">{source.background ? truncate(source.background) : "A background description was not supplied in the intake workbook."}</p>
                   {topics.length ? <div className="tag-list" aria-label="Source topic terms">{topics.map((value) => <span key={value}>{value}</span>)}</div> : null}
-                  <dl className="card-facts">
+                  <dl className="card-facts community-only">
+                    <div><dt>Area listed</dt><dd>{getGeographyHint(source)}</dd></div>
+                    <div><dt>Date listed</dt><dd>{latest?.display_value ?? "Not stated"}</dd></div>
+                  </dl>
+                  <dl className="card-facts technical-only">
+                    <div><dt>Catalog ID</dt><dd><code>{source.id}</code></dd></div>
                     <div><dt>Resource</dt><dd>{getResourceType(source)}</dd></div>
                     <div><dt>Geography</dt><dd>{getGeographyHint(source)}</dd></div>
                     <div><dt>Data through</dt><dd>{latest?.display_value ?? "Not stated"}</dd></div>
                     <div><dt>Formats</dt><dd>{getFormatLabels(source).join(", ")}</dd></div>
                   </dl>
-                  <p className="use-line"><strong>Useful for:</strong> {getSuitability(source)}</p>
-                  <p className="caution-line"><strong>Check first:</strong> {getCaution(source)}</p>
+                  <p className="use-line"><strong className="community-only">What this may help with:</strong><strong className="technical-only">Analytical suitability:</strong> {getSuitability(source)}</p>
+                  <p className="caution-line"><strong className="community-only">Before you use it:</strong><strong className="technical-only">Primary caution:</strong> {getCaution(source)}</p>
                   <div className="card-actions">
                     <a className="button-link" href={sitePath(`/datasets/${source.id}`)}>View details</a>
                     {primary ? <a className="secondary-link" href={primary.url} target="_blank" rel="noreferrer">Open source <span className="external-mark" aria-hidden="true">↗</span></a> : null}

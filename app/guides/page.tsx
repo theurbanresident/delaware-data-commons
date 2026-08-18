@@ -32,6 +32,12 @@ const guides = [
     title: "See updates and interruptions",
     body: "Distinguish a temporary access problem from late data, a changed schema, or a retired source.",
   },
+  {
+    href: "/contribute",
+    label: "For community knowledge",
+    title: "Report a correction or source change",
+    body: "Use a short guided form to share what you know without editing code or data files.",
+  },
 ];
 
 export default function GuidesPage() {

@@ -18,6 +18,26 @@ The project follows these principles:
 5. Material semantic decisions are documented and reviewed by another person.
 6. Public users should not need GitHub expertise to understand the catalog.
 
+## Community reports and technical changes
+
+Community members may report a correction, broken source, unclear variable, or
+new source through a plain-language GitHub form. They are not expected to edit
+files, understand the data schema, or open a pull request. Maintainers must not
+reject a useful report only because it lacks technical terms. They may ask for
+public evidence or a clearer description when needed for review.
+
+Each report receives an issue number. When a file change is needed, a maintainer
+or contributor prepares a linked pull request. Review and automated checks apply
+to that pull request, and the merged commit becomes the new version. The issue
+then links to the change or records why no change was made. This process gives
+community feedback the same visible history as a technical contribution without
+giving it automatic authority to change published data.
+
+The site’s Community and Technical views use the same underlying records.
+Changing views does not create a second catalog, change a source value, or skip
+review. Community-facing summaries must link or map to the technical evidence
+and provenance used to create them.
+
 ## Roles
 
 One person may hold more than one role during the initial phase, but no single

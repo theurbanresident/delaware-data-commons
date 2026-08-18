@@ -1,6 +1,6 @@
-# Delaware Public Data Catalog
+# Delaware Data Commons
 
-The Delaware Public Data Catalog is an independent, public index of open data
+Delaware Data Commons is an independent, public index of open data
 relevant to Delaware communities. It is being designed to make scattered
 datasets easier to find, understand, cite, monitor, and eventually combine into
 well-documented, analysis-ready data products.
@@ -33,6 +33,18 @@ read-only **Archive repository** setting while the project is maintained.
 - Reproducible, versioned derived products with provenance and quality tests.
 - Machine-readable exports based on DCAT, CSVW, JSON Schema, and PROV concepts.
 
+## Two views, one catalog
+
+The public site defaults to **Community view**, which uses shorter explanations
+and emphasizes what a source may help answer, how to get it, and what to check
+before use. **Technical view** reveals stable IDs, parsed fields, dates,
+monitoring state, workbook cells, raw record JSON, and provenance. The switch is
+a presentation preference only: both views render the same canonical catalog
+record and no second dataset is maintained.
+
+Visitors can share the detailed presentation by adding `?view=technical` to a
+site URL. The preference is also stored on the visitor's device.
+
 ## Repository map
 
 | Path | Purpose |
@@ -45,6 +57,7 @@ read-only **Archive repository** setting while the project is maintained.
 | `GOVERNANCE.md` | Roles, decisions, releases, stewardship, and succession. |
 | `DATA_LICENSING.md` | Rules for metadata, source files, and derived products. |
 | `CORRECTIONS.md` | Transparent correction and dispute process. |
+| `CHANGELOG.md` | Human-readable release history. |
 
 Catalog records and generated status history will be added as separately
 reviewed work. Large or repeatedly changing source files do not belong in Git.
@@ -116,10 +129,16 @@ map them to:
 
 ## Participate
 
-Read `CONTRIBUTING.md` before proposing a dataset, correction, code change, or
-derived product. Use `CORRECTIONS.md` for factual disputes and `SECURITY.md` for
-vulnerabilities. Never include personal, confidential, credential, or otherwise
-sensitive information in a public issue.
+The site's **Contribute** page links to four short GitHub forms for corrections,
+broken or moved sources, variable or metadata feedback, and new source
+suggestions. Community contributors do not need to edit a file or open a pull
+request. A maintainer checks the evidence and prepares a linked change when one
+is warranted.
+
+Read `CONTRIBUTING.md` for both community and technical paths. Use
+`CORRECTIONS.md` for factual disputes and `SECURITY.md` for vulnerabilities.
+Never include personal, confidential, credential, or otherwise sensitive
+information in a public issue.
 
 ## Rights and citation
 

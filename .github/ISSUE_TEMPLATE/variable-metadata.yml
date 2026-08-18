@@ -1,0 +1,88 @@
+name: Explain a variable or metadata problem
+description: Help us improve a field name, definition, unit, geography, method, or other documentation.
+title: "[Variable or metadata] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A **variable** is a field or measure in the data, such as age, county, rate, or year. **Metadata** is information that explains the data, such as definitions, units, methods, and update dates. You can use everyday language in this form.
+
+        **This report and its attachments will be public.** Do not include row-level personal data, private records, personal details about other people, passwords, access tokens, confidential information, or restricted files. Follow SECURITY.md for a security problem.
+
+  - type: input
+    id: source
+    attributes:
+      label: Data source or catalog page
+      description: Paste a public link, catalog ID, or source name.
+      placeholder: Page link, ID, or source name
+    validations:
+      required: true
+
+  - type: input
+    id: variable
+    attributes:
+      label: Variable, field, or topic
+      description: Copy the name if possible. If there is no field name, describe the measure.
+      placeholder: "Example: asthma_rate or Adult asthma rate"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem_type
+    attributes:
+      label: What needs attention?
+      options:
+        - Name or plain-language label
+        - Definition or who is counted
+        - Unit, numerator, or denominator
+        - Place, boundary, or geography level
+        - Year, date, or time period
+        - Missing, suppressed, or unreliable values
+        - Weighting, adjustment, or calculation method
+        - Difference from a similar measure
+        - Citation or source history
+        - Other documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: concern
+    attributes:
+      label: What is missing, wrong, or confusing?
+      description: Explain it as you would to a high school student or a coworker who is new to the data.
+      placeholder: I cannot tell whether this rate is per 100 people or per 100,000 people...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would make it clearer or more accurate?
+      description: A suggested definition is helpful but not required. You may also list a question that the documentation should answer.
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How do you know or where should we check?
+      description: Link to a public data dictionary or methods page, quote a short public definition, or explain your experience using the measure.
+      placeholder: Official link, short public definition, or real-world use that showed the problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: What could someone misunderstand?
+      description: Optional. Tell us how this could affect a grant, comparison, research result, or public decision.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: public_check
+    attributes:
+      label: Public information check
+      options:
+        - label: I have not included private, confidential, security-sensitive, or restricted information.
+          required: true

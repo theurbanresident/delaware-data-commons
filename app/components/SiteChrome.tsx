@@ -1,4 +1,6 @@
 import { sitePath } from "../lib/site-path";
+import { githubRepositoryUrl } from "../lib/github";
+import { ViewModeSwitch } from "./ViewModeSwitch";
 
 export function SiteHeader() {
   return (
@@ -22,10 +24,21 @@ export function SiteHeader() {
           <a href={sitePath("/datasets")}>Catalog</a>
           <a href={sitePath("/status")}>Status</a>
           <a href={sitePath("/guides")}>Guides</a>
+          <a href={sitePath("/contribute")}>Contribute</a>
           <a href={sitePath("/methods")}>Methods</a>
           <a href={sitePath("/about")}>About</a>
         </nav>
       </header>
+      <div className="view-mode-bar">
+        <div className="shell">
+          <ViewModeSwitch />
+          <noscript>
+            <p className="mode-noscript">
+              Community view is shown without JavaScript. Full source records remain available in the <a href={sitePath("/data/reviewed-intake.json")}>catalog JSON</a> and <a href={sitePath("/methods")}>Methods page</a>.
+            </p>
+          </noscript>
+        </div>
+      </div>
     </>
   );
 }
@@ -43,12 +56,14 @@ export function SiteFooter() {
           <a href={sitePath("/datasets")}>Data catalog</a>
           <a href={sitePath("/status")}>Source status</a>
           <a href={sitePath("/guides")}>Guides</a>
+          <a href={sitePath("/contribute")}>Share a correction</a>
         </div>
         <div>
           <h2>Project</h2>
           <a href={sitePath("/methods")}>Methods and limitations</a>
           <a href={sitePath("/about")}>About and governance</a>
           <a href={sitePath("/about#corrections")}>Report a correction</a>
+          <a href={githubRepositoryUrl} target="_blank" rel="noreferrer">GitHub archive <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div className="shell footer-legal">

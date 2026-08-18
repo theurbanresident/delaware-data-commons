@@ -25,10 +25,14 @@ export default function Home() {
         <div className="shell hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Delaware community data catalog</p>
-            <h1>Find trustworthy Delaware data for grants, research, policy, and community questions.</h1>
-            <p className="hero-deck">
+            <h1 className="community-only">Find Delaware data you can understand, explain, and check.</h1>
+            <h1 className="technical-only">Trace Delaware public data from source metadata to monitored access.</h1>
+            <p className="hero-deck community-only">
+              Search for public information, learn what it may help answer, and see what to check before you use it in a grant, report, or community conversation.
+            </p>
+            <p className="hero-deck technical-only">
               Search public sources for grants, research, and policy; understand
-              what each source can answer; and see when its access route was last checked.
+              their coverage, distributions, identifiers, import provenance, and monitoring state.
             </p>
             <form className="search-panel" action={sitePath("/datasets")} role="search">
               <label htmlFor="home-search">What data are you looking for?</label>
@@ -48,6 +52,7 @@ export default function Home() {
             <div className="hero-links" aria-label="Popular tasks">
               <a href={sitePath("/status")}>View source status</a>
               <a href={sitePath("/guides/grants")}>Build a grant need statement</a>
+              <a href={sitePath("/contribute")}>Share a correction</a>
             </div>
           </div>
 
@@ -56,8 +61,8 @@ export default function Home() {
             <h2 id="snapshot-title">What is indexed today</h2>
             <dl className="snapshot-grid">
               <div><dt>Sources</dt><dd>{catalog.summary.source_count}</dd></div>
-              <div><dt>Topic records</dt><dd>{catalog.summary.topic_count}</dd></div>
-              <div><dt>Access links</dt><dd>{catalog.summary.distribution_count}</dd></div>
+              <div><dt><span className="community-only">Topic groups</span><span className="technical-only">Topic records</span></dt><dd>{catalog.summary.topic_count}</dd></div>
+              <div><dt><span className="community-only">Source links</span><span className="technical-only">Distributions</span></dt><dd>{catalog.summary.distribution_count}</dd></div>
               <div><dt>Request-only</dt><dd>{catalog.summary.request_only_source_count}</dd></div>
             </dl>
             <div className="review-note">
@@ -72,15 +77,18 @@ export default function Home() {
         <div className="shell trust-grid">
           <div>
             <span className="trust-number">01</span>
-            <p><strong>Publisher remains authoritative.</strong><br />We point back to the original source.</p>
+            <p className="community-only"><strong>Check the original source.</strong><br />The publisher is still the official source.</p>
+            <p className="technical-only"><strong>Publisher remains authoritative.</strong><br />Catalog metadata never replaces upstream methodology.</p>
           </div>
           <div>
             <span className="trust-number">02</span>
-            <p><strong>Status is more than a green link.</strong><br />Access, freshness, and comparability are tracked separately.</p>
+            <p className="community-only"><strong>An open link is only one clue.</strong><br />Data can be old or hard to compare even when a page opens.</p>
+            <p className="technical-only"><strong>Status is multidimensional.</strong><br />Access, freshness, integrity, change, and review are separate observations.</p>
           </div>
           <div>
             <span className="trust-number">03</span>
-            <p><strong>Missing data stays visible.</strong><br />Retired, request-only, and superseded sources are not erased.</p>
+            <p className="community-only"><strong>Missing sources stay visible.</strong><br />A moved or retired source remains part of the public history.</p>
+            <p className="technical-only"><strong>Lifecycle history is retained.</strong><br />Retired, request-only, and superseded records keep stable identifiers.</p>
           </div>
         </div>
       </section>
@@ -98,7 +106,7 @@ export default function Home() {
             const { title, publisher } = splitSourceName(source);
             return (
             <article className="source-card" key={source.id}>
-              <div className="source-status">Imported · review pending</div>
+              <div className="source-status"><span className="community-only">Not reviewed yet</span><span className="technical-only">Imported · review pending</span></div>
               <h3>{title}</h3>
               <p className="publisher">{publisher}</p>
               <div className="tag-list" aria-label="Topics">

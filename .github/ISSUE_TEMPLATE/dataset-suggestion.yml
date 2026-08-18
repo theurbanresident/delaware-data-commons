@@ -1,27 +1,35 @@
-name: Suggest a public data source
-description: Suggest a Delaware-relevant source for curator review.
-title: "[Source suggestion] "
+name: Suggest a new public data source
+description: Tell us about a Delaware-relevant source that should be reviewed for the catalog.
+title: "[New source] "
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for sharing a source. You do not need to know its file format, API, license, or catalog structure. The source begins as a suggestion and a steward will check it before publication.
+
+        **This report and its attachments will be public.** Link to the publisher instead of uploading copied data. Do not include private records, personal details about other people, passwords, access tokens, confidential information, signed download links, or files you do not have permission to share.
+
   - type: input
     id: title
     attributes:
       label: Source or dataset name
+      placeholder: Name shown by the publisher
     validations:
       required: true
 
   - type: input
     id: publisher
     attributes:
-      label: Publisher
-      description: Name the organization responsible for the data.
+      label: Who publishes it?
+      description: Name the agency, organization, university, or other group responsible for the data.
     validations:
       required: true
 
   - type: input
     id: url
     attributes:
-      label: Official public URL
-      description: Link to the publisher landing page or documentation, not a copied file.
+      label: Official public page
+      description: Link to the publisher’s landing page, documentation, or data portal rather than uploading a copied file.
       placeholder: https://
     validations:
       required: true
@@ -29,23 +37,48 @@ body:
   - type: textarea
     id: use
     attributes:
-      label: Community use
-      description: What Delaware question could this source help answer, and for whom?
+      label: What question could this source help answer?
+      description: Tell us who may use it and why it matters in Delaware.
+      placeholder: A community group could use this to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: contents
+    attributes:
+      label: What does the source measure?
+      description: In your own words, describe what is counted and the people, places, or events covered.
     validations:
       required: true
 
   - type: textarea
     id: coverage
     attributes:
-      label: Known coverage and limitations
-      description: Note geography, years, update cadence, access restrictions, licensing, definitions, or cautions if known.
+      label: Places, years, and updates
+      description: Optional. Note Delaware areas covered, available years, how often the source changes, or when new data usually appears.
     validations:
       required: false
 
+  - type: textarea
+    id: cautions
+    attributes:
+      label: Definitions, limits, or access rules
+      description: Optional. Share known gaps, confusing terms, login needs, cost, reuse rules, or reasons users should be careful.
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How did you learn about this source?
+      description: A short explanation or public link is enough. No technical proof is required.
+    validations:
+      required: true
+
   - type: checkboxes
-    id: public
+    id: public_check
     attributes:
       label: Public information check
       options:
-        - label: I have not included private data, credentials, or sensitive personal information.
+        - label: I have not included private, confidential, security-sensitive, or restricted information.
           required: true

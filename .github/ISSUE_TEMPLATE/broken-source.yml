@@ -1,0 +1,86 @@
+name: Report a broken or moved source
+description: Tell us about a page, file, dashboard, or API that is unavailable or replaced.
+title: "[Source access] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking a source. You only need to tell us what happened when you tried to use it.
+
+        **This report and its attachments will be public.** Do not post private records, personal details about other people, passwords, access tokens, signed download links, confidential information, or files you do not have permission to share. Follow SECURITY.md for a security problem.
+
+  - type: input
+    id: url
+    attributes:
+      label: Link that has a problem
+      description: Paste the public link from the catalog or the publisher.
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: input
+    id: identifier
+    attributes:
+      label: Catalog ID or source name
+      description: Optional. Copy what the site shows if you can find it.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: result
+    attributes:
+      label: What happened?
+      options:
+        - Page or file was not found
+        - Access was denied or login was required
+        - Page loaded but the download did not work
+        - Link went to the wrong source
+        - Source moved to a new link
+        - Publisher says the source was retired
+        - Data appears to have stopped updating
+        - Other access problem
+    validations:
+      required: true
+
+  - type: input
+    id: observed
+    attributes:
+      label: When did you check?
+      description: An exact time is not needed. Give the date and time zone if known.
+      placeholder: August 18, 2026, about 2 p.m. Eastern
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: What did you see?
+      description: Describe the message or result. You may add a public screenshot after removing private details.
+      placeholder: I selected Download and then...
+    validations:
+      required: true
+
+  - type: input
+    id: replacement
+    attributes:
+      label: New or replacement link
+      description: Optional. Paste an official publisher link if you found one.
+      placeholder: https://
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Other public evidence
+      description: Optional. Link to a publisher notice or explain how you found the replacement.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: public_check
+    attributes:
+      label: Public information check
+      options:
+        - label: I have not included private, confidential, security-sensitive, or restricted information.
+          required: true

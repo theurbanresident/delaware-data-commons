@@ -19,7 +19,7 @@ function meta(html, attribute, value) {
 }
 
 test("exports every public route as static HTML", async () => {
-  const required = ["index.html", "datasets.html", "status.html", "methods.html", "about.html", "guides.html", "guides/grants.html", "404.html"];
+  const required = ["index.html", "datasets.html", "status.html", "methods.html", "about.html", "contribute.html", "guides.html", "guides/grants.html", "404.html"];
   await Promise.all(required.map((path) => readBuilt(path)));
 
   const detailFiles = (await readdir(new URL("datasets/", clientRoot))).filter((name) => name.endsWith(".html"));
@@ -30,13 +30,26 @@ test("homepage presents the catalog baseline without claiming source health", as
   const html = await readBuilt("index.html");
   assert.match(html, /<title>Delaware Data Commons<\/title>/i);
   assert.match(html, /Delaware community data catalog/);
-  assert.match(html, /Find trustworthy Delaware data for grants, research, policy, and community questions/);
+  assert.match(html, /Find Delaware data you can understand, explain, and check/);
+  assert.match(html, /Trace Delaware public data from source metadata to monitored access/);
   assert.match(html, /<dd>37<\/dd>/);
   assert.match(html, /Verification underway/);
   assert.doesNotMatch(html, /all systems operational/i);
   assert.match(html, /href="#main-content"/);
   assert.match(meta(html, "property", "og:image") ?? "", /^https:\/\/.+\/og\.png$/);
   assert.match(meta(html, "name", "twitter:image") ?? "", /^https:\/\/.+\/og\.png$/);
+});
+
+test("community and technical views share one accessible route", async () => {
+  const html = await readBuilt("index.html");
+  assert.match(html, /<html lang="en" data-view-mode="community">/);
+  assert.match(html, /<fieldset class="view-switch">/);
+  assert.match(html, /<legend class="sr-only">Choose how much detail to show<\/legend>/);
+  assert.match(html, /name="site-view-mode"[^>]*value="community"/);
+  assert.match(html, /name="site-view-mode"[^>]*value="technical"/);
+  assert.match(html, /class="community-only"/);
+  assert.match(html, /class="technical-only"/);
+  assert.match(html, /Changing this view does not change the data|same records/i);
 });
 
 test("catalog exports all records and accessible filter labels", async () => {
@@ -64,6 +77,30 @@ test("detail metadata is record-specific and clears the inherited social card", 
     assert.equal(meta(html, "name", "twitter:image"), undefined);
     assert.ok(meta(html, "name", "description"));
   }
+});
+
+test("detail route provides plain guidance and complete technical provenance", async () => {
+  const html = await readBuilt("datasets/src-behavioral-risk-factor-survey-center-for-applied-demogra-c6d5cb05bd.html");
+  assert.match(html, /What this source may help you do/);
+  assert.match(html, /Before you use a number/);
+  assert.match(html, /id="technical-record" class="technical-only"/);
+  assert.match(html, /Workbook SHA-256/);
+  assert.match(html, /Field-to-cell map/);
+  assert.match(html, /Show raw catalog record as JSON/);
+  assert.match(html, /template=broken-source\.yml/);
+  assert.match(html, /template=variable-metadata\.yml/);
+  assert.match(html, /src-behavioral-risk-factor-survey-center-for-applied-demogra-c6d5cb05bd/);
+});
+
+test("contribution page offers four guided, version-aware reports", async () => {
+  const html = await readBuilt("contribute.html");
+  for (const template of ["correction.yml", "broken-source.yml", "variable-metadata.yml", "dataset-suggestion.yml"]) {
+    assert.match(html, new RegExp(`template=${template.replace(".", "\\.")}`));
+  }
+  assert.match(html, /You do not need to write code or know Git/);
+  assert.match(html, /Every accepted change leaves a clear history/);
+  assert.match(html, /The earlier version stays in Git history/);
+  assert.match(html, /Keep private information out of public reports/);
 });
 
 test("request-only records are an access mode, not an outage", async () => {

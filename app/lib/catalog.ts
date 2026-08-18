@@ -209,6 +209,18 @@ export function getSuitability(source: CatalogSource) {
   return "Finding published measures and the organization responsible for them.";
 }
 
+export function getPlainSummary(source: CatalogSource) {
+  const type = getResourceType(source).toLowerCase();
+  const topics = getTopicLabels(source).slice(0, 3);
+  const topicText = topics.length
+    ? topics.length === 1
+      ? topics[0]
+      : `${topics.slice(0, -1).join(", ")} and ${topics.at(-1)}`
+    : "Delaware community questions";
+
+  return `The Delaware SHIP guide lists this ${type} as a place to look for information about ${topicText}.`;
+}
+
 export function getCaution(source: CatalogSource) {
   const type = getResourceType(source);
   if (type === "Survey") return "Survey estimates can have sampling uncertainty and may not support small-area claims.";

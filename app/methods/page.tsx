@@ -10,14 +10,44 @@ export default function MethodsPage() {
   return (
     <main id="main-content">
       <PageIntro eyebrow="Methods" title="What our checks mean—and what they do not.">
-        <p>
+        <p className="community-only">
+          See what gets checked, what a successful check can tell you, and why a person still needs to review important changes.
+        </p>
+        <p className="technical-only">
           The catalog separates whether a source can be reached from whether
           its data are current, structurally consistent, or appropriate for a
           particular question.
         </p>
       </PageIntro>
 
-      <div className="shell content-layout">
+      <article className="shell prose prose-centered community-only">
+        <section>
+          <p className="eyebrow">The short version</p>
+          <h2>Both views use the same records.</h2>
+          <p>Community view uses shorter explanations. Technical view adds IDs, source cells, raw metadata, and monitoring details. Switching views never changes the data.</p>
+        </section>
+        <section>
+          <h2>What gets checked?</h2>
+          <p>Each week, the checker tries to open the expected public page or file. It records whether the link worked and whether the kind of file looks as expected.</p>
+        </section>
+        <section>
+          <h2>What does a successful check mean?</h2>
+          <p>It means the source answered at that time. It does not prove that the information is new, complete, correct, or right for your question.</p>
+        </section>
+        <section>
+          <h2>Why keep old or missing sources?</h2>
+          <p>A broken, moved, or retired source is part of the public record. Keeping its page makes it easier to see what changed and whether a replacement exists.</p>
+        </section>
+        <section>
+          <h2>Why can combining data create risk?</h2>
+          <p>Even public facts can reveal too much when they are joined for very small places or groups. Future combined products will need privacy review and will keep the publisher&apos;s hidden-value rules.</p>
+        </section>
+        <Notice title="For an important decision" tone="caution">
+          <p>Read the original publisher&apos;s definitions and methods. Missing or hidden values are not zero, and a connection between two measures does not prove that one caused the other.</p>
+        </Notice>
+      </article>
+
+      <div className="shell content-layout technical-only">
         <aside className="section-nav" aria-label="On this page">
           <strong>On this page</strong>
           <a href="#inclusion">Inclusion</a>
@@ -44,6 +74,14 @@ export default function MethodsPage() {
               projection, portal, collection, or request-only resource. Those
               types are kept distinct because they require different checks and
               should not imply the same level of machine-readiness.
+            </p>
+          </section>
+
+          <section id="views">
+            <p className="eyebrow">Presentation layer</p>
+            <h2>Community and Technical views share one canonical record</h2>
+            <p>
+              The audience switch sets a browser presentation preference and reveals different explanatory layers on the same static route. It does not create a second catalog, modify source metadata, or alter monitoring output. A shareable <code>?view=technical</code> parameter can request the detailed presentation.
             </p>
           </section>
 
