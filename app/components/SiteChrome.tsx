@@ -22,6 +22,8 @@ export function SiteHeader() {
         </a>
         <nav aria-label="Primary navigation">
           <a href={sitePath("/datasets")}>Catalog</a>
+          <a href={sitePath("/codebooks")}>Definitions</a>
+          <a href={sitePath("/compare")}>Compare</a>
           <a href={sitePath("/status")}>Status</a>
           <a href={sitePath("/guides")}>Guides</a>
           <a href={sitePath("/contribute")}>Contribute</a>
@@ -54,6 +56,8 @@ export function SiteFooter() {
         <div>
           <h2>Explore</h2>
           <a href={sitePath("/datasets")}>Data catalog</a>
+          <a href={sitePath("/codebooks")}>Data dictionaries</a>
+          <a href={sitePath("/compare")}>Compare variables</a>
           <a href={sitePath("/status")}>Source status</a>
           <a href={sitePath("/guides")}>Guides</a>
           <a href={sitePath("/contribute")}>Share a correction</a>

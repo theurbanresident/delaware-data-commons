@@ -19,11 +19,13 @@ function meta(html, attribute, value) {
 }
 
 test("exports every public route as static HTML", async () => {
-  const required = ["index.html", "datasets.html", "status.html", "methods.html", "about.html", "contribute.html", "guides.html", "guides/grants.html", "404.html"];
+  const required = ["index.html", "datasets.html", "codebooks.html", "compare.html", "status.html", "methods.html", "about.html", "contribute.html", "guides.html", "guides/grants.html", "404.html"];
   await Promise.all(required.map((path) => readBuilt(path)));
 
   const detailFiles = (await readdir(new URL("datasets/", clientRoot))).filter((name) => name.endsWith(".html"));
   assert.equal(detailFiles.length, 37);
+  const codebookFiles = (await readdir(new URL("codebooks/", clientRoot))).filter((name) => name.endsWith(".html"));
+  assert.equal(codebookFiles.length, 37);
 });
 
 test("homepage presents the catalog baseline without claiming source health", async () => {
@@ -121,4 +123,25 @@ test("machine-readable catalog is published with the reviewed intake", async () 
     distribution_count: 49,
   });
   assert.equal(catalog.sources.every((source) => source.review_status === "imported-unverified"), true);
+});
+
+test("codebook pages distinguish publisher evidence from inference", async () => {
+  const index = await readBuilt("codebooks.html");
+  assert.match(index, /Publisher-documented/);
+  assert.match(index, /Inferred—needs verification/);
+  assert.match(index, /Every source has a research record/);
+
+  const detail = await readBuilt("codebooks/src-behavioral-risk-factor-survey-center-for-applied-demogra-c6d5cb05bd.html");
+  assert.match(detail, /Authoritative documentation artifacts/);
+  assert.match(detail, /Open exact evidence/);
+  assert.match(detail, /Show variable provenance JSON/);
+});
+
+test("comparison page exposes deterministic checks and a human-review warning", async () => {
+  const html = await readBuilt("compare.html");
+  assert.match(html, /Build a metadata comparison/);
+  assert.match(html, /First source and variable/);
+  assert.match(html, /Second source and variable/);
+  assert.match(html, /Human review is still required/);
+  assert.match(html, /does not transform values or certify statistical comparability/i);
 });

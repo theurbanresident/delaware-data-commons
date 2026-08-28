@@ -39,6 +39,14 @@ export default function MethodsPage() {
           <p>A broken, moved, or retired source is part of the public record. Keeping its page makes it easier to see what changed and whether a replacement exists.</p>
         </section>
         <section>
+          <h2>What does “inferred” mean?</h2>
+          <p>It means the resource guide names a data item, but we did not find an exact public definition from the publisher. Inferred items can help you search. They should not be quoted as official definitions until someone verifies them.</p>
+        </section>
+        <section>
+          <h2>Can the comparison tool tell me two numbers are equal?</h2>
+          <p>No. It finds items that may describe the same idea and shows missing or different details. A person still needs to check the population, unit, place, year, question wording, and source methods.</p>
+        </section>
+        <section>
           <h2>Why can combining data create risk?</h2>
           <p>Even public facts can reveal too much when they are joined for very small places or groups. Future combined products will need privacy review and will keep the publisher&apos;s hidden-value rules.</p>
         </section>
@@ -52,6 +60,8 @@ export default function MethodsPage() {
           <strong>On this page</strong>
           <a href="#inclusion">Inclusion</a>
           <a href="#checks">Weekly checks</a>
+          <a href="#codebooks">Codebooks</a>
+          <a href="#matching">Variable matching</a>
           <a href="#dates">Dates</a>
           <a href="#preservation">Preservation</a>
           <a href="#privacy">Privacy</a>
@@ -111,8 +121,48 @@ export default function MethodsPage() {
             </Notice>
           </section>
 
+          <section id="codebooks">
+            <p className="eyebrow">03 · Codebook evidence</p>
+            <h2>Publisher documentation and catalog inference remain separate</h2>
+            <p>
+              Each catalog source has a codebook research record. Public
+              artifacts may include a publisher codebook, questionnaire, API
+              schema, table definition, or methodology page. Every
+              publisher-documented variable retains its exact evidence URL.
+              When no exact public definition is located, the imported SHIP
+              measure phrase remains <strong>inferred—needs verification</strong>
+              with its workbook cells, confidence, and inference basis.
+            </p>
+            <p>
+              Source families and portals can contain many child datasets. A
+              family-level artifact is not represented as complete field-level
+              coverage unless the evidence actually enumerates those fields.
+              “No codebook located” describes this research pass; it is not a
+              claim that no documentation exists.
+            </p>
+          </section>
+
+          <section id="matching">
+            <p className="eyebrow">04 · Candidate variable matching</p>
+            <h2>Automated matches start review; they do not finish it</h2>
+            <p>
+              A deterministic function normalizes labels, applies a curated
+              concept taxonomy, and compares unit, universe, geography, time
+              grain, and data type. It emits a strong or review candidate only
+              across different catalog sources. Missing fields and differences
+              remain visible; the function never labels a pair “comparable.”
+            </p>
+            <p>
+              The taxonomy explicitly separates easily confused constructs,
+              including sex and gender identity, incidence and mortality,
+              counts and rates, estimates and projections, adult smoking and
+              smoking during pregnancy, and high-school graduation and
+              completion. Concept-specific traps are shown with every match.
+            </p>
+          </section>
+
           <section id="dates">
-            <p className="eyebrow">03 · Dates</p>
+            <p className="eyebrow">05 · Dates</p>
             <h2>Three dates that answer different questions</h2>
             <dl className="date-definitions">
               <div><dt>Data through</dt><dd>The latest period described by the data.</dd></div>
@@ -123,7 +173,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="preservation">
-            <p className="eyebrow">04 · Preservation and licensing</p>
+            <p className="eyebrow">06 · Preservation and licensing</p>
             <h2>Public access is not automatically permission to republish</h2>
             <p>
               When reuse rights are unknown or restricted, the project stores
@@ -135,7 +185,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="privacy">
-            <p className="eyebrow">05 · Privacy and responsible integration</p>
+            <p className="eyebrow">07 · Privacy and responsible integration</p>
             <h2>Combining public sources can create new risks</h2>
             <p>
               Phase 1 catalogs already-public aggregate resources. It does not
@@ -147,7 +197,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="limitations">
-            <p className="eyebrow">06 · Limitations</p>
+            <p className="eyebrow">08 · Limitations</p>
             <h2>Use the original methodology for consequential decisions</h2>
             <p>
               Sources vary in purpose, methods, geography, timeliness, and

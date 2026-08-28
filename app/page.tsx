@@ -50,6 +50,8 @@ export default function Home() {
               Browse by topic, place, publisher, years available, and access type.
             </p>
             <div className="hero-links" aria-label="Popular tasks">
+              <a href={sitePath("/codebooks")}>Look up a definition</a>
+              <a href={sitePath("/compare")}>Compare similar variables</a>
               <a href={sitePath("/status")}>View source status</a>
               <a href={sitePath("/guides/grants")}>Build a grant need statement</a>
               <a href={sitePath("/contribute")}>Share a correction</a>

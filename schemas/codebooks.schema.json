@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theurbanresident.github.io/delaware-data-commons/schemas/codebooks.schema.json",
+  "title": "Delaware Data Commons codebook research",
+  "type": "object",
+  "required": ["schema_version", "research_cutoff", "summary", "sources"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "research_cutoff": { "type": ["string", "null"], "format": "date" },
+    "method_note": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "required": ["source_count", "variable_count", "published_variable_count", "inferred_variable_count"],
+      "properties": {
+        "source_count": { "type": "integer", "minimum": 0 },
+        "variable_count": { "type": "integer", "minimum": 0 },
+        "published_variable_count": { "type": "integer", "minimum": 0 },
+        "inferred_variable_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["source_id", "source_name", "access_type", "codebook_status", "variables"],
+      "properties": {
+        "source_id": { "type": "string" },
+        "source_name": { "type": "string" },
+        "access_type": { "enum": ["public", "request_only"] },
+        "codebook_status": { "enum": ["published", "partial_published", "none_found", "not_applicable", "request_only"] },
+        "codebook_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title", "url"],
+            "properties": {
+              "title": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "variables": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/variable" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "variable": {
+      "type": "object",
+      "required": ["id", "source_id", "label", "evidence_kind", "confidence", "provenance"],
+      "properties": {
+        "id": { "type": "string" },
+        "source_id": { "type": "string" },
+        "source_variable_name": { "type": ["string", "null"] },
+        "label": { "type": "string" },
+        "definition": { "type": ["string", "null"] },
+        "data_type": { "type": ["string", "null"] },
+        "unit": { "type": ["string", "null"] },
+        "universe": { "type": ["string", "null"] },
+        "geography": { "type": ["string", "null"] },
+        "time_granularity": { "type": ["string", "null"] },
+        "evidence_kind": { "enum": ["published", "inferred"] },
+        "evidence_url": { "type": ["string", "null"], "format": "uri" },
+        "inference_basis": { "type": ["string", "null"] },
+        "confidence": { "type": ["string", "number"] },
+        "concept_match": { "type": ["object", "null"] },
+        "provenance": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "evidence_kind": { "const": "published" } } },
+          "then": { "properties": { "evidence_url": { "type": "string", "format": "uri" } }, "required": ["evidence_url"] }
+        },
+        {
+          "if": { "properties": { "evidence_kind": { "const": "inferred" } } },
+          "then": { "properties": { "inference_basis": { "type": "string", "minLength": 1 } }, "required": ["inference_basis"] }
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

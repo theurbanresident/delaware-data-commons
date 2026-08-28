@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theurbanresident.github.io/delaware-data-commons/schemas/variable-crosswalk.schema.json",
+  "title": "Delaware Data Commons variable comparison candidates",
+  "type": "object",
+  "required": ["schema_version", "method_note", "safety_note", "summary", "concepts", "comparisons"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "method_note": { "type": "string" },
+    "safety_note": { "type": "string" },
+    "summary": { "type": "object" },
+    "concepts": { "type": "array", "items": { "type": "object" } },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["left_variable_id", "right_variable_id", "candidate_strength", "comparison_readiness", "checks", "warnings"],
+        "properties": {
+          "left_variable_id": { "type": "string" },
+          "right_variable_id": { "type": "string" },
+          "candidate_strength": { "enum": ["strong_candidate", "review_candidate", "not_a_match"] },
+          "comparison_readiness": { "enum": ["requires_metadata_review", "requires_method_review"] },
+          "checks": { "type": "array", "items": { "type": "object" } },
+          "warnings": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -27,6 +27,10 @@ read-only **Archive repository** setting while the project is maintained.
 - A human-readable catalog with stable dataset and distribution identifiers.
 - Plain-language descriptions, coverage, update cadence, limitations, rights,
   citations, and field-level dictionaries.
+- Source-by-source public codebook research with inferred metadata visibly
+  separated from publisher-documented fields.
+- Deterministic candidate comparisons for similarly named variables, with
+  unit, population, geography, time, and method review warnings.
 - Weekly bounded checks of public landing pages, files, and APIs, with access,
   freshness, and integrity reported as separate dimensions.
 - A public history of observed moves, outages, recoveries, and breaking changes.
@@ -50,6 +54,10 @@ site URL. The preference is also stored on the visitor's device.
 | Path | Purpose |
 | --- | --- |
 | `app/` | Public web application. |
+| `catalog/codebooks.json` | Generated publisher-documented and inferred variable metadata. |
+| `catalog/concept-taxonomy.json` | Curated concepts and comparison cautions. |
+| `catalog/variable-crosswalk.json` | Generated cross-source candidate matches and checks. |
+| `research/codebooks/` | Dated source-by-source documentation research. |
 | `schemas/` | Versioned JSON Schemas for catalog and monitoring output. |
 | `monitoring/` | Standard-library Python monitor and its operational policy. |
 | `tests/` | Application and monitor tests, including offline fixtures. |
@@ -76,6 +84,7 @@ Useful checks:
 ```bash
 npm run lint
 npm test
+npm run codebooks:build
 python -m unittest discover -s tests -p "test_*.py"
 python -m monitoring.generate_targets --catalog catalog/reviewed-intake.json --output build/targets.json
 python -m monitoring.monitor --input build/targets.json --output build/status.json

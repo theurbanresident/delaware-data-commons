@@ -1,0 +1,2132 @@
+{
+  "research_date": "2026-08-28",
+  "sources": [
+    {
+      "source_id": "src-2024-annual-report-of-the-maternal-and-child-health-deat-2178d7b11a",
+      "source_name": "2024 Annual Report of the Maternal and Child Health Death Review Commission (Delaware's Maternal and Child Death Review Commission)",
+      "source_urls": [
+        "https://courts.delaware.gov/forms/download.aspx?id=291218",
+        "https://courts.delaware.gov/forms/download.aspx?id=291228",
+        "https://courts.delaware.gov/childdeath/annualreports.aspx"
+      ],
+      "codebook_status": "published",
+      "codebook_artifacts": [
+        {
+          "title": "2024 Annual Report of the Maternal and Child Death Review Commission",
+          "url": "https://courts.delaware.gov/forms/download.aspx?id=291218",
+          "format": "PDF",
+          "authority": "Delaware Judicial Branch, Maternal and Child Death Review Commission",
+          "applies_to": "Deaths reviewed by the Commission during calendar year 2024, including CDR/SDY, FIMR and MMR case-review streams",
+          "notes": "Appendix B documents case assignment and selection; Appendix D is a published glossary of population, death and mortality-rate terms. The report explicitly warns that review year is not necessarily death year."
+        },
+        {
+          "title": "2024 MCDRC Data Addendum",
+          "url": "https://courts.delaware.gov/forms/download.aspx?id=291228",
+          "format": "PDF",
+          "authority": "Delaware Judicial Branch, Maternal and Child Death Review Commission",
+          "applies_to": "Detailed tabulations supporting the 2024 annual report",
+          "notes": "Provides table definitions, denominators, factor flags and disclosure/missingness notes, including the rule that an asterisk replaces results when more than 50 percent of the information is unknown in specified tables."
+        },
+        {
+          "title": "MCDRC Annual Reports index",
+          "url": "https://courts.delaware.gov/childdeath/annualreports.aspx",
+          "format": "HTML index",
+          "authority": "Delaware Judicial Branch",
+          "applies_to": "Current and historical Commission annual reports and addenda",
+          "notes": "Authoritative publication index; use it to select the report vintage before comparing years."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Cases reviewed: CDR/SDY, FIMR, MMR",
+          "label": "Number of deaths reviewed by review stream",
+          "definition": "Count of case reviews completed in 2024: Child Death Review/Sudden Death in the Young, Fetal and Infant Mortality Review, or Maternal Mortality Review. The 103 total comprises 46 CDR/SDY, 48 FIMR and 9 MMR reviews.",
+          "data_type": "integer count",
+          "unit": "reviewed death/case",
+          "universe": "Cases assigned to and reviewed by the Commission teams under Appendix B selection rules",
+          "geography": "Delaware residents",
+          "time_granularity": "annual review year; underlying death years vary",
+          "categories": ["CDR/SDY", "FIMR", "MMR"],
+          "missing_codes": [],
+          "suppression_rules": "Aggregate totals are published; small detailed cells may be omitted or combined in tables.",
+          "comparability_notes": "Do not treat review-year counts as vital-statistics deaths occurring in 2024. MMR cases reviewed in 2024 arose in 2021-2023, and FIMR uses a selected/sample case-review process.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291218",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Manner of death",
+          "label": "Manner of child death",
+          "definition": "Classification used in the CDR/SDY tables for the circumstances of death.",
+          "data_type": "categorical",
+          "unit": "reviewed child death",
+          "universe": "CDR/SDY cases reviewed in 2024",
+          "geography": "Delaware residents",
+          "time_granularity": "review year",
+          "categories": ["Natural", "Accident", "Suicide", "Homicide", "Undetermined"],
+          "missing_codes": ["Unknown/not stated where shown"],
+          "suppression_rules": "Small or non-reportable cells may not be shown.",
+          "comparability_notes": "Manner is not the same as mechanism/cause. Compare to Crime in Delaware homicide only after matching case jurisdiction and death-year basis; criminal homicide counts and death-review classifications are not interchangeable.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291228",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Late or no prenatal care",
+          "label": "Late or absent prenatal care",
+          "definition": "Prenatal care that began more than six months into pregnancy, or no prenatal care.",
+          "data_type": "binary indicator / count and percent",
+          "unit": "applicable reviewed pregnancy",
+          "universe": "Applicable FIMR/MMR case reviews with known prenatal-care information",
+          "geography": "Delaware residents",
+          "time_granularity": "review year",
+          "categories": ["Present", "Not present", "Unknown"],
+          "missing_codes": ["Unknown"],
+          "suppression_rules": "The addendum identifies tables where an asterisk is used when more than 50 percent of information is unknown.",
+          "comparability_notes": "This case-review threshold is not automatically equivalent to PRAMS timing-of-prenatal-care variables or a Kotelchuck adequacy index.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291228",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Low birthweight",
+          "label": "Low birthweight",
+          "definition": "Birthweight under 2,500 grams.",
+          "data_type": "binary indicator / count and percent",
+          "unit": "reviewed fetal or infant case",
+          "universe": "Applicable FIMR cases with known birthweight",
+          "geography": "Delaware residents",
+          "time_granularity": "review year",
+          "categories": ["Less than 2,500 g", "2,500 g or more", "Unknown"],
+          "missing_codes": ["Unknown"],
+          "suppression_rules": "Unknown-heavy tables can be replaced by an asterisk as described in the addendum.",
+          "comparability_notes": "Definition aligns with the conventional vital-statistics threshold, but the denominator here is selected reviewed cases rather than all live births.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291228",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Premature birth",
+          "label": "Preterm/premature birth",
+          "definition": "Birth before 37 completed weeks of gestation.",
+          "data_type": "binary indicator / count and percent",
+          "unit": "reviewed fetal or infant case",
+          "universe": "Applicable FIMR cases with known gestational age",
+          "geography": "Delaware residents",
+          "time_granularity": "review year",
+          "categories": ["Before 37 weeks", "37 weeks or later", "Unknown"],
+          "missing_codes": ["Unknown"],
+          "suppression_rules": "Unknown-heavy tables can be replaced by an asterisk as described in the addendum.",
+          "comparability_notes": "Comparable in threshold to common birth-record indicators, but not in denominator: FIMR is a reviewed-case stream rather than all births.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291228",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Pregnancy-associated death / pregnancy-related death",
+          "label": "Maternal-death relationship to pregnancy",
+          "definition": "Pregnancy-associated death is a death during pregnancy or within one year after pregnancy from any cause. Pregnancy-related death is caused by a pregnancy complication, a chain of events initiated by pregnancy, or aggravation of an unrelated condition by pregnancy physiology.",
+          "data_type": "categorical case classification",
+          "unit": "reviewed maternal death",
+          "universe": "MMR cases during pregnancy or within one year after pregnancy",
+          "geography": "Delaware residents",
+          "time_granularity": "underlying death year and review year",
+          "categories": ["Pregnancy-related", "Pregnancy-associated but not related", "Unable to determine/other as reported"],
+          "missing_codes": ["Unable to determine where reported"],
+          "suppression_rules": "Small numbers are generally presented as case counts or combined periods rather than stable annual rates.",
+          "comparability_notes": "Do not compare an all-cause pregnancy-associated count directly with a pregnancy-related mortality ratio. The latter uses pregnancy-related deaths per 100,000 live births.",
+          "evidence_url": "https://courts.delaware.gov/forms/download.aspx?id=291218",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Prenatal care and pregnancy morbidity",
+          "source_variable_names": ["Late or no prenatal care", "PRAMS: prenatal-care and pregnancy morbidity items"],
+          "notes": "Potential linkage is conceptual only. MCDRC is a selected case-review universe and PRAMS is a weighted survey of recent live births; require an explicit harmonized threshold and denominator."
+        },
+        {
+          "concept": "Violent death/homicide",
+          "source_variable_names": ["Manner of death", "Crime in Delaware: homicide offenses"],
+          "notes": "Match death year, residency, age and legal classification. Death-review cases and law-enforcement offenses are not the same observational unit."
+        }
+      ],
+      "research_notes": "A genuine published glossary and a detailed addendum were found. Definitions are public, but no row-level case dictionary or microdata are public. The report's biggest analytic trap is conflating review year with occurrence year or treating reviewed cases as a population incidence series."
+    },
+    {
+      "source_id": "src-annual-report-domestic-violence-coordinating-council-5823339a03",
+      "source_name": "Annual Report (DOMESTIC VIOLENCE COORDINATING COUNCIL)",
+      "source_urls": [
+        "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+        "https://dvcc.delaware.gov/background-purpose/dynamics-domestic-abuse/"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware Domestic Violence Coordinating Council FY2025 Annual Report",
+          "url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "format": "PDF",
+          "authority": "Delaware Domestic Violence Coordinating Council",
+          "applies_to": "FY2021-FY2025 domestic-violence incident, court, hotline and service-provider tables",
+          "notes": "Contains narrative definitions, table labels, denominators and data-source notes, but not a field-level CJIS or service-system data dictionary."
+        },
+        {
+          "title": "Dynamics of Domestic Abuse",
+          "url": "https://dvcc.delaware.gov/background-purpose/dynamics-domestic-abuse/",
+          "format": "HTML",
+          "authority": "Delaware Domestic Violence Coordinating Council",
+          "applies_to": "Council terminology and scope",
+          "notes": "Public definition and contextual explanation; not a statistical schema."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Combined domestic violence incidents",
+          "label": "Criminal plus non-criminal domestic violence incidents",
+          "definition": "Police contacts reported as domestic violence incidents, combining criminal incidents (a crime committed or alleged) and non-criminal incidents (police contact where no crime is alleged, such as a verbal argument without threats).",
+          "data_type": "integer count",
+          "unit": "police incident",
+          "universe": "Domestic violence incidents recorded by Delaware law enforcement in CJIS",
+          "geography": "Delaware; county breakouts",
+          "time_granularity": "fiscal year",
+          "categories": ["Criminal", "Non-criminal"],
+          "missing_codes": [],
+          "suppression_rules": "No general suppression rule is stated in the annual report.",
+          "comparability_notes": "An incident can involve a family member rather than an intimate partner. Do not equate incidents, offenses, victims or people; those are different units.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Criminal DV incident with injury",
+          "label": "Criminal domestic violence incidents involving injury",
+          "definition": "Count and percentage of criminal domestic violence incidents in which injury was recorded; the report presents 2,350 and 22 percent for FY2025.",
+          "data_type": "integer count and percentage",
+          "unit": "criminal domestic violence incident",
+          "universe": "Criminal domestic violence incidents",
+          "geography": "Delaware",
+          "time_granularity": "fiscal year",
+          "categories": ["Injury indicated", "No injury indicated"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "This is police-recorded incident injury, not hospitalization, fatal injury, or self-reported victimization; it should not be directly compared with STIPDA assault hospitalization rates.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Intimate partner criminal DV incidents",
+          "label": "Criminal domestic violence incidents involving intimate partners",
+          "definition": "Criminal DV incidents involving current or former spouses, current or former dating couples with or without a child in common, or adolescent dating couples, regardless of gender.",
+          "data_type": "integer count",
+          "unit": "criminal domestic violence incident",
+          "universe": "Criminal DV incidents classified as involving intimate partners",
+          "geography": "Delaware",
+          "time_granularity": "fiscal year",
+          "categories": ["Intimate partner", "Other family/household relationship"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "Narrower than all domestic violence incidents. Preserve the relationship definition when comparing years or sources.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Children present",
+          "label": "Criminal DV incidents with children present",
+          "definition": "Count and percentage of criminal domestic violence incidents for which children were recorded as present.",
+          "data_type": "integer count and percentage",
+          "unit": "criminal domestic violence incident",
+          "universe": "Criminal domestic violence incidents",
+          "geography": "Delaware",
+          "time_granularity": "fiscal year",
+          "categories": ["Children present", "Children not recorded as present"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "This is an incident flag and does not count exposed children. It is not equivalent to DSS self-reported witnessing of adults at home hurting one another.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Domestic violence hotline calls",
+          "label": "Calls to domestic violence hotlines",
+          "definition": "Calls received by the domestic violence hotline programs tabulated statewide and by county/language in the annual report.",
+          "data_type": "integer count",
+          "unit": "call",
+          "universe": "Calls recorded by participating domestic violence hotline programs",
+          "geography": "Delaware; county and language breakouts",
+          "time_granularity": "fiscal year",
+          "categories": ["County", "Language"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "Calls are service contacts, not unique callers, victims or incidents; one person may generate multiple calls.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Protection From Abuse filings/outcomes",
+          "label": "Protection From Abuse petition activity",
+          "definition": "Family Court civil-order activity for protection from a family or household member, with report tables for filings and disposition/outcome categories.",
+          "data_type": "integer count",
+          "unit": "petition/order event",
+          "universe": "PFA matters recorded by Delaware Family Court",
+          "geography": "Delaware; county where shown",
+          "time_granularity": "fiscal year",
+          "categories": ["Filed", "Granted/consent", "Dismissed/denied/withdrawn or other report outcome"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "A filing is not an incident, victim, or granted order. Compare outcomes only after aligning court disposition categories.",
+          "evidence_url": "https://dvcc.delaware.gov/wp-content/uploads/sites/87/2025/09/DVCC-FY2025-Annual-Report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.91,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Domestic/intimate partner violence",
+          "source_variable_names": ["Combined domestic violence incidents", "Intimate partner criminal DV incidents", "Delaware Women Status Report: domestic violence incidents"],
+          "notes": "The Women Status Report reuses DVCC-derived statistics in some figures. Deduplicate by source year and retain the all-DV versus intimate-partner distinction."
+        },
+        {
+          "concept": "Child exposure to violence",
+          "source_variable_names": ["Children present", "DSS Q38 witnessed adults at home hurting one another"],
+          "notes": "Related but not equivalent: administrative incident flag versus child self-report, different reference periods and units."
+        }
+      ],
+      "research_notes": "The annual report is a strong published table-definition source but no public CJIS field layout, Domestic Violence Incident Report codebook, hotline client-level dictionary or service-program extract schema was located. This is therefore partial_published rather than a complete data dictionary."
+    },
+    {
+      "source_id": "src-crime-in-delaware-statistical-analysis-center-delaware-c-abf35bc257",
+      "source_name": "Crime in Delaware (Statistical Analysis Center, Delaware Criminal Justice Council)",
+      "source_urls": [
+        "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+        "https://sac.delaware.gov/crime/"
+      ],
+      "codebook_status": "published",
+      "codebook_artifacts": [
+        {
+          "title": "Crime in Delaware 2020-2024",
+          "url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "format": "PDF",
+          "authority": "Delaware Criminal Justice Council, Statistical Analysis Center",
+          "applies_to": "Delaware NIBRS-derived reported offenses, clearances and arrests for 2020-2024",
+          "notes": "Includes methodology, a glossary, offense definitions derived from FBI NIBRS, arrest/offense table definitions and important reporting caveats."
+        },
+        {
+          "title": "Crime in Delaware publications",
+          "url": "https://sac.delaware.gov/crime/",
+          "format": "HTML index",
+          "authority": "Delaware Criminal Justice Council, Statistical Analysis Center",
+          "applies_to": "Current and historical Crime in Delaware reports and supplements",
+          "notes": "Use this index to identify revised/newer series; do not silently mix vintages."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Offenses received (charges)",
+          "label": "Reported/known offenses received by law enforcement",
+          "definition": "Crimes reported to or otherwise known by law enforcement; each charge within an incident is counted as an offense received.",
+          "data_type": "integer count",
+          "unit": "offense/charge",
+          "universe": "NIBRS-reportable offenses known to participating Delaware law-enforcement agencies",
+          "geography": "Delaware; county, agency and municipality where tabulated",
+          "time_granularity": "calendar year",
+          "categories": ["Group A offense type", "Group B arrest-only offense where applicable"],
+          "missing_codes": ["Incomplete agency submissions can produce undercounts"],
+          "suppression_rules": "No general cell-suppression rule is stated; small counts are published in many tables.",
+          "comparability_notes": "This is not a unique-incident or unique-victim count. Multiple charges in one incident are counted separately, and only crime known to police is included.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Crime incident",
+          "label": "NIBRS crime incident",
+          "definition": "One or more offenses committed by the same offender or group of offenders acting together at the same time and place.",
+          "data_type": "event entity",
+          "unit": "incident",
+          "universe": "Reported NIBRS incidents",
+          "geography": "Delaware",
+          "time_granularity": "incident date; annual summaries",
+          "categories": ["May contain one or multiple offenses"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "Do not substitute offense counts for incident counts. This distinction is also crucial when comparing to DVCC, whose table unit is a domestic-violence incident.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Crime rate",
+          "label": "Reported offense rate",
+          "definition": "Number of offenses divided by the relevant population and multiplied by 1,000.",
+          "data_type": "numeric rate",
+          "unit": "offenses per 1,000 population",
+          "universe": "Reported offenses and resident population for the stated geography/year",
+          "geography": "Delaware and report subgeographies",
+          "time_granularity": "calendar year",
+          "categories": ["Offense type"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "Population estimates can revise; preserve the denominator vintage. Not directly comparable to STIPDA rates, which are typically injuries/deaths per 100,000 residents.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Clearance / percent cleared",
+          "label": "Offenses cleared",
+          "definition": "An offense is cleared when a suspect is arrested and referred for prosecution, or exceptionally cleared when the offender is clearly identifiable but cannot be arrested under qualifying circumstances; percent cleared is the cleared share reported for an offense grouping.",
+          "data_type": "integer count and percentage",
+          "unit": "offense clearance",
+          "universe": "Reported offenses eligible for the report's clearance calculation",
+          "geography": "Delaware and report subgeographies",
+          "time_granularity": "calendar year",
+          "categories": ["Cleared by arrest", "Exceptionally cleared", "Not cleared"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "A clearance is not a conviction. Timing can cross calendar years, so a simple same-year cleared-count/offense-count interpretation may be misleading without the report methodology.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Arrests / arrest rate",
+          "label": "Arrests and arrests per population",
+          "definition": "Arrest count by offense and demographic category; arrest rate is arrests divided by population and multiplied by 1,000.",
+          "data_type": "integer count and numeric rate",
+          "unit": "arrests; arrests per 1,000 population",
+          "universe": "Persons arrested and recorded in Delaware NIBRS data",
+          "geography": "Delaware and report subgeographies",
+          "time_granularity": "calendar year",
+          "categories": ["Adult", "Juvenile", "Sex", "Race", "Ethnicity", "Offense"],
+          "missing_codes": ["Unknown/not reported demographic categories where shown"],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "An arrest is not a unique person over the year; a person may be arrested multiple times. Juvenile is defined as under age 18.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Violent offenses",
+          "label": "Violent offense grouping",
+          "definition": "Offenses involving force or threat of force, including murder/non-negligent manslaughter, human trafficking, kidnapping/abduction, forcible sex offenses, robbery and assault offenses under the report grouping.",
+          "data_type": "categorical offense grouping / count",
+          "unit": "offense/charge",
+          "universe": "Reported Group A offenses in included violent categories",
+          "geography": "Delaware and report subgeographies",
+          "time_granularity": "calendar year",
+          "categories": ["Murder/non-negligent manslaughter", "Human trafficking", "Kidnapping/abduction", "Forcible sex offense", "Robbery", "Assault"],
+          "missing_codes": [],
+          "suppression_rules": "Not stated.",
+          "comparability_notes": "The grouping is broader than FBI Crime Index violent crime in some contexts. The report notes a classification change for vehicular homicide and three 2024 homicides missing because submissions were unfinished; preserve edition-specific caveats.",
+          "evidence_url": "https://sac.delaware.gov/wp-content/uploads/sites/64/2026/01/CiD-20-24-Main-Report-final-010726.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Homicide and assault",
+          "source_variable_names": ["Violent offenses", "MCDRC Manner of death", "STIPDA homicide/assault injury"],
+          "notes": "Crime data count police-known offenses/charges; MCDRC counts reviewed deaths; STIPDA counts resident deaths or hospital discharges. Harmonize intent, fatality status, age, residency and year before comparison."
+        },
+        {
+          "concept": "Domestic violence",
+          "source_variable_names": ["Crime incident", "DVCC Combined domestic violence incidents"],
+          "notes": "DVCC incidents are flagged by relationship/context and may be criminal or non-criminal; Crime in Delaware is offense-centered NIBRS reporting. Never assume one DV incident equals one offense."
+        }
+      ],
+      "research_notes": "The report itself supplies a substantial public glossary and FBI-derived offense definitions. Known limitations include crime not reported to police, the 2020-2021 pandemic disruption, changes in classification practices, and incomplete 2024 homicide submissions described in the edition."
+    },
+    {
+      "source_id": "src-education-data-reports-39-delaware-department-of-educati-b68119045e",
+      "source_name": "Education Data Reports (39) (Delaware Department of Education)",
+      "source_urls": [
+        "https://education.delaware.gov/community/data/reports/",
+        "https://education.delaware.gov/community/data/reports/unitcount/",
+        "https://explore.education.delaware.gov/data-dictionary/"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware Department of Education Data Reports index",
+          "url": "https://education.delaware.gov/community/data/reports/",
+          "format": "HTML index",
+          "authority": "Delaware Department of Education",
+          "applies_to": "The cataloged umbrella of education reports, downloads and report-specific documentation",
+          "notes": "Each report has its own grain and definitions; there is no single dictionary covering all 39 report families."
+        },
+        {
+          "title": "Delaware Report Card Data Dictionary",
+          "url": "https://explore.education.delaware.gov/data-dictionary/",
+          "format": "HTML data dictionary",
+          "authority": "Delaware Department of Education",
+          "applies_to": "Delaware Report Card measures, including enrollment, student groups, proficiency and graduation",
+          "notes": "Published measure definitions, subgroup terminology and selected display/suppression information. Applies to the Report Card, not automatically to every downloadable report."
+        },
+        {
+          "title": "Annual Enrollment/Unit Count",
+          "url": "https://education.delaware.gov/community/data/reports/unitcount/",
+          "format": "HTML plus downloadable tables",
+          "authority": "Delaware Department of Education",
+          "applies_to": "Annual public-school enrollment/unit-count reporting",
+          "notes": "Defines the attendance window and notes the FY2021 count-date change from September 30 to November 13."
+        },
+        {
+          "title": "Class Size reports",
+          "url": "https://education.delaware.gov/community/data/reports/classsize/",
+          "format": "HTML plus downloadable reports",
+          "authority": "Delaware Department of Education",
+          "applies_to": "K-3 class-size reporting and waiver context",
+          "notes": "Documents classroom assignment and the statutory average-class-size threshold context."
+        },
+        {
+          "title": "K-3 Universal Screening and Interventions",
+          "url": "https://education.delaware.gov/community/data/reports/k-3-universal-screening-and-interventions/",
+          "format": "HTML plus downloadable reports",
+          "authority": "Delaware Department of Education",
+          "applies_to": "K-3 reading-screening and intervention reports",
+          "notes": "Report-specific measure descriptions; not a longitudinal student record layout."
+        },
+        {
+          "title": "Data Privacy and Suppression",
+          "url": "https://education.delaware.gov/community/data/data-privacy/",
+          "format": "HTML methodology/policy",
+          "authority": "Delaware Department of Education",
+          "applies_to": "Public DDOE reports and dashboards",
+          "notes": "Current general privacy rules describe redaction for populations under 15, small corresponding counts and complementary suppression."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Annual Enrollment / Unit Count",
+          "label": "Students enrolled and in attendance during the unit-count window",
+          "definition": "Annual count of students enrolled and in attendance during the last 10 school days of the September unit-count period; the count is a principal basis for education funding. For FY2021, the official count date moved from September 30 to November 13.",
+          "data_type": "integer count",
+          "unit": "student enrollment record counted once in the report snapshot",
+          "universe": "Students enrolled in Delaware public district and charter schools under unit-count rules",
+          "geography": "State, district/charter and school where available",
+          "time_granularity": "annual school-year snapshot",
+          "categories": ["Grade", "District/charter", "School", "Student subgroup where published"],
+          "missing_codes": ["Redacted display values may appear as dash, blank, asterisk, Protected, less-than-X or greater-than-X variants"],
+          "suppression_rules": "DDOE states that a student or teacher population under 15 is redacted; a corresponding count under 5 or within 5 of the population is redacted, with complementary suppression as needed.",
+          "comparability_notes": "Not an average daily membership or Census/ACS resident child-population estimate. Account for the FY2021 timing change.",
+          "evidence_url": "https://education.delaware.gov/community/data/reports/unitcount/",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Four-year adjusted cohort graduation rate",
+          "label": "On-time regular-diploma graduation rate",
+          "definition": "Percentage of a first-time ninth-grade cohort earning a regular high-school diploma within four years. The cohort adds transfers in and subtracts documented transfers out, emigrants and deaths.",
+          "data_type": "percentage",
+          "unit": "percent of adjusted cohort",
+          "universe": "Delaware public-school first-time grade-9 cohort; private, parochial and homeschool students are excluded",
+          "geography": "State, district/charter and school; demographic groups where published",
+          "time_granularity": "graduating cohort/school year",
+          "categories": ["All students", "Race/ethnicity", "Sex", "English learner", "Students with disabilities", "Low income and other published groups"],
+          "missing_codes": ["Suppressed/redacted display values"],
+          "suppression_rules": "Subject to DDOE public-report privacy and complementary-suppression rules.",
+          "comparability_notes": "Use the NCES adjusted-cohort method and cohort graduation year. KIDS COUNT reproductions may lag or relabel years; do not compare with educational-attainment percentages among adult residents.",
+          "evidence_url": "https://explore.education.delaware.gov/data-dictionary/",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "English learner (EL)",
+          "label": "Student learning English",
+          "definition": "Student identified as learning English under the Department's published student-group definition.",
+          "data_type": "binary subgroup flag / count / percentage",
+          "unit": "student",
+          "universe": "Enrolled Delaware public-school students",
+          "geography": "State through school where reportable",
+          "time_granularity": "school year/report snapshot",
+          "categories": ["English learner", "Not English learner"],
+          "missing_codes": ["Suppressed/redacted public cells"],
+          "suppression_rules": "Subject to DDOE privacy rules.",
+          "comparability_notes": "Not equivalent to speaking a language other than English at home or limited-English ability in ACS; program-identification rules and exit status matter.",
+          "evidence_url": "https://explore.education.delaware.gov/data-dictionary/",
+          "evidence_kind": "published",
+          "confidence": 0.95,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Low income / economically disadvantaged",
+          "label": "Direct-certification low-income student group",
+          "definition": "From 2013-14 forward, the published low-income measure is based on direct certification through programs such as TANF and SNAP rather than free/reduced-price lunch eligibility.",
+          "data_type": "binary subgroup flag / count / percentage",
+          "unit": "student",
+          "universe": "Enrolled Delaware public-school students",
+          "geography": "State through school where reportable",
+          "time_granularity": "school year/report snapshot",
+          "categories": ["Low income/economically disadvantaged", "Not identified"],
+          "missing_codes": ["Suppressed/redacted public cells"],
+          "suppression_rules": "Subject to DDOE privacy rules.",
+          "comparability_notes": "Do not equate this administrative direct-certification flag with ACS household poverty or legacy free/reduced-price lunch measures.",
+          "evidence_url": "https://explore.education.delaware.gov/data-dictionary/",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "ELA/Math proficiency",
+          "label": "Students meeting or exceeding grade-level standards",
+          "definition": "Percentage meeting or exceeding the grade-level standard on the applicable state assessment; the dictionary identifies Smarter assessment results for grades 3-8 and SAT-based grade 11 results for ELA and mathematics.",
+          "data_type": "percentage",
+          "unit": "percent of tested students",
+          "universe": "Students with valid applicable assessment results",
+          "geography": "State through school and subgroup where reportable",
+          "time_granularity": "school year",
+          "categories": ["ELA", "Mathematics", "Grade", "Student group"],
+          "missing_codes": ["Suppressed/redacted", "Not tested/not applicable where used"],
+          "suppression_rules": "Subject to DDOE privacy and complementary suppression; denominator and participation rules must be retained.",
+          "comparability_notes": "Assessment, cut-score and participation changes can break trends. Do not compare the percentage with adult educational attainment in the Women Status Report.",
+          "evidence_url": "https://explore.education.delaware.gov/data-dictionary/",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "K-3 potential reading deficiency",
+          "label": "Students identified through universal screening as potentially reading deficient",
+          "definition": "Count or percentage of K-3 students identified by the state's universal-screening reporting as having a potential reading deficiency, with intervention approaches reported separately.",
+          "data_type": "integer count and/or percentage",
+          "unit": "screened student",
+          "universe": "K-3 public-school students included in the universal-screening report",
+          "geography": "State and local education agency/report level",
+          "time_granularity": "school year/screening period",
+          "categories": ["Potential reading deficiency", "Intervention approach"],
+          "missing_codes": ["Suppressed/redacted public cells"],
+          "suppression_rules": "Subject to DDOE privacy rules.",
+          "comparability_notes": "A screening flag is not a diagnosed disability and is not interchangeable with proficiency on the statewide ELA assessment.",
+          "evidence_url": "https://education.delaware.gov/community/data/reports/k-3-universal-screening-and-interventions/",
+          "evidence_kind": "published",
+          "confidence": 0.9,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "School enrollment versus child population",
+          "source_variable_names": ["Annual Enrollment / Unit Count", "KIDS COUNT child population", "DPC projected population ages 5-17"],
+          "notes": "Enrollment is an administrative school snapshot; KIDS COUNT uses ACS/Census resident-population estimates; DPC is a July 1 projection. These are useful denominators only after matching age, residence, institution and date."
+        },
+        {
+          "concept": "High-school graduation",
+          "source_variable_names": ["Four-year adjusted cohort graduation rate", "KIDS COUNT graduation from high school"],
+          "notes": "KIDS COUNT identifies DDOE as its provider for this indicator. Compare only identical cohort year, subgroup and revision; avoid double-counting the same underlying statistic."
+        },
+        {
+          "concept": "Economic disadvantage",
+          "source_variable_names": ["Low income / economically disadvantaged", "KIDS COUNT children in poverty", "Women Status Report women/girls in poverty"],
+          "notes": "Direct certification and Census poverty are different constructs and denominators; label them separately even when used as socioeconomic indicators."
+        }
+      ],
+      "research_notes": "The source is an umbrella across 39 report families. Public definitions exist for important measures and some individual downloads, but there is no one schema valid across the whole umbrella. The DDOE Report Card dictionary must not be over-applied to unrelated reports."
+    },
+    {
+      "source_id": "src-delaware-women-status-report-the-office-of-womens-advanc-fc131b47ad",
+      "source_name": "Delaware Women Status Report (The Office of Women’s Advancement and Advocacy)",
+      "source_urls": [
+        "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+        "https://dhr.delaware.gov/women/reports/index.shtml"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "2024 Delaware Women Status Report",
+          "url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "format": "PDF",
+          "authority": "Delaware Department of Human Resources, Office of Women's Advancement and Advocacy",
+          "applies_to": "The report's compiled demographic, economic, health, safety and representation indicators",
+          "notes": "Figures and endnotes identify source agencies, surveys, tables and time periods. It is a secondary compilation, not a record-level dataset dictionary."
+        },
+        {
+          "title": "Office of Women's Advancement and Advocacy reports index",
+          "url": "https://dhr.delaware.gov/women/reports/index.shtml",
+          "format": "HTML index",
+          "authority": "Delaware Department of Human Resources",
+          "applies_to": "Current and historical Delaware women reports",
+          "notes": "Use to identify report edition and avoid mixing indicator vintages."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Women without health insurance",
+          "label": "Uninsured women",
+          "definition": "Percentage of women reported without health insurance using the cited American Community Survey multiyear estimate.",
+          "data_type": "percentage",
+          "unit": "percent of women in the cited ACS universe",
+          "universe": "Women in the ACS health-insurance universe specified by the cited table/vintage",
+          "geography": "Delaware and comparison geographies shown",
+          "time_granularity": "2018-2022 five-year ACS estimate in the 2024 report",
+          "categories": ["Insured", "Uninsured"],
+          "missing_codes": ["ACS estimate annotations as applicable"],
+          "suppression_rules": "Underlying ACS reliability/annotation rules apply; none added by the report is stated.",
+          "comparability_notes": "Match age universe and ACS vintage before comparing with KIDS COUNT's children/adults without insurance indicator; KIDS COUNT publishes age-specific groups.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "No personal doctor or health care provider",
+          "label": "Women without a personal provider",
+          "definition": "Percentage of adult women reporting no personal doctor or health care provider, displayed by race/ethnicity from the cited BRFSS/KFF source.",
+          "data_type": "weighted percentage",
+          "unit": "percent of adult women respondents",
+          "universe": "Adult women in the cited BRFSS estimate",
+          "geography": "Delaware; race/ethnicity groups",
+          "time_granularity": "pooled/cited survey period",
+          "categories": ["No personal provider", "Has personal provider", "Race/ethnicity"],
+          "missing_codes": ["Underlying BRFSS refused/don't know/missing exclusions"],
+          "suppression_rules": "Underlying BRFSS reliability rules apply.",
+          "comparability_notes": "Access-to-provider is distinct from insurance coverage and from inability to see a doctor because of cost.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.94,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Could not see doctor because of cost",
+          "label": "Cost-related unmet medical care in past 12 months",
+          "definition": "Percentage of adult women reporting that in the past 12 months they needed to see a doctor but could not because of cost, displayed by race/ethnicity.",
+          "data_type": "weighted percentage",
+          "unit": "percent of adult women respondents",
+          "universe": "Adult women in the cited BRFSS estimate",
+          "geography": "Delaware; race/ethnicity groups",
+          "time_granularity": "past 12 months within cited survey period",
+          "categories": ["Yes", "No", "Race/ethnicity"],
+          "missing_codes": ["Underlying BRFSS refused/don't know/missing exclusions"],
+          "suppression_rules": "Underlying BRFSS reliability rules apply.",
+          "comparability_notes": "This is self-reported unmet need, not the uninsured rate or absence of a usual provider.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.95,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Women and girls in poverty",
+          "label": "Female population below the poverty level",
+          "definition": "Number and percentage of girls/women whose income is below the official poverty threshold, based on the cited ACS table B17001 and report categories.",
+          "data_type": "integer count and percentage",
+          "unit": "person; percent of female population for whom poverty status is determined",
+          "universe": "Civilian noninstitutionalized/ACS poverty-status universe as defined by the cited ACS table",
+          "geography": "Delaware and report breakouts",
+          "time_granularity": "cited ACS five-year estimate",
+          "categories": ["Below poverty", "At or above poverty", "Age/race and ethnicity where shown"],
+          "missing_codes": ["ACS estimate annotations as applicable"],
+          "suppression_rules": "Underlying ACS rules apply.",
+          "comparability_notes": "Comparable to KIDS COUNT poverty only when the same ACS table, age group and vintage are used. Do not equate with DDOE direct-certified low income.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Women's labor-force participation rate",
+          "label": "Women in the labor force",
+          "definition": "Percentage of women in the relevant working-age/civilian population who are employed or unemployed and actively seeking work, using the cited ACS S2301 source; the report also shows women with children.",
+          "data_type": "percentage",
+          "unit": "percent of women in relevant labor-force universe",
+          "universe": "Women in the age/family-status universe specified by ACS S2301 and the report figure",
+          "geography": "Delaware and comparisons",
+          "time_granularity": "cited ACS multiyear estimate",
+          "categories": ["All women", "Women with children", "In labor force", "Not in labor force"],
+          "missing_codes": ["ACS estimate annotations as applicable"],
+          "suppression_rules": "Underlying ACS rules apply.",
+          "comparability_notes": "Labor-force participation is not the employment-population ratio or unemployment rate; preserve age and parental-status universes.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.93,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Gender/race wage ratio",
+          "label": "Women's earnings in cents per White man's dollar",
+          "definition": "Ratio of the cited women's earnings measure to White non-Hispanic men's earnings, expressed as cents per dollar; the report shows, for example, separate ratios for White, Black and Hispanic women.",
+          "data_type": "derived numeric ratio",
+          "unit": "cents per one dollar of White non-Hispanic men's earnings",
+          "universe": "Workers in the earnings universe cited by the report's underlying source",
+          "geography": "Delaware",
+          "time_granularity": "cited multiyear/annual earnings period",
+          "categories": ["White women", "Black women", "Hispanic women", "White non-Hispanic men reference"],
+          "missing_codes": ["Underlying source annotations"],
+          "suppression_rules": "Underlying source reliability rules apply.",
+          "comparability_notes": "Not the same as an unadjusted all-women/all-men wage gap, equal pay for equal work, hourly-wage ratio, or model-adjusted pay gap. Preserve the White male reference group and earnings universe.",
+          "evidence_url": "https://dhr.delaware.gov/women/documents/2024-de-women/full-report.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.94,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Poverty",
+          "source_variable_names": ["Women and girls in poverty", "KIDS COUNT children and adults in poverty", "DDOE low income/economically disadvantaged"],
+          "notes": "The first two can align through ACS poverty definitions if age/vintage match; DDOE direct certification is an administrative proxy, not the federal poverty-status measure."
+        },
+        {
+          "concept": "Health insurance",
+          "source_variable_names": ["Women without health insurance", "KIDS COUNT children and adults without health insurance"],
+          "notes": "Both use ACS concepts but differ in age/sex universe and possibly table/vintage; compare only after reconstructing the denominator."
+        },
+        {
+          "concept": "Domestic violence",
+          "source_variable_names": ["Report domestic-violence figures", "DVCC incident measures"],
+          "notes": "The status report cites administrative sources including DVCC. Treat it as secondary presentation and use DVCC as the primary source when definitions and years coincide."
+        }
+      ],
+      "research_notes": "This is a curated indicator report drawing from ACS, BRFSS/KFF, DDOE, PRAMS, DVCC and other publishers. It supplies labels, chart universes and citations, but no unified raw schema. For reproducibility, follow each figure's endnote to the primary source rather than assuming one common denominator."
+    },
+    {
+      "source_id": "src-delaware-open-data-portal-state-of-delaware-c46f8f6c20",
+      "source_name": "Delaware Open Data Portal (State of Delaware)",
+      "source_urls": [
+        "https://data.delaware.gov/browse?sortBy=relevance&page=1&pageSize=20",
+        "https://data.delaware.gov/Government-and-Finance/Delaware-Open-Data-Portal-Published-Assets/q2kk-gcju",
+        "https://data.delaware.gov/api/views/q2kk-gcju"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware Open Data catalog browser",
+          "url": "https://data.delaware.gov/browse?sortBy=relevance&page=1&pageSize=20",
+          "format": "HTML catalog",
+          "authority": "State of Delaware",
+          "applies_to": "Discovery of independently published Delaware open-data assets",
+          "notes": "The portal is an umbrella, not a single dataset. Every asset has its own grain, owner, refresh cycle and schema."
+        },
+        {
+          "title": "Delaware Open Data Portal Published Assets",
+          "url": "https://data.delaware.gov/Government-and-Finance/Delaware-Open-Data-Portal-Published-Assets/q2kk-gcju",
+          "format": "Socrata dataset page plus downloadable data dictionary",
+          "authority": "Delaware Government Information Center / State of Delaware",
+          "applies_to": "One row per published portal asset in the catalog inventory",
+          "notes": "The page exposes column labels, API field names and types and links a PDF data dictionary. Dataset identifier is q2kk-gcju."
+        },
+        {
+          "title": "Socrata metadata API for Published Assets",
+          "url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "format": "JSON metadata/API schema",
+          "authority": "State of Delaware open-data platform",
+          "applies_to": "Machine-readable schema, columns, types and dataset metadata for q2kk-gcju",
+          "notes": "Use the API field names from this endpoint, not display labels, when generating queries."
+        },
+        {
+          "title": "Student Enrollment",
+          "url": "https://data.delaware.gov/Education/Student-Enrollment/6i7v-xnmf",
+          "format": "Socrata dataset page plus attached PDF dictionary",
+          "authority": "Delaware Department of Education / State of Delaware",
+          "applies_to": "Annual public-school student-enrollment open-data asset",
+          "notes": "Representative example showing that subject datasets publish their own schema and attachments; do not infer its fields from the portal inventory."
+        },
+        {
+          "title": "Educator Characteristics",
+          "url": "https://data.delaware.gov/Education/Educator-Characteristics/t9ya-d7ak",
+          "format": "Socrata dataset page plus attached dictionary",
+          "authority": "Delaware Department of Education / State of Delaware",
+          "applies_to": "Educator-characteristics asset",
+          "notes": "Separate dataset identifier and schema."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "uid",
+          "label": "ID",
+          "definition": "Unique identifier for a published asset row in the portal's Published Assets inventory.",
+          "data_type": "text/identifier",
+          "unit": "published asset",
+          "universe": "Assets represented in dataset q2kk-gcju",
+          "geography": "Not applicable; catalog metadata",
+          "time_granularity": "current inventory snapshot",
+          "categories": [],
+          "missing_codes": ["Null/blank if permitted by source"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "This is an asset identifier, not a record identifier inside the linked dataset. Socrata's four-by-four dataset ID in the URL is also distinct.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "name",
+          "label": "Name",
+          "definition": "Published title/name of the portal asset.",
+          "data_type": "text",
+          "unit": "published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable; catalog metadata",
+          "time_granularity": "current inventory snapshot",
+          "categories": [],
+          "missing_codes": ["Null/blank if permitted"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Names are labels and may change; use stable identifiers/URLs for joins.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "type",
+          "label": "Type",
+          "definition": "Portal asset type, distinguishing datasets and other published asset forms such as stories or visualizations as represented in the inventory.",
+          "data_type": "categorical text",
+          "unit": "published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "current inventory snapshot",
+          "categories": ["Dataset", "Story/visualization and other platform asset types as published"],
+          "missing_codes": ["Null/blank if permitted"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Asset type is catalog metadata and says nothing about the statistical unit inside a dataset.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "category",
+          "label": "Category",
+          "definition": "Portal topical category assigned to the published asset.",
+          "data_type": "categorical text",
+          "unit": "published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "current inventory snapshot",
+          "categories": ["Portal category vocabulary"],
+          "missing_codes": ["Null/blank if permitted"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Portal category is a browsing taxonomy, not the same as subject variables within an asset.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "url",
+          "label": "URL",
+          "definition": "Web address of the published portal asset.",
+          "data_type": "URL/text",
+          "unit": "published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "current inventory snapshot",
+          "categories": [],
+          "missing_codes": ["Null/blank if permitted"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Prefer the stable dataset identifier embedded in the URL when a title changes.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "publication_stage",
+          "label": "Publication Stage",
+          "definition": "Lifecycle/publication-stage metadata recorded for a portal asset.",
+          "data_type": "categorical text",
+          "unit": "published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "current inventory snapshot",
+          "categories": ["Values published in the portal inventory"],
+          "missing_codes": ["Null/blank if permitted"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Do not interpret publication stage as data quality, completeness or timeliness without the publisher's workflow documentation.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "creation_date / last_data_updated_date",
+          "label": "Asset creation and last-data-update timestamps",
+          "definition": "Floating-timestamp metadata for creation of the asset and the most recent update to its data as recorded in the inventory.",
+          "data_type": "floating timestamp",
+          "unit": "timestamp per published asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "timestamp",
+          "categories": [],
+          "missing_codes": ["Null/blank if no date is recorded"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Last data update is not necessarily the observation period, coverage end date, metadata modification time or publication date of the underlying records.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "visits / downloads",
+          "label": "Portal asset usage counts",
+          "definition": "Platform-recorded numeric counts of visits and downloads for the published asset.",
+          "data_type": "number",
+          "unit": "platform event count per asset",
+          "universe": "Assets represented in q2kk-gcju",
+          "geography": "Not applicable",
+          "time_granularity": "cumulative/current inventory snapshot",
+          "categories": ["Visits", "Downloads"],
+          "missing_codes": ["Null/blank if unavailable"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Usage metrics do not measure unique people or substantive data records and may reflect platform counting changes.",
+          "evidence_url": "https://data.delaware.gov/api/views/q2kk-gcju",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Dataset discovery and schema automation",
+          "source_variable_names": ["uid", "name", "url", "creation_date / last_data_updated_date"],
+          "notes": "Use the inventory to discover assets, then fetch each asset's `/api/views/{four-by-four-id}` metadata. Compare actual subject variables only after reading that asset-specific schema."
+        },
+        {
+          "concept": "Education enrollment",
+          "source_variable_names": ["Open Data Student Enrollment asset 6i7v-xnmf", "DDOE Annual Enrollment / Unit Count"],
+          "notes": "Potentially the same publisher series, but verify year, snapshot rule, dimensions and revisions in the attached Student Enrollment dictionary before merging."
+        }
+      ],
+      "research_notes": "The catalog is not one statistical dataset, so a universal codebook would be misleading. Socrata exposes a machine-readable schema for every asset and many Delaware publishers add PDF dictionaries. The listed variables are specifically for the Published Assets inventory q2kk-gcju, not for all portal datasets."
+    },
+    {
+      "source_id": "src-stipda-injury-data-delaware-health-statistics-center-46a528a452",
+      "source_name": "STIPDA Injury Data (Delaware Health Statistics Center)",
+      "source_urls": [
+        "https://dhss.delaware.gov/dph/hp/stipda/",
+        "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+        "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/xls/injury_deaths1418.xls",
+        "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/xls/injury_hospitalizations0610.xls"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "STIPDA Injury Data index",
+          "url": "https://dhss.delaware.gov/dph/hp/stipda/",
+          "format": "HTML index",
+          "authority": "Delaware Health and Social Services, Division of Public Health, Delaware Health Statistics Center",
+          "applies_to": "Historical injury summary, mortality and hospitalization products listed by five-year period",
+          "notes": "Authoritative index, but available series have different endpoint years and product-specific universes."
+        },
+        {
+          "title": "Injury in Delaware, 2006-2010 Summary",
+          "url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "format": "PDF methodology and tables",
+          "authority": "Delaware Health Statistics Center",
+          "applies_to": "Injury mortality and hospitalization definitions and indicator summaries for 2006-2010",
+          "notes": "Documents resident and facility coverage, intent/mechanism concepts, rates and limitations."
+        },
+        {
+          "title": "Injury Deaths, 2014-2018",
+          "url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/xls/injury_deaths1418.xls",
+          "format": "XLS workbook",
+          "authority": "Delaware Health Statistics Center",
+          "applies_to": "Delaware-resident injury mortality tabulations for 2014-2018",
+          "notes": "Latest mortality workbook linked from the cataloged STIPDA page at research time."
+        },
+        {
+          "title": "Injury Hospitalizations, 2006-2010",
+          "url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/xls/injury_hospitalizations0610.xls",
+          "format": "XLS workbook",
+          "authority": "Delaware Health Statistics Center",
+          "applies_to": "Delaware-resident inpatient injury discharges at Delaware facilities for 2006-2010",
+          "notes": "Hospitalization coverage is narrower than all resident hospitalizations because out-of-state care and non-inpatient encounters are not included."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Injury death count",
+          "label": "Resident injury deaths",
+          "definition": "Deaths of Delaware residents classified within the STIPDA injury case definition, tabulated by intent/mechanism and demographic group.",
+          "data_type": "integer count",
+          "unit": "death",
+          "universe": "Delaware-resident deaths meeting the injury case definition",
+          "geography": "Delaware; county/demographic breakouts where published",
+          "time_granularity": "five-year pooled period and component year where workbook provides it",
+          "categories": ["Unintentional", "Self-inflicted/suicide", "Homicide/assault", "Undetermined", "Mechanism categories"],
+          "missing_codes": ["Unknown/unspecified intent or mechanism where reported"],
+          "suppression_rules": "Workbook-specific small-number/reliability conventions must be read from the relevant sheet; no unified public field dictionary was located.",
+          "comparability_notes": "Death-certificate injury mortality is not police offense data or hospital discharge data. Restrict comparisons to the same resident universe and ICD/case-definition era.",
+          "evidence_url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Injury mortality rate",
+          "label": "Crude or age-adjusted injury death rate",
+          "definition": "Injury deaths divided by population and expressed per 100,000; age-adjusted rates standardize the age distribution as documented in the product.",
+          "data_type": "numeric rate",
+          "unit": "deaths per 100,000 population",
+          "universe": "Delaware-resident injury deaths and corresponding population denominator",
+          "geography": "Delaware and report subgroups",
+          "time_granularity": "five-year pooled period",
+          "categories": ["Crude", "Age-adjusted", "Intent", "Mechanism", "Sex", "Age group"],
+          "missing_codes": ["Unstable/not calculated where applicable"],
+          "suppression_rules": "Follow workbook footnotes for small/unstable rates.",
+          "comparability_notes": "Crude and age-adjusted rates are not interchangeable. Crime in Delaware uses per-1,000 offense rates, so units and numerators differ.",
+          "evidence_url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.95,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Injury hospitalization count",
+          "label": "Resident inpatient injury discharges",
+          "definition": "Hospital discharges for Delaware residents admitted to Delaware inpatient facilities and meeting the injury case definition; out-of-state hospital care, clinic/surgicenter care and emergency-department-only visits are excluded.",
+          "data_type": "integer discharge count",
+          "unit": "inpatient discharge",
+          "universe": "Delaware residents discharged from Delaware inpatient facilities with qualifying injury diagnosis",
+          "geography": "Delaware; subgroup/county where reported",
+          "time_granularity": "five-year pooled period",
+          "categories": ["Intent", "Mechanism", "Age", "Sex", "Disposition where shown"],
+          "missing_codes": ["Missing/invalid external-cause coding can exclude mechanism/intent classification"],
+          "suppression_rules": "Follow workbook footnotes for small/unstable cells.",
+          "comparability_notes": "A discharge is not a unique person; readmissions can be counted. Coverage excludes Delaware residents treated outside the state.",
+          "evidence_url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Injury intent",
+          "label": "Intent classification",
+          "definition": "Whether the injury was unintentional, self-inflicted, assault/homicide, undetermined, or another intent category used by STIPDA.",
+          "data_type": "categorical",
+          "unit": "death or inpatient discharge",
+          "universe": "Qualifying injury deaths/discharges with usable intent coding",
+          "geography": "Delaware",
+          "time_granularity": "event with pooled-period publication",
+          "categories": ["Unintentional", "Self-inflicted/suicide or attempt", "Homicide/assault", "Undetermined", "Other/legal intervention where reported"],
+          "missing_codes": ["Unknown/unspecified", "Missing external-cause code for hospitalization"],
+          "suppression_rules": "Product-specific.",
+          "comparability_notes": "Fatal and nonfatal labels differ (suicide versus self-harm attempt; homicide versus assault). Do not collapse without retaining outcome type.",
+          "evidence_url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Injury mechanism",
+          "label": "Mechanism/cause of injury",
+          "definition": "External mechanism category used to organize injury events, including falls, drowning, fire/burn, firearm, motor-vehicle traffic, poisoning and other mechanisms.",
+          "data_type": "categorical",
+          "unit": "death or inpatient discharge",
+          "universe": "Qualifying injury events with usable mechanism coding",
+          "geography": "Delaware",
+          "time_granularity": "event with pooled-period publication",
+          "categories": ["Fall", "Drowning", "Fire/burn", "Firearm", "Motor vehicle traffic", "Poisoning", "Other mechanism"],
+          "missing_codes": ["Unknown/unspecified", "Missing external-cause code"],
+          "suppression_rules": "Product-specific.",
+          "comparability_notes": "Mechanism and intent are orthogonal: firearm is a mechanism and may be suicide, homicide, unintentional or undetermined. Preserve both dimensions.",
+          "evidence_url": "https://dhss.delaware.gov/wp-content/uploads/sites/10/dph/pdf/inj_sum0610.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Violence-related injury",
+          "source_variable_names": ["Injury intent: homicide/assault", "Crime in Delaware violent offenses", "DVCC criminal incidents with injury"],
+          "notes": "STIPDA uses health outcomes, Crime in Delaware uses offenses/charges, and DVCC uses police incidents. Align fatal/nonfatal status, external cause, relationship, unit and denominator."
+        },
+        {
+          "concept": "Child fatal injury",
+          "source_variable_names": ["Injury death count by age/intent/mechanism", "MCDRC child-death manner/mechanism"],
+          "notes": "STIPDA is vital-statistics population surveillance; MCDRC is case review. MCDRC may add circumstances but review-year totals are not incidence counts."
+        }
+      ],
+      "research_notes": "Published methodology and table workbooks exist, but no consolidated row-level dictionary was located. The web index is historical: mortality extends later than hospitalization on the page, so comparisons should not assume common years."
+    },
+    {
+      "source_id": "src-delaware-pregnancy-risk-assessment-monitoring-system-ana-c8c3a2a97a",
+      "source_name": "Delaware Pregnancy Risk Assessment Monitoring System Analysis Report (DPH)",
+      "source_urls": [
+        "https://dhss.delaware.gov/dph/hp/prams/",
+        "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+        "https://www.cdc.gov/prams/php/questionnaires/index.html",
+        "https://www.cdc.gov/prams/php/methodology/"
+      ],
+      "codebook_status": "published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware PRAMS",
+          "url": "https://dhss.delaware.gov/dph/hp/prams/",
+          "format": "HTML index plus Delaware analysis-report PDFs",
+          "authority": "Delaware Health and Social Services, Division of Public Health",
+          "applies_to": "Delaware PRAMS survey program and state analysis reports from 2007 forward",
+          "notes": "Defines the state population-based survey purpose, sampling frame and report series; links Delaware report vintages."
+        },
+        {
+          "title": "PRAMS Phase 8 Analytic Research File Codebook",
+          "url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "format": "HTML/PDF codebook and documentation downloads",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "Standard Phase 8 PRAMS analytic variables, birth-certificate variables, questionnaire variables, weights and operations variables, including participating Delaware records for applicable years",
+          "notes": "Full published variable names, labels, codes and missing-value conventions. State-added questions require the Delaware questionnaire/supplement for the applicable year."
+        },
+        {
+          "title": "PRAMS Questionnaires",
+          "url": "https://www.cdc.gov/prams/php/questionnaires/index.html",
+          "format": "HTML index with PDF questionnaires",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "Question wording and response choices by PRAMS phase",
+          "notes": "Question wording must be matched to phase; a label alone is insufficient for longitudinal harmonization."
+        },
+        {
+          "title": "PRAMS Methodology",
+          "url": "https://www.cdc.gov/prams/php/methodology/",
+          "format": "HTML methodology",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "Sampling, data collection, weighting and representativeness",
+          "notes": "Use analysis weights and design variables; PRAMS is not a simple random sample."
+        },
+        {
+          "title": "Delaware PRAMS 2020 Analysis Report",
+          "url": "https://dhss.delaware.gov/dph/hp/files/PRAMS2020.pdf",
+          "format": "PDF analysis report",
+          "authority": "Delaware Division of Public Health",
+          "applies_to": "Delaware 2020 weighted indicators and state reporting definitions",
+          "notes": "State summary product; consult the Phase 8 codebook for field-level codes."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "WTANAL",
+          "label": "Analysis weight",
+          "definition": "Final record weight used to produce population-representative PRAMS estimates after sampling, nonresponse and noncoverage adjustments under CDC methodology.",
+          "data_type": "numeric weight",
+          "unit": "weighted live-birth population represented by respondent",
+          "universe": "Eligible PRAMS respondents in the analytic file",
+          "geography": "State/site; Delaware when filtered to Delaware records",
+          "time_granularity": "survey/birth year",
+          "categories": [],
+          "missing_codes": ["Codebook-specified missing values"],
+          "suppression_rules": "Published estimates should follow CDC/state reliability and response-rate guidance; raw weighted estimates are not automatically releasable.",
+          "comparability_notes": "Required for prevalence estimates. Unweighted respondent percentages are not comparable to Delaware report estimates.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "MOM_BMI_BC / MOM_BMIG_BC",
+          "label": "Prepregnancy BMI and BMI group from birth certificate",
+          "definition": "Calculated maternal prepregnancy body mass index and grouped BMI category using birth-certificate height and prepregnancy weight variables.",
+          "data_type": "continuous numeric / categorical",
+          "unit": "kg/m² and category",
+          "universe": "Recent live births with usable maternal height and prepregnancy weight on the birth certificate",
+          "geography": "State/site",
+          "time_granularity": "index birth",
+          "categories": ["Underweight: less than 18.5", "Normal: 18.5 to less than 25", "Overweight: 25 to less than 30", "Obese: 30 or greater", "Missing/unknown"],
+          "missing_codes": ["Codebook-designated unknown/missing"],
+          "suppression_rules": "Estimate-level reliability rules apply.",
+          "comparability_notes": "Birth-certificate-derived BMI can differ from questionnaire-derived self-report. MCDRC BMI factors concern reviewed deaths, not the PRAMS live-birth population.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "BPG_DIAB8 / PG_GDB8",
+          "label": "Diabetes before or during pregnancy",
+          "definition": "Phase 8 analytic indicators distinguish diabetes present before pregnancy from gestational diabetes diagnosed during the index pregnancy.",
+          "data_type": "binary categorical",
+          "unit": "respondent/recent live birth",
+          "universe": "PRAMS respondents with applicable Phase 8 questionnaire information",
+          "geography": "State/site",
+          "time_granularity": "before pregnancy / index pregnancy",
+          "categories": ["1: No", "2: Yes", ".B or codebook-specific blank/don't know"],
+          "missing_codes": [".B: blank/don't know as specified in Phase 8 codebook"],
+          "suppression_rules": "Estimate reliability rules apply.",
+          "comparability_notes": "Keep preexisting and gestational diabetes separate. MCDRC's gestational-diabetes review factor is a case-review finding and may use medical-record evidence rather than maternal survey response.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "BPG_HBP8 / MORB_BP8",
+          "label": "Hypertension before pregnancy and during pregnancy",
+          "definition": "Phase 8 analytic indicators distinguish high blood pressure present before pregnancy from high blood pressure during the index pregnancy.",
+          "data_type": "binary categorical",
+          "unit": "respondent/recent live birth",
+          "universe": "PRAMS respondents with applicable Phase 8 information",
+          "geography": "State/site",
+          "time_granularity": "before pregnancy / index pregnancy",
+          "categories": ["1: No", "2: Yes", ".B or codebook-specific missing"],
+          "missing_codes": [".B: blank/don't know as specified"],
+          "suppression_rules": "Estimate reliability rules apply.",
+          "comparability_notes": "Do not combine chronic hypertension, pregnancy hypertension and preeclampsia without an explicit crosswalk. MCDRC review factors may use clinical records.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "BPG_DEPRS8 / MH_PGDX8",
+          "label": "Depression before pregnancy / depression diagnosis during pregnancy",
+          "definition": "Phase 8 variables distinguish depression before pregnancy from being diagnosed with depression during the index pregnancy.",
+          "data_type": "binary categorical",
+          "unit": "respondent/recent live birth",
+          "universe": "PRAMS respondents with applicable Phase 8 information",
+          "geography": "State/site",
+          "time_granularity": "before pregnancy / during index pregnancy",
+          "categories": ["1: No", "2: Yes", ".B or codebook-specific missing"],
+          "missing_codes": [".B: blank/don't know as specified"],
+          "suppression_rules": "Estimate reliability rules apply.",
+          "comparability_notes": "A diagnosis item differs from symptom screening or general emotional-health status. Do not equate with DSS youth negative-affect items.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "BRSTFED",
+          "label": "Infant breastfed at discharge/birth-certificate indicator",
+          "definition": "Birth-certificate breastfeeding indicator carried into the PRAMS analytic file.",
+          "data_type": "categorical",
+          "unit": "recent live birth",
+          "universe": "Live births with birth-certificate breastfeeding information",
+          "geography": "State/site",
+          "time_granularity": "birth hospitalization/index birth",
+          "categories": ["1: Yes", "2: No", ".U: Unknown"],
+          "missing_codes": [".U: Unknown"],
+          "suppression_rules": "Estimate reliability rules apply.",
+          "comparability_notes": "This birth-certificate field is not equivalent to questionnaire measures of ever breastfed, current breastfeeding or duration. MCDRC unsafe-sleep review tables use a different reviewed-case universe.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "ASK_ABUS",
+          "label": "Health-care worker asked about emotional or physical abuse",
+          "definition": "Analytic indicator of whether a health-care worker asked the respondent about someone hurting her emotionally or physically during the relevant maternity-care period specified by the Phase 8 item.",
+          "data_type": "binary categorical",
+          "unit": "respondent",
+          "universe": "PRAMS respondents receiving applicable care and answering the item",
+          "geography": "State/site",
+          "time_granularity": "index pregnancy/maternity care period",
+          "categories": ["1: No", "2: Yes", "Missing as codebook specifies"],
+          "missing_codes": ["Codebook-specific blank/don't know/not applicable"],
+          "suppression_rules": "Estimate reliability rules apply.",
+          "comparability_notes": "This measures screening by a provider, not abuse prevalence, DV incident counts or police contact.",
+          "evidence_url": "https://www.cdc.gov/prams/php/data-research/codebooks-phase-8.html",
+          "evidence_kind": "published",
+          "confidence": 0.94,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Pregnancy morbidity",
+          "source_variable_names": ["BPG_DIAB8 / PG_GDB8", "BPG_HBP8 / MORB_BP8", "MCDRC gestational diabetes/hypertension review factors"],
+          "notes": "PRAMS is weighted recent-live-birth surveillance with questionnaire/birth-certificate variables; MCDRC is selected case review using records. Compare prevalence only within like universes."
+        },
+        {
+          "concept": "Maternal health access and screening",
+          "source_variable_names": ["ASK_ABUS", "Women Status Report access-to-care measures"],
+          "notes": "Provider screening, insurance, usual provider and cost barriers are distinct access constructs; do not collapse into a single binary variable without retaining the original item."
+        }
+      ],
+      "research_notes": "Delaware PRAMS uses CDC's standardized codebooks and phase questionnaires, which are complete public documentation for standard fields. State-added items and report-specific recodes must be matched to the Delaware questionnaire/report year. The sampling universe is women with recent live births, not all pregnant women or fetal deaths."
+    },
+    {
+      "source_id": "src-delaware-statistics-on-children-youth-and-families-in-de-962c40a7cb",
+      "source_name": "DELAWARE Statistics on children, youth and families in Delaware (Annie E. Casey Foundation and KIDS COUNT)",
+      "source_urls": [
+        "https://datacenter.aecf.org/data?location=DE#DE/2/0/char/0",
+        "https://datacenter.aecf.org/data/tables/10056-child-population?loc=9&loct=2",
+        "https://datacenter.aecf.org/data/tables/11229-children-and-adults-in-poverty-by-age-group?loc=9&loct=2",
+        "https://datacenter.aecf.org/data/tables/11215-graduation-from-high-school-by-select-characteristics?loc=9&loct=2"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "KIDS COUNT Data Center: Delaware",
+          "url": "https://datacenter.aecf.org/data?location=DE#DE/2/0/char/0",
+          "format": "Interactive catalog/download portal",
+          "authority": "Annie E. Casey Foundation, KIDS COUNT Data Center",
+          "applies_to": "Delaware child, youth and family indicators available through the portal",
+          "notes": "Each indicator page has its own Definition and Source, notes, units, provider and raw-data download. There is no single dictionary across all indicators."
+        },
+        {
+          "title": "Child population",
+          "url": "https://datacenter.aecf.org/data/tables/10056-child-population?loc=9&loct=2",
+          "format": "Indicator page with definition/source and download",
+          "authority": "Annie E. Casey Foundation using U.S. Census Bureau ACS DP05",
+          "applies_to": "Child population number and percent indicators",
+          "notes": "Definition states children under age 18 and identifies five-year ACS estimates for the displayed local series."
+        },
+        {
+          "title": "Children and adults in poverty by age group",
+          "url": "https://datacenter.aecf.org/data/tables/11229-children-and-adults-in-poverty-by-age-group?loc=9&loct=2",
+          "format": "Indicator page with definition/source and download",
+          "authority": "Annie E. Casey Foundation using U.S. Census Bureau ACS S1701",
+          "applies_to": "Poverty number and percent by age group",
+          "notes": "Publishes age-group universe and official poverty-measure source."
+        },
+        {
+          "title": "Children and adults without health insurance",
+          "url": "https://datacenter.aecf.org/data/tables/11014-children-and-adults-without-health-insurance-2013-2017-to-2020-2024",
+          "format": "Indicator page with definition/source and download",
+          "authority": "Annie E. Casey Foundation using U.S. Census Bureau ACS S2701",
+          "applies_to": "Uninsured number and percent by age group",
+          "notes": "Age groups include 0-5, 6-18, 0-18 and 19-64 for the listed series."
+        },
+        {
+          "title": "Graduation from high school by select characteristics",
+          "url": "https://datacenter.aecf.org/data/tables/11215-graduation-from-high-school-by-select-characteristics?loc=9&loct=2",
+          "format": "Indicator page with definition/source and download",
+          "authority": "Annie E. Casey Foundation / Delaware Department of Education",
+          "applies_to": "Delaware four-year cohort graduation indicator and subgroups",
+          "notes": "Secondary dissemination of a DDOE administrative measure."
+        },
+        {
+          "title": "Child population by single age",
+          "url": "https://datacenter.aecf.org/data/tables/100-child-population-by-single-age?loc=9&loct=2",
+          "format": "Indicator page with definition/source and download",
+          "authority": "Annie E. Casey Foundation using U.S. Census Bureau population estimates",
+          "applies_to": "Annual population estimates by single year of age",
+          "notes": "Vintage-specific estimates may revise earlier years; retain the vintage."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Indicator 10056: Child population - Number",
+          "label": "Children under age 18",
+          "definition": "Estimated number of resident children under age 18 from the cited ACS DP05 five-year estimate.",
+          "data_type": "integer estimate",
+          "unit": "children",
+          "universe": "Resident population under age 18",
+          "geography": "Delaware and selected substate locations",
+          "time_granularity": "five-year ACS estimate period",
+          "categories": ["Under age 18", "Location", "Year/period"],
+          "missing_codes": ["Portal blank/not available; ACS annotations where applicable"],
+          "suppression_rules": "Underlying Census publication and reliability rules apply.",
+          "comparability_notes": "This is a resident population estimate, not school enrollment, a July 1 projection, or an unduplicated service count.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/10056-child-population?loc=9&loct=2",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Indicator 10056: Child population - Percent",
+          "label": "Children as a share of total population",
+          "definition": "Children under age 18 expressed as a percentage of the total resident population in the same ACS period/geography.",
+          "data_type": "percentage estimate",
+          "unit": "percent of total population",
+          "universe": "Total resident population",
+          "geography": "Delaware and selected substate locations",
+          "time_granularity": "five-year ACS estimate period",
+          "categories": ["Under age 18 share"],
+          "missing_codes": ["Portal blank/not available; ACS annotations"],
+          "suppression_rules": "Underlying Census rules apply.",
+          "comparability_notes": "Do not compare this percent with age-specific distribution percentages whose denominator is children only.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/10056-child-population?loc=9&loct=2",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Indicator 11229: Poverty - Number/Percent",
+          "label": "Children and adults below poverty by age group",
+          "definition": "Number and percentage of persons with income below the official poverty level, using ACS S1701 and the indicator's age groups.",
+          "data_type": "integer estimate and percentage",
+          "unit": "persons; percent of age-group poverty universe",
+          "universe": "Population for whom poverty status is determined",
+          "geography": "Delaware and selected substate locations",
+          "time_granularity": "five-year ACS estimate period",
+          "categories": ["Under 5", "Ages 5-17", "Under 18", "Ages 18-64", "Age 65 and older", "Number", "Percent"],
+          "missing_codes": ["Portal blank/not available; ACS annotations"],
+          "suppression_rules": "Underlying Census rules apply.",
+          "comparability_notes": "Use the exact age group and ACS vintage. Administrative low-income flags such as DDOE direct certification are not the same measure.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/11229-children-and-adults-in-poverty-by-age-group?loc=9&loct=2",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Indicator 11014: Without health insurance - Number/Percent",
+          "label": "Uninsured children and working-age adults",
+          "definition": "Number and percentage without health insurance coverage using ACS S2701 for the indicator's age groups.",
+          "data_type": "integer estimate and percentage",
+          "unit": "persons; percent of age-group civilian noninstitutionalized population",
+          "universe": "Civilian noninstitutionalized population in the listed age group",
+          "geography": "Delaware and selected substate locations",
+          "time_granularity": "five-year ACS estimate period",
+          "categories": ["Ages 0-5", "Ages 6-18", "Ages 0-18", "Ages 19-64", "Number", "Percent"],
+          "missing_codes": ["Portal blank/not available; ACS annotations"],
+          "suppression_rules": "Underlying Census rules apply.",
+          "comparability_notes": "Age 18 placement differs among common youth definitions. Match sex/age universe before comparing with Women Status Report uninsured estimates.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/11014-children-and-adults-without-health-insurance-2013-2017-to-2020-2024",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Indicator 11215: Four-year cohort graduation rate",
+          "label": "Public high-school students graduating within four years",
+          "definition": "Percentage of students in the adjusted high-school cohort graduating within four years, accounting for documented transfers/dropouts under the provider's cohort method.",
+          "data_type": "percentage",
+          "unit": "percent of adjusted cohort",
+          "universe": "Delaware public-school adjusted graduation cohort",
+          "geography": "Delaware and demographic groups shown",
+          "time_granularity": "school year/cohort year",
+          "categories": ["Overall", "Race/ethnicity", "Sex and other selected characteristics"],
+          "missing_codes": ["Portal not available/suppressed; DDOE suppression where applicable"],
+          "suppression_rules": "Underlying DDOE public-report privacy rules apply.",
+          "comparability_notes": "This is a secondary publication of DDOE data. Use the DDOE cohort definition and edition as primary documentation and avoid counting it as an independent estimate.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/11215-graduation-from-high-school-by-select-characteristics?loc=9&loct=2",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Indicator 100: Child population by single age",
+          "label": "Estimated resident children by age",
+          "definition": "Annual population estimate for each single year of age in the indicator's child-age range, using the cited Census population-estimates vintage.",
+          "data_type": "integer estimate",
+          "unit": "children",
+          "universe": "Resident population at each single year of age",
+          "geography": "Delaware and selected locations",
+          "time_granularity": "annual estimate",
+          "categories": ["Single year of age", "Year", "Location"],
+          "missing_codes": ["Portal blank/not available"],
+          "suppression_rules": "Underlying Census rules apply.",
+          "comparability_notes": "Census population-estimate vintages revise prior years. Do not compare a revised historical estimate with a DPC projection as though both were observed values.",
+          "evidence_url": "https://datacenter.aecf.org/data/tables/100-child-population-by-single-age?loc=9&loct=2",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Population under age 18",
+          "source_variable_names": ["Indicator 10056: Child population - Number", "DPC population projection by single age", "DDOE Annual Enrollment / Unit Count"],
+          "notes": "KIDS COUNT/ACS is an estimate, DPC is a projection, and DDOE is enrolled students. A comparison function should expose source type, reference date and age/school universe."
+        },
+        {
+          "concept": "Poverty and health insurance",
+          "source_variable_names": ["Indicator 11229: Poverty - Number/Percent", "Indicator 11014: Without health insurance - Number/Percent", "Women Status Report corresponding ACS indicators"],
+          "notes": "These may be harmonizable through identical ACS tables if vintage, sex, age and geography match. Otherwise retain separate measures."
+        }
+      ],
+      "research_notes": "KIDS COUNT is an indicator portal, not a homogeneous dataset. Every indicator has a public Definition and Source section and download, but provider, time basis and universe vary. The examples above cover the catalog's central cross-source concepts; automation should retrieve and store indicator ID plus provider metadata."
+    },
+    {
+      "source_id": "src-population-projection-series-delaware-population-consort-046efd079d",
+      "source_name": "Population Projection Series (Delaware Population Consortium)",
+      "source_urls": [
+        "https://stateplanning.delaware.gov/demography/dpc-projection-data.shtml",
+        "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+        "https://stateplanning.delaware.gov/demography/documents/dpc/DPC-2024v0-report.xls",
+        "https://stateplanning.delaware.gov/demography/documents/dpc/DPC-2024v0-single-year-single-age.xls"
+      ],
+      "codebook_status": "published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware Population Consortium Projection Data",
+          "url": "https://stateplanning.delaware.gov/demography/dpc-projection-data.shtml",
+          "format": "HTML index",
+          "authority": "Delaware Office of State Planning Coordination / Delaware Population Consortium",
+          "applies_to": "Adopted population, household, employment and seasonal-population projection products",
+          "notes": "The 2025 Consortium adopted the 2024 projection series rather than producing a new 2025 series."
+        },
+        {
+          "title": "Delaware Population Consortium Annual Population Projections, Version 2024.0",
+          "url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "format": "PDF methodology and table definitions",
+          "authority": "Delaware Population Consortium",
+          "applies_to": "Version 2024.0 population, components, households, employment and seasonal projections",
+          "notes": "Documents cohort-component assumptions, race/ethnicity groups, geographies, dates and footnotes."
+        },
+        {
+          "title": "DPC 2024.0 Annual Report Tables",
+          "url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC-2024v0-report.xls",
+          "format": "XLS workbook",
+          "authority": "Delaware Population Consortium",
+          "applies_to": "Annual summary tables underlying the published projection report",
+          "notes": "Point-in-time population/household tables and five-year component totals must be distinguished using footnotes."
+        },
+        {
+          "title": "DPC 2024.0 Single-Year and Five-Year Age Cohorts",
+          "url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC-2024v0-single-year-5year-age-cohorts.xls",
+          "format": "XLS workbook",
+          "authority": "Delaware Population Consortium",
+          "applies_to": "Age-cohort projection tables",
+          "notes": "Provides annual projections at finer age resolution than the report summary."
+        },
+        {
+          "title": "DPC 2024.0 Single-Year, Single-Age, Race and Sex Projections",
+          "url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC-2024v0-single-year-single-age.xls",
+          "format": "XLS workbook",
+          "authority": "Delaware Population Consortium",
+          "applies_to": "Detailed age-by-race/ethnicity-by-sex projection tables",
+          "notes": "Race groups are mutually exclusive as documented; age runs through 100-plus."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Projected population",
+          "label": "Projected resident population as of July 1",
+          "definition": "Cohort-component projection beginning with the July 1, 2020 population by age, race/ethnicity and sex and applying survival, fertility and migration assumptions.",
+          "data_type": "integer projection",
+          "unit": "persons",
+          "universe": "Resident population in the projection geography",
+          "geography": "Delaware, counties, Wilmington, Dover and Newark; separate municipal products where published",
+          "time_granularity": "annual July 1",
+          "categories": ["Age 0 through 100+", "Sex", "Mutually exclusive race/ethnicity", "Geography", "Projection year"],
+          "missing_codes": ["Blank/not applicable workbook cells"],
+          "suppression_rules": "No general small-cell suppression stated for public projection tables.",
+          "comparability_notes": "A projection is not an ACS estimate or actual enrollment count. Retain projection version because assumptions and historical controls can change.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Race/ethnicity group",
+          "label": "Mutually exclusive projection race/ethnicity",
+          "definition": "Projection classification consisting of White alone non-Hispanic, Black alone non-Hispanic, Hispanic of any race, and Other non-Hispanic; Other includes principally Asian and multiracial populations, and multiple-race records are assigned to Other non-Hispanic.",
+          "data_type": "categorical",
+          "unit": "person",
+          "universe": "Projected resident population",
+          "geography": "DPC projection geographies",
+          "time_granularity": "annual July 1",
+          "categories": ["White alone, non-Hispanic", "Black alone, non-Hispanic", "Hispanic", "Other, non-Hispanic"],
+          "missing_codes": [],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Not directly comparable with ACS tables that publish Asian, AI/AN, NHPI, some-other-race and two-or-more-races separately, nor with school-survey mark-all-that-apply race questions.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Births / deaths / net migration",
+          "label": "Five-year population-change components",
+          "definition": "Projected births and deaths over a five-year interval and net migration defined as in-migrants minus out-migrants; report tables mark five-year totals beginning with the specified year.",
+          "data_type": "integer projection",
+          "unit": "persons/events over five years",
+          "universe": "Population component events for the projection geography",
+          "geography": "Delaware and counties/major cities where table provides",
+          "time_granularity": "five-year interval",
+          "categories": ["Births", "Deaths", "Net migration"],
+          "missing_codes": ["Blank/not applicable"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "These are interval totals, unlike July 1 population point estimates. Net migration can be negative and is not gross in- or out-migration.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Projected households",
+          "label": "Projected occupied households",
+          "definition": "Projected household count for the stated geography and July 1 year using the DPC household projection method.",
+          "data_type": "integer projection",
+          "unit": "households",
+          "universe": "Projected households in the geography",
+          "geography": "Delaware and report geographies",
+          "time_granularity": "annual July 1",
+          "categories": ["Geography", "Projection year"],
+          "missing_codes": ["Blank/not applicable"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "A household is not a housing unit; vacant units are excluded. Household change tables may be interval changes rather than point estimates.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Jobs by place of work / jobs by residence / net commuting",
+          "label": "Projected employment and commuting balance",
+          "definition": "Place-of-work jobs are jobs located in the geography and exclude self-employed, private-household and direct-farm employment under the report definition. Jobs by residence represent employed residents and can reflect multiple jobs; net commuting is inflow minus outflow.",
+          "data_type": "integer projection",
+          "unit": "jobs/workers as table defines",
+          "universe": "Covered employment and employed residents in projection geographies",
+          "geography": "Delaware and report geographies",
+          "time_granularity": "annual projection",
+          "categories": ["Place of work", "Place of residence", "Net commuting"],
+          "missing_codes": ["Blank/not applicable"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Jobs are not unique workers; a person may hold multiple jobs. Preserve exclusions and the sign convention for net commuting.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.95,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Seasonal population",
+          "label": "Estimated peak-season population associated with seasonal housing",
+          "definition": "Seasonal population estimate for June through August derived from seasonal/vacant housing assumptions, including an 80 percent occupancy assumption and 2.64 persons per occupied seasonal unit in the 2024.0 report; it excludes hotels, motels, campgrounds, recreational vehicles and day visitors.",
+          "data_type": "integer estimate/projection",
+          "unit": "seasonal persons",
+          "universe": "Persons associated with occupied seasonal housing under DPC assumptions",
+          "geography": "Selected Delaware coastal/local geographies",
+          "time_granularity": "summer-season estimate/projection",
+          "categories": ["Seasonal housing units", "Occupancy assumption", "Estimated seasonal persons"],
+          "missing_codes": ["Blank/not applicable"],
+          "suppression_rules": "None stated.",
+          "comparability_notes": "Not a year-round resident population and excludes several visitor-accommodation types. Use the PDF's version-specific 2.64-person assumption; do not substitute conflicting summary-page text.",
+          "evidence_url": "https://stateplanning.delaware.gov/demography/documents/dpc/DPC2024v0.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Population denominator",
+          "source_variable_names": ["Projected population", "KIDS COUNT child population estimates", "Crime/STIPDA population-based rates"],
+          "notes": "DPC projections may be used for planning scenarios, but published rate series often use Census estimates. A comparison function should never silently replace the publisher's denominator."
+        },
+        {
+          "concept": "Race/ethnicity",
+          "source_variable_names": ["Race/ethnicity group", "DDOE/KIDS COUNT/PRAMS/YRBS race and ethnicity variables"],
+          "notes": "DPC's four mutually exclusive groups collapse Asian and multiracial into Other non-Hispanic. Harmonization requires an explicit loss-of-detail flag."
+        }
+      ],
+      "research_notes": "The PDF and workbooks form a public codebook/methodology package. Table footnotes distinguish July 1 point estimates from five-year totals. Version 2024.0 is the currently adopted series documented at research time, even though the 2025 meeting adopted it without a new projection vintage."
+    },
+    {
+      "source_id": "src-youth-risk-behavior-survey-ud-center-for-drug-health-stu-b94e3f9ca4",
+      "source_name": "Youth Risk Behavior Survey (UD Center for Drug & Health Studies)",
+      "source_urls": [
+        "https://cdhs.udel.edu/seow/school-surveys/youth-risk-behavior-survey-yrbs/",
+        "https://www.cdc.gov/yrbs/data/index.html",
+        "https://www.cdc.gov/yrbs/media/pdf/2023/2023_National_YRBS_Data_Users_Guide508.pdf",
+        "https://www.cdc.gov/yrbs/questionnaires/index.html"
+      ],
+      "codebook_status": "published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware Youth Risk Behavior Survey",
+          "url": "https://cdhs.udel.edu/seow/school-surveys/youth-risk-behavior-survey-yrbs/",
+          "format": "HTML index with Delaware questionnaires and detailed/demographic/trend tables",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Delaware middle- and high-school YRBS administrations and published tables",
+          "notes": "Authoritative Delaware project page; documents representativeness exceptions, including the nonrepresentative 2019 statewide high-school result."
+        },
+        {
+          "title": "YRBS Data and Documentation",
+          "url": "https://www.cdc.gov/yrbs/data/index.html",
+          "format": "HTML index with data, documentation and codebooks",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "National, state, territorial, tribal and local YRBS datasets by cycle",
+          "notes": "Use cycle-specific documentation; site questionnaires can omit or add items."
+        },
+        {
+          "title": "2023 National YRBS Data User's Guide",
+          "url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023_National_YRBS_Data_Users_Guide508.pdf",
+          "format": "PDF user guide and codebook",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "2023 national YRBS file structure, variable coding, design and analysis",
+          "notes": "Documents raw q-number fields, derived qn-number indicators, weights/design variables and minimum denominator guidance. Delaware's site file must be checked against its own questionnaire."
+        },
+        {
+          "title": "2023 YRBS Standard Analytic Data File Documentation",
+          "url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023-YRBS-SADC-Documentation.pdf",
+          "format": "PDF codebook",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "Combined standard analytic data file across YRBS sites and years",
+          "notes": "Defines sitecode, sitetype, year and standardized questionnaire/derived variables for cross-site analyses. Availability varies by site and year."
+        },
+        {
+          "title": "YRBS Questionnaires",
+          "url": "https://www.cdc.gov/yrbs/questionnaires/index.html",
+          "format": "HTML index with PDF instruments",
+          "authority": "U.S. Centers for Disease Control and Prevention",
+          "applies_to": "Cycle-specific national and standard question wording and response options",
+          "notes": "Question number alone is not stable across years; pair it with cycle and wording."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "sitecode / sitename / sitetype / sitetypenum",
+          "label": "YRBS site identifiers and site type",
+          "definition": "Combined-file identifiers for the survey site and its type; numeric site type distinguishes district, state and national records.",
+          "data_type": "text identifiers and categorical numeric",
+          "unit": "respondent record/site",
+          "universe": "Records in the standard analytic data file",
+          "geography": "Survey site; Delaware when sitecode selects Delaware",
+          "time_granularity": "survey cycle",
+          "categories": ["1: District", "2: State", "3: National"],
+          "missing_codes": ["Codebook-specific missing/not applicable"],
+          "suppression_rules": "Public estimates may be withheld when data are not representative or denominator/reliability requirements are not met.",
+          "comparability_notes": "Filtering to state type is not sufficient; select the Delaware sitecode and survey year. District and state estimates have different target populations.",
+          "evidence_url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023-YRBS-SADC-Documentation.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "year",
+          "label": "YRBS survey year",
+          "definition": "Survey cycle/year associated with the respondent record or standardized indicator.",
+          "data_type": "integer year",
+          "unit": "survey cycle",
+          "universe": "YRBS analytic records",
+          "geography": "All sites; Delaware when filtered",
+          "time_granularity": "biennial odd-year cycle for standard YRBS",
+          "categories": [],
+          "missing_codes": [],
+          "suppression_rules": "Not applicable to the year field.",
+          "comparability_notes": "Question availability and wording change by year. Delaware 2019 statewide high-school data were not representative because of low school participation; only Kent County was representative per the UD page.",
+          "evidence_url": "https://cdhs.udel.edu/seow/school-surveys/youth-risk-behavior-survey-yrbs/",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "q1-q87 (cycle-specific raw questionnaire fields)",
+          "label": "Raw item responses",
+          "definition": "Question-numbered fields preserve the selected response category to each cycle's questionnaire item; the 2023 national file contains q1 through q87, but site instruments and other years can differ.",
+          "data_type": "categorical numeric",
+          "unit": "student respondent",
+          "universe": "Students asked the applicable question in the sampled grade/site",
+          "geography": "Survey site",
+          "time_granularity": "item-specific reference period within survey cycle",
+          "categories": ["Item-specific response codes defined in the cycle codebook"],
+          "missing_codes": ["Missing/not asked/logically skipped codes defined in the cycle codebook"],
+          "suppression_rules": "Estimate-level rules rather than raw field suppression; CDC analyses require adequate denominator and representative weighted data.",
+          "comparability_notes": "Never crosswalk by q-number alone. Match full wording, reference period, response set, grade universe and cycle.",
+          "evidence_url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023_National_YRBS_Data_Users_Guide508.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "qn* derived indicators",
+          "label": "Dichotomized YRBS risk/behavior indicators",
+          "definition": "Derived item indicators conventionally coded 1 for the response of analytic interest (Yes) and 2 for all other included responses (No), with the exact derivation specified by the cycle codebook.",
+          "data_type": "binary categorical",
+          "unit": "student respondent",
+          "universe": "Respondents with valid answers used in the derived indicator",
+          "geography": "Survey site",
+          "time_granularity": "cycle and item-specific reference period",
+          "categories": ["1: Yes/response of interest", "2: No/other included response", "Missing"],
+          "missing_codes": ["Cycle/codebook-specific missing"],
+          "suppression_rules": "CDC guidance does not report estimates with denominator below 30 and applies representativeness/reliability criteria; Delaware tables may add local rules.",
+          "comparability_notes": "Derived prevalence may combine several raw response categories. Compare only identical derivations, not merely similar labels.",
+          "evidence_url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023_National_YRBS_Data_Users_Guide508.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "weight / stratum / PSU",
+          "label": "Survey weight and complex-design variables",
+          "definition": "Weight adjusts for sample selection, nonresponse and population distribution; stratum and primary sampling unit variables identify the complex sample design for valid standard errors.",
+          "data_type": "numeric weight and design identifiers",
+          "unit": "respondent/design cluster",
+          "universe": "Records in a representative weighted YRBS analytic file",
+          "geography": "Survey site/cycle",
+          "time_granularity": "survey cycle",
+          "categories": [],
+          "missing_codes": ["Unweighted/nonrepresentative cycles may lack a valid analysis weight"],
+          "suppression_rules": "Nonrepresentative site-year estimates should not be presented as population estimates.",
+          "comparability_notes": "Use survey-design procedures. Raw percentages and ordinary standard errors are not equivalent to published weighted estimates.",
+          "evidence_url": "https://www.cdc.gov/yrbs/media/pdf/2023/2023_National_YRBS_Data_Users_Guide508.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.98,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "q1-q5 demographic items (2023 national instrument)",
+          "label": "Age, sex, grade, Hispanic ethnicity and race",
+          "definition": "The opening 2023 national questionnaire items collect age, sex, grade, Hispanic/Latino ethnicity and race; race permits multiple selections and analytic race/ethnicity variables may be derived separately.",
+          "data_type": "categorical",
+          "unit": "student respondent",
+          "universe": "Students completing the 2023 national/compatible site instrument",
+          "geography": "Survey site",
+          "time_granularity": "survey cycle",
+          "categories": ["Age categories", "Sex categories", "Grades 9-12 and other response where applicable", "Hispanic/Latino yes/no", "Race mark-all categories"],
+          "missing_codes": ["No response/invalid/missing as codebook defines"],
+          "suppression_rules": "Small/unreliable demographic cells may not be reported.",
+          "comparability_notes": "Derived mutually exclusive race/ethnicity is not the same as raw mark-all race responses and differs from DPC's four-group projection classification.",
+          "evidence_url": "https://www.cdc.gov/yrbs/questionnaires/index.html",
+          "evidence_kind": "published",
+          "confidence": 0.96,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Youth tobacco, alcohol, cannabis, bullying and mental health",
+          "source_variable_names": ["YRBS q*/qn* item-specific fields", "DSS Q35/Q37/Q47/Q51/Q55/Q59/Q64-Q85"],
+          "notes": "Conceptually similar, but DSS and YRBS differ in grades, cadence, wording, reference periods and response options. Automate comparison only after a human-reviewed item-level mapping that stores instrument year and exact wording."
+        },
+        {
+          "concept": "Race/ethnicity",
+          "source_variable_names": ["YRBS q4-q5/raw and derived race variables", "DSS race/ethnicity Q3", "DPC race/ethnicity group"],
+          "notes": "Both school surveys can allow multiple race responses, while DPC uses four mutually exclusive groups. Retain raw selections and derived coding separately."
+        }
+      ],
+      "research_notes": "YRBS has full public CDC codebooks and questionnaires plus Delaware-specific UD tables and instruments. Site and year matter: not all standard questions are asked everywhere, and a nonrepresentative site-year cannot be treated as a statewide population estimate."
+    },
+    {
+      "source_id": "src-delaware-school-survey-ud-center-for-drug-health-studies-b37871ea5a",
+      "source_name": "Delaware School Survey (UD Center for Drug & Health Studies)",
+      "source_urls": [
+        "https://cdhs.udel.edu/seow/school-surveys/delaware-school-survey-dss/",
+        "https://cdhs.udel.edu/files/2025/07/DSS-Secondary-2025.pdf",
+        "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+        "https://cdhs.udel.edu/files/2022/08/DSS-Secondary-Domains.pdf",
+        "https://cdhs.udel.edu/files/2022/08/DSS-5th-Grade-Domains.pdf"
+      ],
+      "codebook_status": "partial_published",
+      "codebook_artifacts": [
+        {
+          "title": "Delaware School Survey",
+          "url": "https://cdhs.udel.edu/seow/school-surveys/delaware-school-survey-dss/",
+          "format": "HTML index with questionnaires, state reports and trend tables",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Annual DSS administrations, principally grades 5, 8 and 11 in Delaware public schools",
+          "notes": "Documents survey history and links annual instruments/reports; COVID-era mode and participation changes require caution."
+        },
+        {
+          "title": "2025 Delaware School Survey - Secondary",
+          "url": "https://cdhs.udel.edu/files/2025/07/DSS-Secondary-2025.pdf",
+          "format": "PDF questionnaire",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "2025 secondary-grade DSS item wording and response options",
+          "notes": "Question numbers and wording are instrument-year specific."
+        },
+        {
+          "title": "2025 Delaware School Survey - Fifth Grade",
+          "url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "format": "PDF questionnaire",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "2025 grade-5 DSS item wording and response options",
+          "notes": "Provides exact questions and categories used below."
+        },
+        {
+          "title": "DSS Secondary Domains",
+          "url": "https://cdhs.udel.edu/files/2022/08/DSS-Secondary-Domains.pdf",
+          "format": "PDF domain map",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Secondary questionnaire constructs/domains",
+          "notes": "A construct map, not a record-layout codebook."
+        },
+        {
+          "title": "DSS Fifth Grade Domains",
+          "url": "https://cdhs.udel.edu/files/2022/08/DSS-5th-Grade-Domains.pdf",
+          "format": "PDF domain map",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Fifth-grade questionnaire constructs/domains",
+          "notes": "Useful for conceptual grouping; exact year questionnaire governs item wording."
+        },
+        {
+          "title": "2024 DSS State Trends",
+          "url": "https://cdhs.udel.edu/files/2025/07/2024-DSS-State-Trendsa.pdf",
+          "format": "PDF trend tables",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Published statewide DSS trend indicators through 2024",
+          "notes": "Trend labels are derived indicators and should be paired with the relevant questionnaire wording."
+        },
+        {
+          "title": "DSS Data Request Form",
+          "url": "https://cdhs.udel.edu/files/2023/11/DSS-Data-Request-Form-11-2023.pdf",
+          "format": "PDF access documentation",
+          "authority": "University of Delaware Center for Drug & Health Studies",
+          "applies_to": "Requests for DSS data not directly downloadable from public summary products",
+          "notes": "Evidence that public questionnaires/tables do not constitute a public microdata extract."
+        }
+      ],
+      "variables": [
+        {
+          "source_variable_name": "Q3 (2025 fifth-grade): race/ethnicity",
+          "label": "Race or ethnicity, mark all that apply",
+          "definition": "Student-selected race/ethnicity categories on the 2025 grade-5 instrument, with multiple responses permitted.",
+          "data_type": "multi-select categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools; reportable state/local breakouts",
+          "time_granularity": "2025 survey administration",
+          "categories": ["American Indian or Alaska Native", "Asian", "Black or African American", "Hispanic or Latino", "Middle Eastern or North African", "Native Hawaiian or other Pacific Islander", "White", "Other"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Public table suppression/reliability rules are report-specific; no complete public microdata rulebook was located.",
+          "comparability_notes": "Not mutually exclusive. Do not directly compare with DPC's mutually exclusive four-group race/ethnicity projection without a documented derivation.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q11-Q12 (2025 fifth-grade): breakfast and food insufficiency",
+          "label": "Breakfast days and past-month hunger due to insufficient food",
+          "definition": "Q11 asks on how many of the past seven days the student ate breakfast (0-7); Q12 asks whether in the past month the student went hungry because there was not enough food at home.",
+          "data_type": "ordinal count and binary categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "past 7 days / past month",
+          "categories": ["Breakfast: 0 through 7 days", "Hunger: Yes", "Hunger: No"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "Breakfast frequency and food insufficiency are distinct constructs. Do not equate Q12 with household income poverty or SNAP participation.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q13-Q16 (2025 fifth-grade): daily activities",
+          "label": "Nonschool screen, gaming, physical activity and reading time",
+          "definition": "Separate items ask usual nonschool online/TV time, video-game time, physically active play/exercise/sports time and reading-for-pleasure time.",
+          "data_type": "ordinal categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "usual day",
+          "categories": ["No time", "Less than 1 hour", "1-2 hours", "3-5 hours", "More than 5 hours"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "Do not sum online/TV and video games without checking overlap. Physical-activity wording and duration differ from YRBS days-with-60-minutes indicators.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q22-Q23 (2025 fifth-grade): safety",
+          "label": "Feels safe at school and in neighborhood",
+          "definition": "Separate yes/no self-report items about feeling safe at school and feeling safe in the respondent's neighborhood.",
+          "data_type": "binary categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "current/general perception at survey",
+          "categories": ["Yes", "No"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "Perceived safety is not an incident count or objective crime rate; school and neighborhood are separate contexts.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q35/Q37/Q38 (2025 fifth-grade): violence exposure",
+          "label": "School bullying, electronic bullying and witnessed violence at home",
+          "definition": "Q35 asks whether the student was bullied at school in the past 30 days; Q37 asks about electronic bullying in the past 30 days; Q38 asks whether the student has witnessed adults at home hurting one another.",
+          "data_type": "binary categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "past 30 days for bullying; lifetime/unspecified ever wording for witnessed home violence as printed",
+          "categories": ["Yes", "No"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "Keep school bullying, electronic bullying and home violence separate. Q38 is a student's self-report and is not equivalent to DVCC's police-recorded 'children present' flag.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q47/Q51/Q55/Q59 (2025 fifth-grade): ever substance use",
+          "label": "Ever cigarette, vaping, alcohol or marijuana use",
+          "definition": "Separate lifetime items ask whether the student ever smoked most or all of a cigarette, ever used an electronic vapor product, ever had more than a sip of alcohol, and ever used marijuana.",
+          "data_type": "binary categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "lifetime through survey date",
+          "categories": ["Yes", "No"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "The behavioral threshold differs by substance: cigarette requires most/all of a cigarette and alcohol requires more than a sip. Match exact wording before comparing with YRBS lifetime indicators.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q64-Q71 (2025 fifth-grade): substance-use frequency",
+          "label": "Recency/frequency of eight substance behaviors",
+          "definition": "Frequency items cover cigarettes, vaping, cigars, chewing tobacco, alcohol, marijuana, dactyls and prescription-drug misuse using a common ordered response set.",
+          "data_type": "ordinal categorical",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "lifetime/past year/current frequency categories",
+          "categories": ["Never", "Used before but not in past year", "A few times in past year", "1-2 times a month", "1-2 times a week", "Almost every day"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "These categories are not equivalent to YRBS past-30-day day counts. Any binary current-use crosswalk is inferred and must state its chosen threshold.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.99,
+          "inference_basis": null
+        },
+        {
+          "source_variable_name": "Q80-Q85 (2025 fifth-grade): emotional health and life evaluation",
+          "label": "Negative affect, help-seeking, emotional-health rating and Cantril ladder",
+          "definition": "Items include ever experiencing the specified negative feelings, frequency of getting help, self-rated emotional health from excellent to very bad, and 0-10 ladder ratings for current life and expected life in five years.",
+          "data_type": "binary, ordinal and 0-10 numeric rating",
+          "unit": "student respondent",
+          "universe": "2025 fifth-grade DSS respondents",
+          "geography": "Delaware public schools",
+          "time_granularity": "item-specific; current and expected five-year life evaluation",
+          "categories": ["Yes/No", "Help-frequency categories", "Excellent/very good/good/bad/very bad", "0 worst possible life through 10 best possible life"],
+          "missing_codes": ["No response"],
+          "suppression_rules": "Report-specific.",
+          "comparability_notes": "Self-rated emotional health, negative affect and life satisfaction are distinct. They are not diagnoses and should not be merged with PRAMS depression-diagnosis variables or YRBS sadness/suicidality without exact wording review.",
+          "evidence_url": "https://cdhs.udel.edu/files/2025/07/DSS-5th-2025.pdf",
+          "evidence_kind": "published",
+          "confidence": 0.97,
+          "inference_basis": null
+        }
+      ],
+      "crosswalk_hints": [
+        {
+          "concept": "Youth substance use",
+          "source_variable_names": ["Q47/Q51/Q55/Q59 ever-use items", "Q64-Q71 frequency items", "YRBS q*/qn* tobacco/alcohol/cannabis indicators"],
+          "notes": "Require exact item wording, substance definition, threshold and reference period. DSS grade-5 categories cannot be assumed equivalent to YRBS past-30-day indicators."
+        },
+        {
+          "concept": "Bullying and violence exposure",
+          "source_variable_names": ["Q35/Q37/Q38", "YRBS bullying indicators", "DVCC children-present indicator"],
+          "notes": "School/electronic bullying, witnessed household violence and police-recorded child presence are related but non-equivalent constructs."
+        },
+        {
+          "concept": "Youth mental/emotional health",
+          "source_variable_names": ["Q80-Q85", "YRBS sadness, mental-health and suicidality items"],
+          "notes": "Only compare same item wording/reference period. Keep general emotional-health rating, negative affect, help-seeking, life evaluation and suicidality separate."
+        }
+      ],
+      "research_notes": "Public questionnaires and domain/trend documents support a partial codebook, but no public record-layout dictionary or downloadable microdata file was located; access is by data request. DSS is annual and principally covers grades 5, 8 and 11, whereas YRBS is biennial and targets different middle/high-school grade universes. COVID-era missing 2020 administration and 2021 mode/participation changes should be flagged in trends."
+    }
+  ]
+}

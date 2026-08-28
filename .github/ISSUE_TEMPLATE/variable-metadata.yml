@@ -40,6 +40,7 @@ body:
         - Missing, suppressed, or unreliable values
         - Weighting, adjustment, or calculation method
         - Difference from a similar measure
+        - Publisher-documented versus inferred label
         - Citation or source history
         - Other documentation
     validations:
