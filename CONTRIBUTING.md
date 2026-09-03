@@ -22,6 +22,7 @@ command, data schema, or pull request is required. Choose one form:
 - [Report a broken, moved, or retired source](../../issues/new?template=broken-source.yml)
 - [Explain a variable or metadata problem](../../issues/new?template=variable-metadata.yml)
 - [Suggest a new public data source](../../issues/new?template=dataset-suggestion.yml)
+- [Improve a prompt guide](../../issues/new?template=prompt-guide.yml)
 
 The forms ask what you saw, what you think should change, and how you know. A
 link to an official webpage is helpful, but evidence can also be a clear
@@ -112,6 +113,19 @@ code, locked dependencies, methods, input and output dictionaries, quality
 tests, provenance, checksums, and a compatible output license. Keep original
 values and quality flags beside normalized values. Joins or comparisons that
 change meaning need two reviewers under `GOVERNANCE.md`.
+
+## Prompt guide changes
+
+Prompt guides are versioned review workflows, not claims that an AI tool can
+certify data quality. A useful report names the guide, explains the real task,
+describes the missing or unsafe step, and suggests which human role should
+review the change. Do not paste a private AI conversation or any confidential,
+personal, protected, licensed, or restricted data into an issue.
+
+Changes to wording or examples need one independent reviewer. Changes to shared
+safety rules, semantic comparison, privacy, licensing, causal interpretation,
+or required human-review gates use the material-change process in
+`GOVERNANCE.md`.
 
 ## Local checks for technical changes
 

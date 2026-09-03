@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { codebookSources, variableCrosswalk } from "../lib/codebooks";
+import { sitePath } from "../lib/site-path";
 import { ComparisonExplorer, type ComparisonSource } from "./ComparisonExplorer";
 
 export const metadata: Metadata = {
@@ -48,6 +49,7 @@ export default function ComparePage() {
         <div className="plain-caution">
           <strong>This is a comparison assistant, not an automatic green light.</strong>
           <p>Similar names can hide different populations, units, years, geographies, survey questions, or suppression rules.</p>
+          <p><a href={sitePath("/guides/prompts#compare-variables")}>Copy the guided comparison prompt</a></p>
         </div>
       </section>
       <section className="shell compare-section">

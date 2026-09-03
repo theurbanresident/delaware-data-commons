@@ -37,6 +37,13 @@ const reportTypes = [
     template: "dataset-suggestion.yml",
     issueTitle: "[Source suggestion] ",
   },
+  {
+    label: "Prompt guide feedback",
+    title: "Improve a prompt guide",
+    body: "Tell us when a guide is unclear, misses an important check, or produces an unsafe or unhelpful result.",
+    template: "prompt-guide.yml",
+    issueTitle: "[Prompt guide] ",
+  },
 ];
 
 export default function ContributePage() {

@@ -1,0 +1,76 @@
+name: Improve a prompt guide
+description: Help make a copy-and-paste data prompt clearer, safer, or more useful.
+title: "[Prompt guide] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You do not need to know how to code. Tell us what happened when you used the guide or which human-review step is missing.
+
+        **This report and its attachments will be public.** Do not paste personal records, client details, protected health information, confidential text, passwords, restricted data, or a private AI conversation.
+
+  - type: input
+    id: guide
+    attributes:
+      label: Prompt guide
+      description: Paste the guide page link or copy its stable ID and title.
+      placeholder: "Example: compare-variables — Compare two similar-looking variables"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: What needs attention?
+      options:
+        - Task or instructions are unclear
+        - Important evidence or input is missing
+        - Human-review checkpoint is missing or too weak
+        - Output could misstate or hide uncertainty
+        - Privacy, equity, stigma, or harmful-use concern
+        - Prompt did not work well in an AI tool
+        - Plain-language explanation needs improvement
+        - Other prompt-guide change
+    validations:
+      required: true
+
+  - type: textarea
+    id: observation
+    attributes:
+      label: What did you notice?
+      description: Describe the problem without pasting private data or a private conversation. A short made-up example is welcome.
+      placeholder: The guide asks whether units match, but it does not ask whether both rates use the same age adjustment...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What should change?
+      description: Suggested wording or a question to add is helpful but not required.
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What supports this change?
+      description: Link to public guidance, a publisher method, or explain the real task that showed the gap.
+    validations:
+      required: true
+
+  - type: textarea
+    id: human_review
+    attributes:
+      label: Who should review this change?
+      description: Name a role, such as a community member, grant writer, data steward, statistician, privacy reviewer, or subject expert.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: public_check
+    attributes:
+      label: Public information check
+      options:
+        - label: I have not included private, confidential, security-sensitive, or restricted information.
+          required: true

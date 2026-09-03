@@ -81,6 +81,7 @@ export default async function DatasetDetailPage({ params }: { params: Params }) 
           <div className="hero-actions">
             {primary ? <a className="button-link" href={primary.url} target="_blank" rel="noreferrer">Open publisher source <span aria-hidden="true">↗</span></a> : null}
             <a className="secondary-button" href={sitePath(`/codebooks/${source.id}`)}>View definitions</a>
+            <a className="secondary-button" href={sitePath("/guides/prompts#choose-source")}>Use a source-check prompt</a>
             <a className="secondary-button community-only" href="#quick-facts">See the quick facts</a>
             <a className="secondary-button technical-only" href="#technical-record">Jump to technical record</a>
           </div>

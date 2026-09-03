@@ -47,6 +47,10 @@ export default function MethodsPage() {
           <p>No. It finds items that may describe the same idea and shows missing or different details. A person still needs to check the population, unit, place, year, question wording, and source methods.</p>
         </section>
         <section>
+          <h2>What can a prompt guide do?</h2>
+          <p>A prompt guide gives an AI tool a careful checklist. It can help organize evidence, explain terms, and show what is missing. It cannot prove that a source is correct or make a hard decision for you. Each guide names the people who should check the result.</p>
+        </section>
+        <section>
           <h2>Why can combining data create risk?</h2>
           <p>Even public facts can reveal too much when they are joined for very small places or groups. Future combined products will need privacy review and will keep the publisher&apos;s hidden-value rules.</p>
         </section>
@@ -62,6 +66,7 @@ export default function MethodsPage() {
           <a href="#checks">Weekly checks</a>
           <a href="#codebooks">Codebooks</a>
           <a href="#matching">Variable matching</a>
+          <a href="#prompt-guides">Prompt guides</a>
           <a href="#dates">Dates</a>
           <a href="#preservation">Preservation</a>
           <a href="#privacy">Privacy</a>
@@ -161,8 +166,19 @@ export default function MethodsPage() {
             </p>
           </section>
 
+          <section id="prompt-guides">
+            <p className="eyebrow">05 · Prompt guide library</p>
+            <h2>Versioned prompts turn policy into a reusable checklist</h2>
+            <p>
+              The prompt catalog stores one provider-neutral record for each task. A deterministic function combines its required inputs, shared safety rules, task instructions, expected output, and human-review checkpoints into the text a visitor copies. Community and Technical views display different explanations around that prompt but copy the same underlying text.
+            </p>
+            <p>
+              Prompt guides can make a review process more consistent; they cannot authenticate evidence, certify a comparison, complete a privacy review, or authorize a claim. Each guide has a stable ID, version, review level, last-reviewed date, and a public correction path. The browser performs copying locally and the site does not send prompt text or user-entered filters to an AI provider.
+            </p>
+          </section>
+
           <section id="dates">
-            <p className="eyebrow">05 · Dates</p>
+            <p className="eyebrow">06 · Dates</p>
             <h2>Three dates that answer different questions</h2>
             <dl className="date-definitions">
               <div><dt>Data through</dt><dd>The latest period described by the data.</dd></div>
@@ -173,7 +189,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="preservation">
-            <p className="eyebrow">06 · Preservation and licensing</p>
+            <p className="eyebrow">07 · Preservation and licensing</p>
             <h2>Public access is not automatically permission to republish</h2>
             <p>
               When reuse rights are unknown or restricted, the project stores
@@ -185,7 +201,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="privacy">
-            <p className="eyebrow">07 · Privacy and responsible integration</p>
+            <p className="eyebrow">08 · Privacy and responsible integration</p>
             <h2>Combining public sources can create new risks</h2>
             <p>
               Phase 1 catalogs already-public aggregate resources. It does not
@@ -197,7 +213,7 @@ export default function MethodsPage() {
           </section>
 
           <section id="limitations">
-            <p className="eyebrow">08 · Limitations</p>
+            <p className="eyebrow">09 · Limitations</p>
             <h2>Use the original methodology for consequential decisions</h2>
             <p>
               Sources vary in purpose, methods, geography, timeliness, and

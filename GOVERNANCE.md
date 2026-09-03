@@ -20,11 +20,12 @@ The project follows these principles:
 
 ## Community reports and technical changes
 
-Community members may report a correction, broken source, unclear variable, or
-new source through a plain-language GitHub form. They are not expected to edit
-files, understand the data schema, or open a pull request. Maintainers must not
-reject a useful report only because it lacks technical terms. They may ask for
-public evidence or a clearer description when needed for review.
+Community members may report a correction, broken source, unclear variable, new
+source, or prompt guide concern through a plain-language GitHub form. They are
+not expected to edit files, understand the data schema, or open a pull request.
+Maintainers must not reject a useful report only because it lacks technical
+terms. They may ask for public evidence or a clearer description when needed for
+review.
 
 Each report receives an issue number. When a file change is needed, a maintainer
 or contributor prepares a linked pull request. Review and automated checks apply
@@ -37,6 +38,12 @@ The site’s Community and Technical views use the same underlying records.
 Changing views does not create a second catalog, change a source value, or skip
 review. Community-facing summaries must link or map to the technical evidence
 and provenance used to create them.
+
+The prompt guide library follows the same rule. Both views copy one canonical
+prompt assembled from a versioned guide record. Each guide names required
+inputs, evidence rules, expected output, limitations, and a human-review gate.
+An AI output is never treated as publisher evidence, curator approval, or a
+substitute for the named reviewer.
 
 ## Roles
 
@@ -74,6 +81,7 @@ with relevant subject-matter responsibility:
 - a new derived product or a material transformation change;
 - a decision to redistribute an upstream file;
 - a privacy or disclosure-risk determination;
+- a shared prompt safety rule or removal of a required human-review checkpoint;
 - a governance, licensing, security, or correction-policy change.
 
 When reasonable reviewers disagree, the pull request records the alternatives,

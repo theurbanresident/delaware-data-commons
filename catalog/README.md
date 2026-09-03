@@ -14,6 +14,7 @@ Every source remains `imported-unverified`. The import does not assert that a UR
 - `codebooks.json` — source-by-source documentation research and field-level publisher-documented or inferred variable records.
 - `concept-taxonomy.json` — curated semantic concepts, aliases, comparison dimensions, and common interpretation traps.
 - `variable-crosswalk.json` — deterministic candidate matches across sources, with metadata checks and warnings.
+- `prompt-guides.json` — provider-neutral analysis prompts with stable IDs, versions, shared safety rules, and human-review checkpoints.
 
 Identical machine-readable copies are written to `public/data/` for GitHub Pages or another static site.
 
@@ -47,3 +48,16 @@ variable must have a written inference basis. Unmatched measure phrases from the
 SHIP workbook are retained as low-confidence inferred discovery labels. A
 candidate crosswalk match is never a certification that numeric values can be
 combined or compared.
+
+## Rebuild prompt guides
+
+After editing the canonical prompt catalog, publish its byte-identical site copy
+with:
+
+```powershell
+npm run prompts:build
+```
+
+The generator checks unique IDs, required prompt parts, and human-review gates.
+The JSON Schema in `schemas/prompt-guides.schema.json` provides the complete
+machine-readable contract.

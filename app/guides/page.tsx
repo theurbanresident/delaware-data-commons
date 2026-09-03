@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    href: "/guides/prompts",
+    label: "For AI-assisted data work",
+    title: "Copy a careful prompt guide",
+    body: "Use a provider-neutral prompt to interpret, compare, cite, or explain public data—with the human-review step kept visible.",
+  },
+  {
     href: "/guides/grants",
     label: "For community organizations",
     title: "Build a grant need statement",
@@ -46,7 +52,7 @@ export default function GuidesPage() {
       <PageIntro eyebrow="Guides" title="Start with the decision you need to make.">
         <p>
           These guides translate catalog metadata into practical workflows for
-          grants, research, policy analysis, and community inquiry.
+          grants, research, policy analysis, community inquiry, and careful AI-assisted work.
         </p>
       </PageIntro>
       <section className="shell guide-grid" aria-label="Available guides">

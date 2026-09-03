@@ -31,6 +31,8 @@ read-only **Archive repository** setting while the project is maintained.
   separated from publisher-documented fields.
 - Deterministic candidate comparisons for similarly named variables, with
   unit, population, geography, time, and method review warnings.
+- A versioned, provider-neutral prompt guide library for careful AI-assisted
+  interpretation, with explicit human-review checkpoints.
 - Weekly bounded checks of public landing pages, files, and APIs, with access,
   freshness, and integrity reported as separate dimensions.
 - A public history of observed moves, outages, recoveries, and breaking changes.
@@ -57,6 +59,7 @@ site URL. The preference is also stored on the visitor's device.
 | `catalog/codebooks.json` | Generated publisher-documented and inferred variable metadata. |
 | `catalog/concept-taxonomy.json` | Curated concepts and comparison cautions. |
 | `catalog/variable-crosswalk.json` | Generated cross-source candidate matches and checks. |
+| `catalog/prompt-guides.json` | Canonical copy-and-paste prompt guides, safety rules, versions, and human-review gates. |
 | `research/codebooks/` | Dated source-by-source documentation research. |
 | `schemas/` | Versioned JSON Schemas for catalog and monitoring output. |
 | `monitoring/` | Standard-library Python monitor and its operational policy. |
@@ -85,6 +88,7 @@ Useful checks:
 npm run lint
 npm test
 npm run codebooks:build
+npm run prompts:build
 python -m unittest discover -s tests -p "test_*.py"
 python -m monitoring.generate_targets --catalog catalog/reviewed-intake.json --output build/targets.json
 python -m monitoring.monitor --input build/targets.json --output build/status.json
@@ -138,11 +142,26 @@ map them to:
 
 ## Participate
 
-The site's **Contribute** page links to four short GitHub forms for corrections,
-broken or moved sources, variable or metadata feedback, and new source
-suggestions. Community contributors do not need to edit a file or open a pull
-request. A maintainer checks the evidence and prepares a linked change when one
-is warranted.
+The site's **Contribute** page links to five short GitHub forms for corrections,
+broken or moved sources, variable or metadata feedback, new source suggestions,
+and prompt guide improvements. Community contributors do not need to edit a file
+or open a pull request. A maintainer checks the evidence and prepares a linked
+change when one is warranted.
+
+## Prompt guide library
+
+`catalog/prompt-guides.json` is the single versioned source for the site's
+copy-and-paste guides. A deterministic function assembles each full prompt from
+its required inputs, shared evidence rules, task instructions, expected output,
+and human-review checkpoints. Community and Technical views explain the guide
+differently but copy identical prompt text. The browser does not transmit prompt
+text or filter input to an AI provider.
+
+Prompt outputs are working notes, not evidence or approval. Semantic matching,
+trend breaks, missing and suppressed data, joins, privacy, licensing, grant and
+policy claims, and community framing remain human decisions. Prompt changes can
+be proposed through the plain-language GitHub form and follow the same reviewed,
+versioned process as catalog corrections.
 
 Read `CONTRIBUTING.md` for both community and technical paths. Use
 `CORRECTIONS.md` for factual disputes and `SECURITY.md` for vulnerabilities.

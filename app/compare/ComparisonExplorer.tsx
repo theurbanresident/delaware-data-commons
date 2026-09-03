@@ -124,8 +124,10 @@ export function ComparisonExplorer({ concepts, sources }: Props) {
           </div>
 
           <section className="comparison-checks" aria-labelledby="comparison-checks-title">
-            <h3 id="comparison-checks-title" className="community-only">What lines up—and what does not</h3>
-            <h3 id="comparison-checks-title-technical" className="technical-only">Automated metadata checks</h3>
+            <h3 id="comparison-checks-title">
+              <span className="community-only">What lines up—and what does not</span>
+              <span className="technical-only">Automated metadata checks</span>
+            </h3>
             <div className="table-scroll" role="region" aria-label="Selected variable metadata comparison">
               <table>
                 <caption>Metadata checks for the selected variable pair.</caption>

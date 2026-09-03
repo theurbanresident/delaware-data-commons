@@ -42,6 +42,12 @@ jobs:
           npm run codebooks:build
           git diff --exit-code -- catalog/codebooks.json catalog/variable-crosswalk.json public/data/codebooks.json public/data/concept-taxonomy.json public/data/variable-crosswalk.json
 
+      - name: Rebuild and verify prompt guide output
+        shell: bash
+        run: |
+          npm run prompts:build
+          git diff --exit-code -- public/data/prompt-guides.json
+
       - name: Lint site
         run: npm run lint
 

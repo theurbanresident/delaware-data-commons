@@ -5,6 +5,13 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Added a provider-neutral prompt guide library with ten copy-and-paste
+  workflows, local filtering, versioned metadata, and explicit human-review
+  checkpoints.
+- Added a plain-language form for proposing prompt guide improvements.
+- Expanded the About page with separate Community and Technical explanations of
+  the project's purpose, creation process, GitHub, provenance, preservation,
+  human review, and current phase limits.
 - Added Community and Technical presentation modes over the same catalog data.
 - Added source-specific, plain-language GitHub reporting paths.
 - Added guided forms for corrections, broken sources, variable or metadata

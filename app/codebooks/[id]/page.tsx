@@ -47,6 +47,7 @@ export default async function CodebookDetailPage({ params }: { params: Params })
           <div className="hero-actions">
             <a className="secondary-button" href={sitePath(`/datasets/${entry.source_id}`)}>Return to source record</a>
             <a className="secondary-button" href={sitePath("/compare")}>Find similar variables</a>
+            <a className="secondary-button" href={sitePath("/guides/prompts#explain-measure")}>Use a definition prompt</a>
           </div>
         </div>
       </header>

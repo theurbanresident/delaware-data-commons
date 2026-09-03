@@ -53,6 +53,7 @@ export default function Home() {
               <a href={sitePath("/codebooks")}>Look up a definition</a>
               <a href={sitePath("/compare")}>Compare similar variables</a>
               <a href={sitePath("/status")}>View source status</a>
+              <a href={sitePath("/guides/prompts")}>Use an AI prompt guide</a>
               <a href={sitePath("/guides/grants")}>Build a grant need statement</a>
               <a href={sitePath("/contribute")}>Share a correction</a>
             </div>

@@ -60,6 +60,7 @@ export function SiteFooter() {
           <a href={sitePath("/compare")}>Compare variables</a>
           <a href={sitePath("/status")}>Source status</a>
           <a href={sitePath("/guides")}>Guides</a>
+          <a href={sitePath("/guides/prompts")}>Prompt library</a>
           <a href={sitePath("/contribute")}>Share a correction</a>
         </div>
         <div>

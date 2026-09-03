@@ -12,6 +12,7 @@
     "test": "vinext build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "codebooks:build": "node scripts/build_codebooks.mjs",
+    "prompts:build": "node scripts/build_prompt_guides.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
