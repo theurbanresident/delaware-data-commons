@@ -5,6 +5,14 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Published a current Delaware Open Data metadata inventory: 347 portal assets,
+  including 177 datasets, checked October 21, 2026.
+- Added searchable publisher metadata and five official MHC transition links
+  with current column definitions; original MHC dictionary remains unacquired.
+- Added reproducible bounded metadata refresh, immutable metadata snapshots,
+  hashes, and change manifests without downloading dataset rows.
+- Prepared the static public site for GitHub Pages and public Sites access.
+
 - Added a provider-neutral prompt guide library with ten copy-and-paste
   workflows, local filtering, versioned metadata, and explicit human-review
   checkpoints.

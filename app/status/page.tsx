@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { catalog, getLatestDate, getPrimaryDistribution, sources, splitSourceName } from "../lib/catalog";
 import { Notice, PageIntro } from "../components/Content";
 import { sitePath } from "../lib/site-path";
+import openData from "@/catalog/delaware-open-data.json";
+import { openDataDate } from "../lib/open-data";
 
 export const metadata: Metadata = {
   title: "Source status",
-  description: "How Delaware Data Commons reports access, freshness, and change—and the current pre-scan baseline.",
+  description: "The latest Delaware Open Data metadata capture and the separate SHIP monitoring publication baseline.",
 };
 
 const previewSources = sources.slice(0, 10);
@@ -15,12 +17,12 @@ export default function StatusPage() {
 
   return (
     <main id="main-content">
-      <PageIntro eyebrow="Source status" title="A transparent baseline before the first weekly scan.">
+      <PageIntro eyebrow="Source status" title="Know what was checked, and what was preserved.">
         <p className="community-only">
-          This page will show whether a source link opens, how old its listed data are, whether something changed, and whether a person reviewed the result.
+          The Delaware Open Data metadata inventory has been checked and preserved. SHIP source monitoring is a separate process whose observations have not yet been published here.
         </p>
         <p className="technical-only">
-          The monitor and source inventory are in place. No endpoint is labeled available or unavailable until a completed observation is published.
+          The portal metadata snapshot is published with provenance and history. A successful metadata capture does not establish data freshness, dataset payload preservation, or availability for every SHIP source.
         </p>
       </PageIntro>
 
@@ -28,15 +30,15 @@ export default function StatusPage() {
         <div className="monitor-heartbeat">
           <span className="status-icon" aria-hidden="true">○</span>
           <div>
-            <p className="eyebrow">Monitor heartbeat</p>
-            <h2 id="monitor-heading">Awaiting first completed scan</h2>
-            <p className="community-only">The weekly checker is ready, but it has not published its first result.</p>
-            <p className="technical-only">Weekly automation is configured, but this public preview does not yet contain a verified observation.</p>
+            <p className="eyebrow">Delaware Open Data metadata</p>
+            <h2 id="monitor-heading">{openData.summary.asset_count} portal assets indexed</h2>
+            <p>Checked <time dateTime={openData.checked_at}>{openDataDate(openData.checked_at)} (UTC)</time>. Dataset rows were not downloaded.</p>
+            <p><a href={sitePath("/open-data")}>Browse the current portal snapshot</a> · <a href={sitePath("/data/open-data/history.json")}>Metadata capture history</a></p>
           </div>
         </div>
         <dl className="status-metrics">
-          <div><dt>Records imported</dt><dd>{catalog.summary.source_count}</dd><small>All need curator review</small></div>
-          <div><dt>Current public targets</dt><dd>{currentTargets}</dd><small>Awaiting first check</small></div>
+          <div><dt>SHIP records imported</dt><dd>{catalog.summary.source_count}</dd><small>All need curator review</small></div>
+          <div><dt>SHIP source links</dt><dd>{currentTargets}</dd><small>Observations not yet published here</small></div>
           <div><dt>Request-only sources</dt><dd>{catalog.summary.request_only_source_count}</dd><small>Not treated as outages</small></div>
           <div><dt>Confirmed incidents</dt><dd>0</dd><small>None assessed yet</small></div>
         </dl>
@@ -71,14 +73,14 @@ export default function StatusPage() {
 
       <section className="shell status-table-section">
         <div className="section-heading">
-          <div><p className="eyebrow">Initial queue</p><h2>Sources awaiting observation</h2></div>
+          <div><p className="eyebrow">Separate SHIP queue</p><h2>Sources awaiting published observations</h2></div>
           <a className="text-link" href={sitePath("/datasets")}>View all {sources.length} sources →</a>
         </div>
         {/* Horizontal tables need a keyboard-focusable scroll region. */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
         <div className="table-scroll" tabIndex={0} role="region" aria-label="Source monitoring queue">
           <table>
-            <caption>Ten representative imported sources before the first automated scan</caption>
+            <caption>Ten representative SHIP sources; monitoring results have not yet been published to this site</caption>
             <thead><tr><th scope="col">Source</th><th scope="col">How to get it</th><th scope="col">Data listed through</th><th scope="col">Link check</th><th scope="col">Human review</th></tr></thead>
             <tbody>
               {previewSources.map((source) => {
@@ -88,7 +90,7 @@ export default function StatusPage() {
                     <th scope="row"><a href={sitePath(`/datasets/${source.id}`)}>{title}</a></th>
                     <td>{source.access_type === "request_only" ? "Request required" : "Public link listed"}</td>
                     <td>{getLatestDate(source.data_source_dates)?.display_value ?? "Not stated"}</td>
-                    <td><span className="status-text">○ Not checked</span></td>
+                    <td><span className="status-text">○ Not published</span></td>
                     <td><span className="community-only">Not reviewed yet</span><span className="technical-only">Imported · pending</span></td>
                   </tr>
                 );

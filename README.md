@@ -13,6 +13,14 @@ for a particular purpose.
 
 ## Project status
 
+The public site now includes a separate **Delaware Open Data** inventory at
+`/open-data`. The October 21, 2026 metadata capture contains 347 portal assets,
+including 177 datasets, and the five priority datasets linked by DHSS during
+the My Healthy Community transition. These counts are separate from the 37
+SHIP intake sources. The snapshot preserves publisher descriptions, available
+column definitions, source timestamps, evidence hashes, and explicit unknowns.
+It does not archive dataset rows or recover the original MHC indicator dictionary.
+
 This repository is in Phase 0/1. It currently establishes the public-site,
 governance, schema, and monitoring foundations. The source inventory is still
 being reviewed; imported spreadsheet rows must be treated as unverified intake
@@ -81,6 +89,29 @@ The public site requires Node.js `>=22.13.0`:
 npm ci
 npm run dev
 ```
+
+## Refresh the official Delaware Open Data inventory
+
+The bounded standard-library importer retrieves catalog metadata, the official
+DHSS transition page, and its linked priority-dataset metadata. It validates
+completeness, unique IDs, and source domains before publishing current output.
+It never downloads dataset rows or treats omitted assets as confirmed deletions.
+
+```bash
+python3 scripts/refresh_open_data.py --fetch
+```
+
+Review changes to `catalog/delaware-open-data.json` and its identical public
+copy before committing. Immutable metadata snapshots and their SHA-256 hashes
+are retained under `public/data/open-data/history/`; `history.json` records
+added, changed, and no-longer-listed asset IDs relative to the previous capture.
+Dataset payloads, full legacy MHC history, and its original dictionary remain
+outside this metadata capture. Unknown licenses remain unknown.
+
+The public site is built as static files in `dist/client` for GitHub Pages and
+the existing Sites publication. `main` is the canonical publication branch.
+Pages uses the repository-name prefix; Sites uses the origin root. Both builds
+share source data and retain Community/Technical views.
 
 Useful checks:
 

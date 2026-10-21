@@ -50,6 +50,7 @@ export default function Home() {
               Browse by topic, place, publisher, years available, and access type.
             </p>
             <div className="hero-links" aria-label="Popular tasks">
+              <a href={sitePath("/open-data")}>Browse Delaware Open Data</a>
               <a href={sitePath("/codebooks")}>Look up a definition</a>
               <a href={sitePath("/compare")}>Compare similar variables</a>
               <a href={sitePath("/status")}>View source status</a>

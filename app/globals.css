@@ -528,4 +528,19 @@ footer { background: var(--navy); color: #fff; }
   .prompt-provenance dl > div { grid-template-columns: 1fr; gap: 3px; }
   .about-steps li { grid-template-columns: 43px 1fr; gap: 13px; }
 }
+.open-data-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.open-data-context { padding-block: 38px; }
+.open-data-context > p { max-width: 85ch; color: #344e62; }
+.open-data-explorer { padding-top: 12px; }
+.open-data-filter label, .open-data-filter select { display: block; width: 100%; }
+.open-data-show-more { margin-top: 24px; }
+.open-data-mhc { border-top: 1px solid var(--line); padding-bottom: 70px; }
+.open-data-mhc .dataset-list { margin-block: 26px; }
+.open-data-columns > summary { cursor: pointer; padding-block: 12px; color: #116b65; font-weight: 700; }
+.open-data-table-wrap { max-width: 100%; overflow-x: auto; margin-top: 12px; }
+.open-data-table-wrap table { width: 100%; min-width: 580px; border-collapse: collapse; font-size: 0.85rem; }
+.open-data-table-wrap caption { text-align: left; padding-bottom: 12px; }
+.open-data-table-wrap th, .open-data-table-wrap td { text-align: left; vertical-align: top; padding: 12px; border: 1px solid var(--line); overflow-wrap: anywhere; }
+.open-data-table-wrap thead { background: #edf5f5; }
+@media (max-width: 620px) { .open-data-metrics { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
