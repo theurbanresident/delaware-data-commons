@@ -5,6 +5,8 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Selected GitHub Free and Pages as the primary public hosting service, with
+  `main` as the deployment branch and the Pages URL as the metadata default.
 - Published a current Delaware Open Data metadata inventory: 347 portal assets,
   including 177 datasets, checked October 21, 2026.
 - Added searchable publisher metadata and five official MHC transition links

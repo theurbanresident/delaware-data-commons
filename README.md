@@ -1,5 +1,10 @@
 # Delaware Data Commons
 
+Public site: **[Delaware Data Commons on GitHub Pages](https://theurbanresident.github.io/delaware-data-commons/)**
+
+Hosting: **GitHub Free + Pages**, using this public repository and standard
+GitHub-hosted Actions runners. The site needs no paid hosting plan or backend.
+
 Delaware Data Commons is an independent, public index of open data
 relevant to Delaware communities. It is being designed to make scattered
 datasets easier to find, understand, cite, monitor, and eventually combine into
@@ -108,10 +113,11 @@ added, changed, and no-longer-listed asset IDs relative to the previous capture.
 Dataset payloads, full legacy MHC history, and its original dictionary remain
 outside this metadata capture. Unknown licenses remain unknown.
 
-The public site is built as static files in `dist/client` for GitHub Pages and
-the existing Sites publication. `main` is the canonical publication branch.
-Pages uses the repository-name prefix; Sites uses the origin root. Both builds
-share source data and retain Community/Technical views.
+The public site is built as static files in `dist/client` for GitHub Pages.
+`main` is the canonical publication branch; pushes run validation and the Pages
+deployment workflow. Pages uses the repository-name prefix and retains both
+Community and Technical views. Future public updates publish through GitHub
+Pages; the earlier Sites publication is not the primary hosting service.
 
 Useful checks:
 
@@ -131,9 +137,9 @@ catalog distributions. Request-only sources remain cataloged but are excluded
 from outage probes. Endpoint failures are observations and do not cause a scan
 to exit unsuccessfully. Configuration, parser, or output failures do.
 
-The Pages workflow is disabled until an administrator sets the repository
-variable `ENABLE_GITHUB_PAGES` to `true`. Enable it only after the site build
-produces a static `dist/client/index.html`; a server-only Vinext asset directory
+The Pages workflow is enabled with repository variable `ENABLE_GITHUB_PAGES=true`
+and the `github-pages` deployment environment permits `main`. The build must
+produce a static `dist/client/index.html`; a server-only Vinext asset directory
 is not a deployable Pages site. The workflow checks this invariant before it can
 receive deployment permissions. Project-site builds default to the repository
 name as their base path and the standard `github.io` URL. Repository variables

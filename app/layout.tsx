@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://delaware-data-commons.dchen05.chatgpt.site";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://theurbanresident.github.io/delaware-data-commons";
 const socialImage = `${siteUrl.replace(/\/$/, "")}/og.png`;
 const description = "A community-oriented catalog for discovering, understanding, and tracking public data about Delaware.";
 
