@@ -5,6 +5,9 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Added Chromium and WebKit browser checks before Pages deployment, covering
+  phone/tablet/desktop layouts, every exported deep link, interactive controls,
+  JavaScript errors, and missing resources.
 - Fixed GitHub Pages asset packaging: CSS and JavaScript now sit at the artifact
   root instead of an extra repository folder. Added exported-asset existence
   checks so a successful HTML response cannot hide missing styles or scripts.

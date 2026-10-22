@@ -95,6 +95,13 @@ npm ci
 npm run dev
 ```
 
+Pages deployments also run real Chromium and WebKit checks before publication:
+all exported pages load on a phone viewport, primary pages load on tablet and
+desktop viewports, and navigation, search, view preferences, and comparisons
+work without browser errors or page overflow. To run this against a built
+artifact locally, use `npx playwright install chromium webkit`, then
+`npm run test:browser` with the same `NEXT_PUBLIC_BASE_PATH` used for the build.
+
 ## Refresh the official Delaware Open Data inventory
 
 The bounded standard-library importer retrieves catalog metadata, the official

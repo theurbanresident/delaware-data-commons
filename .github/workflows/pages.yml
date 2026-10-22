@@ -78,6 +78,23 @@ jobs:
             test ! -d "dist/client$asset_prefix/_next"
           fi
 
+      - name: Install test browsers
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Check phone, tablet, and desktop in real browsers
+        run: npm run test:browser
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.PAGES_BASE_PATH || format('/{0}', github.event.repository.name) }}
+
+      - name: Save browser failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: browser-failure-screenshots
+          path: outputs/browser
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Package Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
