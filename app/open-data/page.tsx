@@ -57,6 +57,7 @@ export default function OpenDataPage() {
             <h3><a href={asset.url}>{asset.name}</a></h3>
             <p>Portal ID: <code>{asset.id}</code> · Publisher update: {openDataDate(asset.updated_at)}</p>
             {asset.columns.length ? <details className="open-data-columns"><summary>View {asset.columns.length} publisher column definitions for {asset.name}</summary>
+              <p className="table-scroll-hint">Swipe or scroll horizontally to see all columns.</p>
               {/* Keyboard focus lets readers scroll wide tables without a pointer. */}
               {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
               <div className="open-data-table-wrap" role="region" tabIndex={0} aria-label={`${asset.name} column definitions`}>

@@ -1,6 +1,7 @@
 import { sitePath } from "../lib/site-path";
 import { githubRepositoryUrl } from "../lib/github";
 import { ViewModeSwitch } from "./ViewModeSwitch";
+import { PrimaryNavigation } from "./PrimaryNavigation";
 
 export function SiteHeader() {
   return (
@@ -20,17 +21,7 @@ export function SiteHeader() {
             <small>Public evidence, made traceable</small>
           </span>
         </a>
-        <nav aria-label="Primary navigation">
-          <a href={sitePath("/datasets")}>Catalog</a>
-          <a href={sitePath("/open-data")}>Delaware Open Data</a>
-          <a href={sitePath("/codebooks")}>Definitions</a>
-          <a href={sitePath("/compare")}>Compare</a>
-          <a href={sitePath("/status")}>Status</a>
-          <a href={sitePath("/guides")}>Guides</a>
-          <a href={sitePath("/contribute")}>Contribute</a>
-          <a href={sitePath("/methods")}>Methods</a>
-          <a href={sitePath("/about")}>About</a>
-        </nav>
+        <PrimaryNavigation />
       </header>
       <div className="view-mode-bar">
         <div className="shell">

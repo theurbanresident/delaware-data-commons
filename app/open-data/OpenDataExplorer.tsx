@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { ResponsiveFilters } from "../components/ResponsiveFilters";
 import { filterOpenDataAssets, openDataDate } from "../lib/open-data";
 import { preserveViewInParams } from "../lib/view-mode";
 import { sitePath } from "../lib/site-path";
@@ -54,6 +55,7 @@ export function OpenDataExplorer({ assets }: { assets: OpenDataAsset[] }) {
 
   return (
     <section className="shell catalog-layout open-data-explorer" aria-labelledby="open-data-browse-heading">
+      <ResponsiveFilters panelId="open-data-filter-panel">
       <form className="filter-panel" action={sitePath("/open-data")} method="get" onSubmit={submit} key={JSON.stringify(filters)} aria-label="Filter Delaware Open Data assets">
         <div className="filter-heading"><h2>Search and filter</h2></div>
         <label htmlFor="open-data-search">Keywords or dataset ID</label>
@@ -77,6 +79,7 @@ export function OpenDataExplorer({ assets }: { assets: OpenDataAsset[] }) {
         {Object.values(filters).some(Boolean) ? <button className="clear-button" type="button" onClick={() => update(emptyFilters)}>Clear all filters</button> : null}
         <noscript><p>Filtering and showing more require JavaScript. <a href={sitePath("/data/delaware-open-data.json")}>Download all metadata as JSON</a> or browse the official portal using the link above.</p></noscript>
       </form>
+      </ResponsiveFilters>
 
       <div className="catalog-results">
         <div className="results-heading">

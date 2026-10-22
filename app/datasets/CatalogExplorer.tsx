@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { ResponsiveFilters } from "../components/ResponsiveFilters";
 import {
   getAccessLabel,
   getCaution,
@@ -95,6 +96,7 @@ export function CatalogExplorer() {
 
   return (
     <section className="shell catalog-layout">
+      <ResponsiveFilters panelId="catalog-filter-panel">
       <form className="filter-panel" action={sitePath("/datasets")} method="get" onSubmit={submit} aria-label="Filter the data catalog" key={JSON.stringify(filters)}>
         <div className="filter-heading">
           <h2>Search and filter</h2>
@@ -127,6 +129,7 @@ export function CatalogExplorer() {
         <button type="submit">Apply filters</button>
         <noscript><p className="noscript-note">Filtering requires JavaScript. The complete catalog remains visible.</p></noscript>
       </form>
+      </ResponsiveFilters>
 
       <div className="catalog-results">
         <div className="results-heading">

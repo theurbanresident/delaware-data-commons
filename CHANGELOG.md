@@ -5,6 +5,9 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Added responsive phone/tablet navigation and filter disclosures, larger touch
+  controls, flexible cards, wrapped technical identifiers, and contained table
+  scrolling with keyboard access.
 - Selected GitHub Free and Pages as the primary public hosting service, with
   `main` as the deployment branch and the Pages URL as the metadata default.
 - Published a current Delaware Open Data metadata inventory: 347 portal assets,

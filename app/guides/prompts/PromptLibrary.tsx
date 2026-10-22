@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { githubIssueUrl } from "../../lib/github";
 import { buildPromptText } from "../../lib/prompt-guides.js";
 import { sitePath } from "../../lib/site-path";
+import { ResponsiveFilters } from "../../components/ResponsiveFilters";
 
 type ReviewLevel = "required" | "recommended";
 
@@ -112,6 +113,7 @@ export function PromptLibrary({ catalog }: { catalog: PromptGuideCatalog }) {
 
   return (
     <div className="prompt-workspace">
+      <ResponsiveFilters panelId="prompt-filter-panel">
       <aside className="prompt-filter-panel" aria-labelledby="prompt-filter-title">
         <div className="filter-heading">
           <h2 id="prompt-filter-title">Find a prompt guide</h2>
@@ -146,6 +148,7 @@ export function PromptLibrary({ catalog }: { catalog: PromptGuideCatalog }) {
 
         <p className="field-help">Filtering happens on this page. Nothing you type here is sent to an AI service.</p>
       </aside>
+      </ResponsiveFilters>
 
       <section className="prompt-results" aria-labelledby="prompt-results-title">
         <div className="results-heading">

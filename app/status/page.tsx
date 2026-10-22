@@ -76,6 +76,7 @@ export default function StatusPage() {
           <div><p className="eyebrow">Separate SHIP queue</p><h2>Sources awaiting published observations</h2></div>
           <a className="text-link" href={sitePath("/datasets")}>View all {sources.length} sources →</a>
         </div>
+        <p className="table-scroll-hint">Swipe or scroll horizontally to see all columns.</p>
         {/* Horizontal tables need a keyboard-focusable scroll region. */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
         <div className="table-scroll" tabIndex={0} role="region" aria-label="Source monitoring queue">

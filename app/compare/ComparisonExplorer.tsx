@@ -128,7 +128,10 @@ export function ComparisonExplorer({ concepts, sources }: Props) {
               <span className="community-only">What lines up—and what does not</span>
               <span className="technical-only">Automated metadata checks</span>
             </h3>
-            <div className="table-scroll" role="region" aria-label="Selected variable metadata comparison">
+            <p className="table-scroll-hint">Swipe or scroll horizontally to see all columns.</p>
+            {/* Keyboard focus lets readers scroll the table without a pointer. */}
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+            <div className="table-scroll" role="region" tabIndex={0} aria-label="Selected variable metadata comparison">
               <table>
                 <caption>Metadata checks for the selected variable pair.</caption>
                 <thead><tr><th scope="col">Check</th><th scope="col">Result</th><th scope="col">First source</th><th scope="col">Second source</th></tr></thead>
