@@ -34,7 +34,7 @@ jobs:
           node-version: "22.13.0"
 
       - name: Install locked dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund
 
       - name: Rebuild and verify codebook outputs
         shell: bash
