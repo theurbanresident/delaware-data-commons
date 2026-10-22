@@ -5,6 +5,9 @@ issues, reviewed pull requests, commits, and earlier versions.
 
 ## Unreleased
 
+- Fixed GitHub Pages asset packaging: CSS and JavaScript now sit at the artifact
+  root instead of an extra repository folder. Added exported-asset existence
+  checks so a successful HTML response cannot hide missing styles or scripts.
 - Added responsive phone/tablet navigation and filter disclosures, larger touch
   controls, flexible cards, wrapped technical identifiers, and contained table
   scrolling with keyboard access.

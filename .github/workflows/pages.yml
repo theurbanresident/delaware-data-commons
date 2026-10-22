@@ -72,6 +72,11 @@ jobs:
           grep -Fq "$EXPECTED_BASE_PATH/_next/" dist/client/index.html
           grep -Fq "$EXPECTED_SITE_URL" dist/client/index.html
           grep -Fq "$EXPECTED_REPOSITORY_URL/issues/new" dist/client/contribute.html
+          test -d dist/client/_next/static
+          asset_prefix="${EXPECTED_BASE_PATH%/}"
+          if [ -n "$asset_prefix" ]; then
+            test ! -d "dist/client$asset_prefix/_next"
+          fi
 
       - name: Package Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0

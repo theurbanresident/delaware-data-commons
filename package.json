@@ -7,9 +7,9 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vinext build && node scripts/prepare_static_export.mjs",
     "start": "vinext start",
-    "test": "vinext build && node --test tests/*.test.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "codebooks:build": "node scripts/build_codebooks.mjs",
     "prompts:build": "node scripts/build_prompt_guides.mjs",
